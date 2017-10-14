@@ -114,11 +114,13 @@
   width: 200rpx;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
+  margin-left: 30rpx;
 }
 
 .cell-left-label {
   font-size: 36rpx;
+  text-align: left;
 }
 
 .cell-right {

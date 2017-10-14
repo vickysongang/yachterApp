@@ -5,6 +5,9 @@ Page({
   data: {
     userInfo: {},
     imageList: [],
+    title: '我的通知',
+    creatorName: '',
+    typeName: ''
   },
   onLoad: function () {
     var that = this
@@ -32,6 +35,12 @@ Page({
     wx.previewImage({
       current: current,
       urls: this.data.imageList
+    })
+  },
+  bindTitleAction: function () {
+    var params = 'key=title&value='+ this.data.title
+    wx.navigateTo({
+      url: '../common/TextInput/Textinput?' + params,
     })
   }
 })

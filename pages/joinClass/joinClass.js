@@ -7,6 +7,8 @@ Page({
     schoolIndex: 0,
     colleges: ['经济学院', '软件学院'],
     collegeIndex: 0,
+    marjors: ['金融学', '软件工程'],
+    marjorIndex: 0,
     grades:['2016年秋季班', '2016年冬季班'],
     gradeIndex: 0,
     provinces: ['北京', '上海', '天津', '重庆'],

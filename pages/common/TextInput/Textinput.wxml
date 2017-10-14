@@ -1,0 +1,17 @@
+<view class='main-container'>
+  <input 
+  value='{{inputValue}}'
+  auto-focus placeholder='输入标题' 
+  confirm-type='done'
+  bindconfirm='bindConfirm'
+  bindinput='bindInput'
+  class='common-input' />
+  <view class='finish-button-view'>
+    <button 
+    bindtap='bindFinishAction'
+    class='finish-button' 
+    hover-class='finish-button-hover'>
+      完成
+    </button>
+  </view>
+</view>

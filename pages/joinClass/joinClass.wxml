@@ -8,8 +8,8 @@
   <template is="fieldCell" data="{{label:'学院', value:colleges[collegeIndex]}}" />
   </picker>
   <view class='divider-line'></view>
-  <picker bindchange="bindPickSchool" value="{{schoolIndex}}" range="{{schools}}">
-   <template is="fieldCell" data="{{label:'专业', value:schools[schoolIndex]}}" />
+  <picker bindchange="bindPickSchool" value="{{marjorIndex}}" range="{{marjors}}">
+   <template is="fieldCell" data="{{label:'专业', value:marjors[marjorIndex]}}" />
   </picker>
   <view class='divider-line'></view>
   <picker bindchange="bindPickGrade" value="{{gradeIndex}}" range="{{grades}}">
@@ -24,7 +24,8 @@
     <view class='divider-line'></view>
    <view class='cell-section' style='margin-bottom:10rpx;'>
       <view class='randCode-left-view'>
-        <input class="weui-input" 
+        <input class="randcode-input" 
+        placeholder-style='font-size:32rpx;'
         maxlength="6"
         type="number" placeholder="输入六位验证码" /> 
       </view>

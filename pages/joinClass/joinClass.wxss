@@ -70,3 +70,8 @@
   font-size: 24rpx;
   color: #000000;
 }
+
+.randcode-input {
+  color: #000000;
+  font-size: 72rpx;
+}

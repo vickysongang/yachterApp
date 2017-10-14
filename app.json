@@ -1,19 +1,20 @@
 {
   "pages":[
-    "pages/exam/exam",
-    "pages/schedule/detail",
-    "pages/schedule/schedule",
-    "pages/schedule/publish",
-    "pages/index/detail",
-    "pages/index/publish",
     "pages/index/index",
     "pages/joinClass/joinClass",
+    "pages/index/detail",
+    "pages/index/publish",
+    "pages/schedule/schedule",
+    "pages/schedule/detail",
+    "pages/schedule/publish",
+    "pages/exam/exam",
     "pages/exam/detail",
     "pages/exam/publish",
     "pages/achievement/achievement",
     "pages/profile/profile",
     "pages/profile/help",
-    "pages/profile/feedback"
+    "pages/profile/feedback",
+    "pages/common/TextInput/Textinput"
   ],
   "window":{
     "backgroundTextStyle":"black",
