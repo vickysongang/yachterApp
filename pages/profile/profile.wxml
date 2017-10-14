@@ -1,0 +1,47 @@
+<import src="../../templates/template.wxml"/>
+<view class="main-container">
+  <view class='userinfo'>
+    <view class='user-baseinfo'>
+       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+       <text class="userinfo-school" style='margin-top:36rpx;'>北京大学经济学院</text>
+       <text class="userinfo-school">2016金融学院</text>
+     </view>
+    <view> 
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" wx:if="{{userInfo.avatarUrl}}"></image>
+    </view>
+  </view>
+  <view class='divider-section'></view>
+  <button 
+    class='contact-button'
+    open-type="contact" 
+    session-from="weapp">
+   <view class='navigator-left'>
+       <image class='navigator-image'     src='resources/kind/feedback.png'></image>
+       <view class='navigator-left-text'>客服</view>
+    </view>
+    <view class='navigator-right'>
+       <view class='navigator-right-text'>在职小帮手</view>
+       <view class='navigator-arrow'></view>
+    </view>
+  </button>
+   <button class='contact-button' bindtap='bindNavToPage' data-url='./help'>
+    <view class='navigator-left'>
+        <image class='navigator-image'     src='resources/kind/feedback.png'></image>
+        <view class='navigator-left-text'>帮助</view>
+      </view>
+      <view class='navigator-right'>
+        <view class='navigator-right-text'></view>
+        <view class='navigator-arrow'></view>
+    </view>
+  </button>
+   <button class='contact-button' bindtap='bindNavToPage' data-url='./feedback'>
+    <view class='navigator-left'>
+        <image class='navigator-image'     src='resources/kind/feedback.png'></image>
+        <view class='navigator-left-text'>意见反馈</view>
+      </view>
+      <view class='navigator-right'>
+        <view class='navigator-right-text'></view>
+        <view class='navigator-arrow'></view>
+    </view>
+  </button>
+</view>

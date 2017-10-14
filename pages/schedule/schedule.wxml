@@ -1,0 +1,8 @@
+<import src="../../templates/template.wxml"/>
+<view class="main-container">
+  <view class='schedule-list-view'>
+    <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="{{*this}}">
+      <template is="scheduleCell" />
+    </block>
+  </view>
+</view>

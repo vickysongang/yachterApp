@@ -1,0 +1,40 @@
+/**index.wxss**/
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.imageCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.image {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.title {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.publish-button-view {
+  position: fixed;
+  right: 10rpx;
+  bottom: 10rpx;
+}
+
+.publish-button-image {
+  height: 50rpx;
+  width: 50rpx;
+}

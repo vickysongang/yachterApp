@@ -1,0 +1,66 @@
+{
+  "pages":[
+    "pages/exam/exam",
+    "pages/schedule/detail",
+    "pages/schedule/schedule",
+    "pages/schedule/publish",
+    "pages/index/detail",
+    "pages/index/publish",
+    "pages/index/index",
+    "pages/joinClass/joinClass",
+    "pages/exam/detail",
+    "pages/exam/publish",
+    "pages/achievement/achievement",
+    "pages/profile/profile",
+    "pages/profile/help",
+    "pages/profile/feedback"
+  ],
+  "window":{
+    "backgroundTextStyle":"black",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "在职小帮手",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "image/icon_component.png",
+      "selectedIconPath": "image/icon_component_HL.png",
+      "text": "通知"
+    },
+    {
+      "pagePath": "pages/schedule/schedule",
+      "iconPath": "image/icon_component.png",
+      "selectedIconPath": "image/icon_component_HL.png",
+      "text": "课表"
+    },
+    {
+      "pagePath": "pages/exam/exam",
+      "iconPath": "image/icon_component.png",
+      "selectedIconPath": "image/icon_component_HL.png",
+      "text": "考试"
+    },
+    {
+      "pagePath": "pages/achievement/achievement",
+      "iconPath": "image/icon_component.png",
+      "selectedIconPath": "image/icon_component_HL.png",
+      "text": "成绩"
+    },
+    {
+      "pagePath": "pages/profile/profile",
+      "iconPath": "image/icon_API.png",
+      "selectedIconPath": "image/icon_API_HL.png",
+      "text": "我"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

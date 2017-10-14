@@ -1,0 +1,122 @@
+/**app.wxss**/
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  background: white;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+} 
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 400rpx;
+}
+
+.user-baseinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userinfo-nickname {
+  font-size: 72rpx;
+  color: #000000;
+}
+
+.userinfo-school {
+  font-size: 32rpx;
+  color: #000000;
+}
+
+.userinfo-avatar {
+  width: 236rpx;
+  height: 236rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.contact-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100rpx;
+  width: 100%;
+  background: #FFFFFF;
+}
+
+.contact-button::after {
+  border: none;
+}
+
+.navigator-left {
+  display: flex;
+  width: 260rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navigator-right {
+  display: flex;
+  width: 250rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  right: -30rpx;
+}
+
+.navigator {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: white;
+  height: 100rpx;
+}
+
+.navigator-image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.navigator-left-text {
+  font-size: 36rpx;
+  width: 200rpx;
+  text-align: left;
+  margin-left: 20rpx;
+}
+
+.navigator-right-text {
+  font-size: 36rpx;
+  width: 200rpx;
+}
+
+
+.navigator-arrow {
+  padding-right: 26rpx;
+  position: relative;
+}
+.navigator-arrow:after {
+  content: " ";
+  display: inline-block;
+  height: 18rpx;
+  width: 18rpx;
+  border-width: 2rpx 2rpx 0 0;
+  border-color: #888888;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -8rpx;
+  right: 28rpx;
+}
+

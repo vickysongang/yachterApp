@@ -1,0 +1,72 @@
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  background: white;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+} 
+
+.randCode-left-view {
+  display: flex;
+  width: 300rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 40rpx;
+}
+
+.randCode-right-view {
+  display: flex;
+  width: 300rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 12rpx;
+}
+
+.randCode-button {
+  background: white;
+  height: 96rpx;
+  width: 268rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.randCode-label {
+  font-size: 28rpx;
+}
+
+.comfirm-button-view {
+  margin: 58rpx 134rpx 0 134rpx;
+}
+
+.comfirm-button {
+  background: #169AFA;
+}
+
+.comfirm-button-hover {
+  background: #169AAA;
+}
+
+.comfirm-button-label {
+  font-size: 32rpx;
+  color: #FFFFFF;
+}
+
+.tip-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.tip-text {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #000000;
+}

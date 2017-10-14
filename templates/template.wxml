@@ -1,0 +1,52 @@
+<template name='noticeItem'>
+  <view class='noticeItem-container'
+    bindtap='bindNavToDetail' data-name="{{id}}"
+    hover-class='noticeItem-container_hover'>
+    <view class='notice-type-info-view' 
+      wx:if="{{noticeType === 'notice'}}"
+    >
+        <text class='notice-type-text'>通</text>
+        <text class='notice-type-text'>知</text>
+    </view>
+    <view class='activity-type-info-view' 
+      wx:if="{{noticeType === 'activity'}}"
+    >
+        <text class='notice-type-text'>活</text>
+        <text class='notice-type-text'>动</text>
+    </view>
+    <view class='notice-detail-info-view '>
+      <view class='notice-title-view'>
+        <text class='notice-title-section'>{{title}}</text>
+      </view>
+      <view class='notice-abstract-view'>
+        {{abstract}}
+      </view>
+      <view class='notice-otherinfo-view'>
+        <text class='notice-otherinfo-text'>{{readCount}}</text>
+        <text class='notice-otherinfo-text'>{{pubTime}}</text>
+        <text class='notice-otherinfo-text'>{{creatorName}}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name='fieldCell'>
+  <view class='cell-section'>
+      <view class='cell-left'>
+        <text class='cell-left-label'>{{label}}</text> 
+      </view>
+      <view class='cell-right'>
+        <view class='cell-right-text-view'>
+          <text class='cell-right-text'>{{value}}</text>
+        </view>
+        <view class='cell-arrow'></view>
+      </view>
+    </view>
+</template>
+
+<template name='scheduleCell'>
+    <view class='schedule-cell-view' bindtap='bindNavToScheduleDetail'>
+          <text>经济学院</text>
+          <text>2016年春季班</text>
+    </view>
+</template>
