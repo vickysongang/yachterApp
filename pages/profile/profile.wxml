@@ -2,7 +2,9 @@
 <view class="main-container">
   <view class='userinfo'>
     <view class='user-baseinfo'>
-       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+       <text class="userinfo-nickname">
+         {{userInfo.nickName + userInfo.gender}}
+       </text>
        <text class="userinfo-school" style='margin-top:36rpx;'>北京大学经济学院</text>
        <text class="userinfo-school">2016金融学院</text>
      </view>

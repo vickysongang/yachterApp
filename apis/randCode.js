@@ -1,6 +1,4 @@
-
-const USERNAME = 'ZSZM005389'
-const PASSWORD = '123456'
+var constants = require('../constants/index.js')
 
 function generateRandCode() {
   var code = '';
@@ -23,8 +21,8 @@ function getRandCode (phone, callback) {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
     data: {
-      CorpID: USERNAME,
-      Pwd: PASSWORD,
+      CorpID: constants.USERNAME,
+      Pwd: constants.PASSWORD,
       Mobile: phone,
       Content: encodeURIComponent(content)
     },
