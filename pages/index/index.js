@@ -1,108 +1,76 @@
 //index.js
 //获取应用实例
+const noticeApis = require('../../apis/notice.js')
 const app = getApp()
-
 Page({
   data: {
     userInfo: {},
+    noticeType: 'class',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    notices:[{
-      id: 1,
-      noticeType: 'notice',
-      title:'关于【金融投资俱乐部】群规则的通知',
-      abstract:'请于10月21日前完成，按专业投入明德主楼611B门口的铁信箱内。',
-      readCount: 145,
-      pubTime: '2017-10-11',
-      creatorName: '张三'
-    },
-      {
-        id:2,
-        noticeType: 'activity',
-        title: '关于【金融投资俱乐部】群规则的通知',
-        abstract: '请于10月21日前完成，按专业投入明德主楼611B门口的铁信箱内。',
-        readCount: 145,
-        pubTime: '2017-10-11',
-        creatorName: '李四'
-      },
-      {
-        id: 3,
-        noticeType: 'notice',
-        title: '关于【金融投资俱乐部】群规则的通知',
-        abstract: '请于10月21日前完成，按专业投入明德主楼611B门口的铁信箱内。',
-        readCount: 145,
-        pubTime: '2017-10-11',
-        creatorName: '王五'
-      },
-      {
-        id: 4,
-        noticeType: 'notice',
-        title: '关于【金融投资俱乐部】群规则的通知',
-        abstract: '请于10月21日前完成，按专业投入明德主楼611B门口的铁信箱内。',
-        readCount: 145,
-        pubTime: '2017-10-11',
-        creatorName: '王五'
-      },
-      {
-        id: 5,
-        noticeType: 'notice',
-        title: '关于【金融投资俱乐部】群规则的通知',
-        abstract: '请于10月21日前完成，按专业投入明德主楼611B门口的铁信箱内。',
-        readCount: 145,
-        pubTime: '2017-10-11',
-        creatorName: '王五'
-      }]
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    notices: [],
+    currPage: 0
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    this.loadNotices()
   },
-  getUserInfo: function(e) {
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  loadNotices: function () {
+    noticeApis.queryNotices({
+      type: this.data.noticeType,
+      page: 0,
+      count: 10
+    }, (err, result) => {
+      this.setData({
+        notices: result.data,
+        currPage: 0
+      })
     })
   },
+  onPullDownRefresh: function () {
+    noticeApis.queryNotices({
+      type: this.data.noticeType,
+      page: 0,
+      count: 10
+    }, (err, result) => {
+      console.log('sfjsljdflsjflskjfdlsjdflsdfl:', result)
+      this.setData({
+        notices: result.data,
+        currPage: 0
+      })
+      wx.stopPullDownRefresh()
+    })
+  },
+  onReachBottom: function () {
+    noticeApis.queryNotices({
+      type: this.data.noticeType,
+      page: this.data.currPage + 1,
+      count: 10
+    }, (err, result) => {
+      var datas = result.data
+      if (datas.length > 0){
+        this.setData({
+          notices: this.data.notices.concat(result.data),
+          currPage: this.data.currPage + 1
+        })
+      }
+    })
+  },
+  changeTabType: function (event) {
+    var noticeType = event.currentTarget.dataset.type
+    this.setData({
+      noticeType: noticeType
+    })
+    this.loadNotices()
+  },
   bindNavToDetail: function (event) {
-    console.log('id is:', event)
+    var id = event.currentTarget.dataset.id
     wx.navigateTo({
-      url: './detail',
+      url: './detail?id='+ id,
     })
   },
   bindPublishNotice: function (event) {
     wx.navigateTo({
-      url: './publish',
+      url: './publish?noticeType='+this.data.noticeType,
     })
   }
 })

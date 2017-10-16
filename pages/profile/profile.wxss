@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .main-container {
   height: 100%;
   display: flex;
@@ -8,8 +9,8 @@
   box-sizing: border-box;
   font-size: 32rpx;
   background: white;
-  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
-} 
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
 
 .userinfo {
   display: flex;
@@ -28,12 +29,12 @@
 
 .userinfo-nickname {
   font-size: 72rpx;
-  color: #000000;
+  color: #000;
 }
 
 .userinfo-school {
   font-size: 32rpx;
-  color: #000000;
+  color: #000;
 }
 
 .userinfo-avatar {
@@ -49,7 +50,7 @@
   justify-content: space-between;
   height: 100rpx;
   width: 100%;
-  background: #FFFFFF;
+  background: #fff;
 }
 
 .contact-button::after {
@@ -100,18 +101,18 @@
   width: 200rpx;
 }
 
-
 .navigator-arrow {
   padding-right: 26rpx;
   position: relative;
 }
+
 .navigator-arrow:after {
   content: " ";
   display: inline-block;
   height: 18rpx;
   width: 18rpx;
   border-width: 2rpx 2rpx 0 0;
-  border-color: #888888;
+  border-color: #888;
   border-style: solid;
   transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
   position: absolute;
@@ -119,4 +120,3 @@
   margin-top: -8rpx;
   right: 28rpx;
 }
-

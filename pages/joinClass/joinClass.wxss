@@ -7,8 +7,8 @@
   box-sizing: border-box;
   font-size: 32rpx;
   background: white;
-  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
-} 
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
 
 .randCode-left-view {
   display: flex;
@@ -46,16 +46,16 @@
 }
 
 .comfirm-button {
-  background: #169AFA;
+  background: #169afa;
 }
 
 .comfirm-button-hover {
-  background: #169AAA;
+  background: #169aaa;
 }
 
 .comfirm-button-label {
   font-size: 32rpx;
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .tip-view {
@@ -68,10 +68,10 @@
 .tip-text {
   margin-top: 12rpx;
   font-size: 24rpx;
-  color: #000000;
+  color: #000;
 }
 
 .randcode-input {
-  color: #000000;
+  color: #000;
   font-size: 72rpx;
 }

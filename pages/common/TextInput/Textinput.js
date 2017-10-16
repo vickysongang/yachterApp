@@ -6,7 +6,8 @@ Page({
    */
   data: {
     inputKey: '',
-    inputValue: ''
+    inputValue: '',
+    maxlength: 140
   },
 
   /**
@@ -14,6 +15,21 @@ Page({
    */
   onLoad: function (options) {
     var key = options.key
+    var navBarTitle = '填写内容'
+    switch(key){
+      case 'title':
+        navBarTitle = '填写标题'
+        break
+      case 'phone':
+        navBarTitle = '填写手机号码'
+        this.setData({
+          maxlength: 11
+        })
+        break
+    }
+    wx.setNavigationBarTitle({
+      title: navBarTitle
+    })
     var value = options.value
     this.setData({
       inputKey: key,

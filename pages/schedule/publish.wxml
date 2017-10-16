@@ -1,32 +1,32 @@
-<import src="../../templates/template.wxml"/>
+<import src="../../templates/template.wxml" />
 <view class='main-container'>
   <scroll-view scroll-y>
     <template is="fieldCell" data="{{label:'学院', value:'经济学院'}}" />
-    <view class='divider-line' ></view>
-    <template is="fieldCell" data="{{label:'班级', value:'2016年春季班'}}"/>
     <view class='divider-line'></view>
-    <template is="fieldCell" data="{{label:'发布人', value:'张大大'}}"/>
+    <template is="fieldCell" data="{{label:'班级', value:'2016年春季班'}}" />
+    <view class='divider-line'></view>
+    <template is="fieldCell" data="{{label:'发布人', value:'张大大'}}" />
     <view class='divider-section'></view>
-     <view class="textarea-wrp">
-        <textarea  placeholder='不能超过5000字' maxlength='5000'/>
-     </view>
-   <view class='divider-section'></view>
-      <view class="weui-uploader__bd">
-          <view class="weui-uploader__files">
-                    <block wx:for="{{imageList}}" wx:for-item="image" wx:key="{{*this}}">
-                      <view class="weui-uploader__file">
-                        <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
-                      </view>
-                    </block>
-                  </view>
-                  <view class="weui-uploader__input-box">
-                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
-                  </view>
-                </view>
-  <view class='finish-button-view'>
-    <button class='finish-button' hover-class='finish-button-hover'>
-      完成
-    </button>
-  </view>
+    <view class="textarea-wrp">
+      <textarea placeholder='不能超过5000字' maxlength='5000' />
+    </view>
+    <view class='divider-section'></view>
+    <view class="weui-uploader__bd">
+      <view class="weui-uploader__files">
+        <block wx:for="{{imageList}}" wx:for-item="image" wx:key="{{*this}}">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+          </view>
+        </block>
+      </view>
+      <view class="weui-uploader__input-box">
+        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      </view>
+    </view>
+    <view class='finish-button-view'>
+      <button class='finish-button' hover-class='finish-button-hover'>
+        完成
+      </button>
+    </view>
   </scroll-view>
 </view>

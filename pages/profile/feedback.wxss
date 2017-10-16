@@ -7,29 +7,29 @@
   box-sizing: border-box;
   font-size: 32rpx;
   background: white;
-  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
-} 
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
 
 textarea {
-    width: 100%;
-    padding: 25rpx 0;
-}
-.textarea-wrp {
-    padding: 0 25rpx;
-    background-color: #fff;
+  width: 100%;
+  padding: 25rpx 0;
 }
 
+.textarea-wrp {
+  padding: 0 25rpx;
+  background-color: #fff;
+}
 
 .publish-button-view {
-   padding: 0 156rpx;
+  padding: 0 156rpx;
 }
 
 .publish-button {
-  background: #169AFA;
+  background: #169afa;
   border-radius: 120rpx;
-  color:#fff;
+  color: #fff;
 }
 
 .publish-button-hover {
-  background: #169AAA;
+  background: #169aaa;
 }

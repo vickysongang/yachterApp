@@ -1,6 +1,6 @@
 <view class='main-container'>
   <view class="textarea-wrp">
-      <textarea  placeholder='不能超过5000字' maxlength='5000'/>
+    <textarea placeholder='不能超过5000字' maxlength='5000' />
   </view>
   <view class='publish-button-view'>
     <button class='publish-button' hover-class='publish-button-hover'>
