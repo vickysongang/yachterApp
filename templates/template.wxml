@@ -1,10 +1,10 @@
 <template name='noticeItem'>
   <view class='noticeItem-container' bindtap='bindNavToDetail' data-id="{{id}}" hover-class='noticeItem-container_hover'>
-    <view class='notice-type-info-view' wx:if="{{categoryCode === 'notice'}}">
+    <view class='notice-type-info-view' wx:if="{{categoryCode === 'notice' || categoryCode === 'questions'}}">
       <text class='notice-type-text'>{{categoryName[0]}}</text>
-      <text class='notice-type-text'>{{categoryName[1]}}</text> 
+      <text class='notice-type-text'>{{categoryName[1]}}</text>
     </view>
-    <view class='activity-type-info-view' wx:if="{{categoryCode === 'activity'}}">
+    <view class='activity-type-info-view' wx:if="{{categoryCode === 'activity' || categoryCode === 'time'}}">
       <text class='notice-type-text'>{{categoryName[0]}}</text>
       <text class='notice-type-text'>{{categoryName[1]}}</text>
     </view>

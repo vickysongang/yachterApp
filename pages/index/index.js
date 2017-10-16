@@ -4,10 +4,7 @@ const noticeApis = require('../../apis/notice.js')
 const app = getApp()
 Page({
   data: {
-    userInfo: {},
     noticeType: 'class',
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     notices: [],
     currPage: 0
   },
@@ -32,7 +29,6 @@ Page({
       page: 0,
       count: 10
     }, (err, result) => {
-      console.log('sfjsljdflsjflskjfdlsjdflsdfl:', result)
       this.setData({
         notices: result.data,
         currPage: 0
@@ -47,7 +43,7 @@ Page({
       count: 10
     }, (err, result) => {
       var datas = result.data
-      if (datas.length > 0){
+      if (datas.length > 0) {
         this.setData({
           notices: this.data.notices.concat(result.data),
           currPage: this.data.currPage + 1
@@ -58,19 +54,20 @@ Page({
   changeTabType: function (event) {
     var noticeType = event.currentTarget.dataset.type
     this.setData({
-      noticeType: noticeType
+      noticeType: noticeType,
+      currPage: 0
     })
     this.loadNotices()
   },
   bindNavToDetail: function (event) {
     var id = event.currentTarget.dataset.id
     wx.navigateTo({
-      url: './detail?id='+ id,
+      url: './detail?id=' + id,
     })
   },
   bindPublishNotice: function (event) {
     wx.navigateTo({
-      url: './publish?noticeType='+this.data.noticeType,
+      url: './publish?noticeType=' + this.data.noticeType,
     })
   }
 })

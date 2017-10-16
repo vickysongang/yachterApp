@@ -1,8 +1,22 @@
 /**index.wxss**/
+
 .buttonGroup {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab_view {
+  color: #000;
+  font-size: 36rpx;
+  padding: 0 30rpx;
+}
+
+.selected_tab_view {
+  color: #0468F3;
+  font-size: 36rpx;
+  padding: 0 30rpx;
 }
 
 .imageCell {

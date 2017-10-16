@@ -85,6 +85,7 @@ Page({
           popErrorMsg: ''
         });
       }, 1000)
+      return
     }
     var title = this.data.title
     var openId = app.globalData.openId

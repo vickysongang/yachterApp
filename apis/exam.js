@@ -89,7 +89,7 @@ function incrExamReadCount(id, callback) {
 
 module.exports = {
   insertExam: insertExam,
-  queryExams: querExams,
+  queryExams: queryExams,
   getExamDetail: getExamDetail,
   deleteExam: deleteExam,
   incrExamReadCount: incrExamReadCount
