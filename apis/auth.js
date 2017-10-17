@@ -1,19 +1,19 @@
 var constants = require('../constants/index.js')
 
 function getUserAuthInfo(code, callback) {
-  var APPID = constants.APPID
-  var SECRET = constants.SECRET
-  var FETCH_OPENID_URL = constants.FETCH_OPENID_URL
-  //调用request请求api转换登录凭证  
   wx.request({
-    url: FETCH_OPENID_URL + '?appid=' + APPID + '&secret=' + SECRET + '&grant_type=authorization_code&js_code=' + code,
+    url: constants.SERVER_ADDRESS + '/auth',
+    method: 'POST',
     header: {
-      'content-type': 'application/json'
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    data: {
+      code: code
     },
     success: function (res) {
       callback(null, res)
     }
-  })  
+  })
 }
 
 module.exports = {
