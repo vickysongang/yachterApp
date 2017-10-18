@@ -18,6 +18,15 @@ Page({
     duration: 500
   },
   onLoad: function () {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+    });
     this.loadNotices()
   },
   loadNotices: function () {
@@ -31,6 +40,18 @@ Page({
         currPage: 0
       })
     })
+  },
+  swichNav: function (e) {
+    var that = this;
+    if (this.data.noticeType === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        noticeType: e.target.dataset.current,
+        currPage: 0
+      })
+      this.loadNotices()
+    }
   },
   removeNoticeItem: function (id) {
     var notices = this.data.notices.filter((val) => {
@@ -67,14 +88,6 @@ Page({
         })
       }
     })
-  },
-  changeTabType: function (event) {
-    var noticeType = event.currentTarget.dataset.type
-    this.setData({
-      noticeType: noticeType,
-      currPage: 0
-    })
-    this.loadNotices()
   },
   bindNavToDetail: function (event) {
     var id = event.currentTarget.dataset.id

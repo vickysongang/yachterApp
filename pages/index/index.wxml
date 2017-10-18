@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <import src="../../templates/template.wxml" />
 <view>
-  <view class="buttonGroup">
-    <view bindtap='changeTabType' data-type='class' class='{{noticeType === "class" ? "selected_tab_view":"tab_view"}}'>班级</view>
-    <view bindtap='changeTabType' data-type='college' class='{{noticeType === "college" ? "selected_tab_view":"tab_view"}}'>学院</view>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{noticeType=='class' ? 'on' : ''}}" data-current="class" bindtap="swichNav">班级</view>
+    <view class="swiper-tab-list {{noticeType=='college' ? 'on' : ''}}" data-current="college" bindtap="swichNav">学院</view>
   </view>
   <swiper class='swiper-class' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{imgUrls}}" wx:key="{{*this}}">

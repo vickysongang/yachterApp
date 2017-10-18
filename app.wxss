@@ -1,30 +1,33 @@
 /**app.wxss**/
 @import "./templates/template.wxss";
+
 page {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   height: 100%;
   font-size: 32rpx;
   line-height: 1.6;
 }
 
-checkbox, radio{
+checkbox, radio {
   margin-right: 10rpx;
 }
 
-button{
+button {
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
 
-form{
+form {
   width: 100%;
 }
 
 /* lib */
-.strong{
+
+.strong {
   font-weight: bold;
 }
-.tc{
+
+.tc {
   text-align: center;
 }
 
@@ -38,31 +41,31 @@ form{
   padding: 10rpx 0;
   box-sizing: border-box;
   font-size: 32rpx;
-  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
-} 
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
 
 .divider-line {
-  border: 1px solid #F7F7F7;
-  margin:0 38rpx;
+  border: 1px solid #f7f7f7;
+  margin: 0 38rpx;
 }
 
 .divider-section {
   height: 32rpx;
-  background: #F7F7F7;
+  background: #f7f7f7;
 }
 
-.ad_popError { 
-  background: #de352d; 
-  color: #fff; 
-  height: 58rpx; 
-  line-height: 58rpx; 
-  font-size: 24rpx; 
-  text-align: center;  
-  position: fixed; 
-  left: 0; 
+.ad_popError {
+  background: #de352d;
+  color: #fff;
+  height: 58rpx;
+  line-height: 58rpx;
+  font-size: 24rpx;
+  text-align: center;
+  position: fixed;
+  left: 0;
   top: 0;
   width: 100%;
-  z-index:3;
+  z-index: 3;
 }
 
 .swiper-class {
@@ -73,4 +76,36 @@ form{
 .slide-image {
   height: 210rpx;
   width: 100%;
+}
+
+/**index.wxss**/
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 2rpx solid #777;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 25%;
+  color: #777;
+}
+
+.on {
+  color: #da7c0c;
+  border-bottom: 5rpx solid #da7c0c;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  text-align: center;
 }

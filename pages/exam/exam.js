@@ -61,13 +61,17 @@ Page({
       }
     })
   },
-  changeTabType: function (event) {
-    var examType = event.currentTarget.dataset.type
-    this.setData({
-      examType: examType,
-      currPage: 0
-    })
-    this.loadExams()
+  swichNav: function (e) {
+    var that = this;
+    if (this.data.examType === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        examType: e.target.dataset.current,
+        currPage: 0
+      })
+      this.loadExams()
+    }
   },
   bindNavToDetail: function (event) {
     var id = event.currentTarget.dataset.id
