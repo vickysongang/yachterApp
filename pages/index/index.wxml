@@ -1,14 +1,21 @@
 <!--index.wxml-->
 <import src="../../templates/template.wxml" />
-<scroll-view scroll-y>
+<view>
   <view class="buttonGroup">
     <view bindtap='changeTabType' data-type='class' class='{{noticeType === "class" ? "selected_tab_view":"tab_view"}}'>班级</view>
     <view bindtap='changeTabType' data-type='college' class='{{noticeType === "college" ? "selected_tab_view":"tab_view"}}'>学院</view>
   </view>
+  <swiper class='swiper-class' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="{{*this}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" mode='scaleToFill' />
+      </swiper-item>
+    </block>
+  </swiper>
   <block wx:for="{{notices}}" wx:for-item="item" wx:key="id">
     <template is="noticeItem" data="{{...item}}" />
   </block>
   <view class='publish-button-view'>
-    <image src='../../image/green_tri.png' class='publish-button-image' bindtap='bindPublishNotice'></image>
+    <image src='../../image/edit.png' class='publish-button-image' bindtap='bindPublishNotice'></image>
   </view>
-</scroll-view>
+</view>

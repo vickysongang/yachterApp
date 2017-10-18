@@ -31,32 +31,32 @@
     "backgroundColor": "#ffffff",
     "list": [{
       "pagePath": "pages/index/index",
-      "iconPath": "image/icon_component.png",
-      "selectedIconPath": "image/icon_component_HL.png",
+      "iconPath": "image/notice.png",
+      "selectedIconPath": "image/selected_notice.png",
       "text": "通知"
     },
     {
       "pagePath": "pages/schedule/schedule",
-      "iconPath": "image/icon_component.png",
-      "selectedIconPath": "image/icon_component_HL.png",
+      "iconPath": "image/schedule.png",
+      "selectedIconPath": "image/selected_schedule.png",
       "text": "课表"
     },
     {
       "pagePath": "pages/exam/exam",
-      "iconPath": "image/icon_component.png",
-      "selectedIconPath": "image/icon_component_HL.png",
+      "iconPath": "image/exam.png",
+      "selectedIconPath": "image/selected_exam.png",
       "text": "考试"
     },
     {
       "pagePath": "pages/achievement/achievement",
-      "iconPath": "image/icon_component.png",
-      "selectedIconPath": "image/icon_component_HL.png",
+      "iconPath": "image/achievement.png",
+      "selectedIconPath": "image/selected_achievement.png",
       "text": "成绩"
     },
     {
       "pagePath": "pages/profile/profile",
-      "iconPath": "image/icon_API.png",
-      "selectedIconPath": "image/icon_API_HL.png",
+      "iconPath": "image/profile.png",
+      "selectedIconPath": "image/selected_profile.png",
       "text": "我"
     }]
   },

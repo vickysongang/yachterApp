@@ -1,13 +1,30 @@
+<template name='noticeImage'>
+  <image src='../../image/1_tongzhi.png' class='notice-image-view' wx:if="{{categoryCode === 'notice'}}">
+    <view class='notice-type-info-view'>
+      <text class='notice-type-text'>{{categoryName}}</text>
+    </view>
+  </image>
+  <image src='../../image/1_huodong.png' class='notice-image-view' wx:if="{{categoryCode === 'activity'}}">
+    <view class='notice-type-info-view'>
+      <text class='notice-type-text'>{{categoryName}}</text>
+    </view>
+  </image>
+  <image src='../../image/1_f.png' class='notice-image-view' wx:if="{{categoryCode === 'questions'}}">
+    <view class='notice-type-info-view'>
+      <text class='notice-type-text'>{{categoryName}}</text>
+    </view>
+  </image>
+  <image src='../../image/1_h.png' class='notice-image-view' wx:if="{{categoryCode === 'time'}}">
+    <view class='notice-type-info-view'>
+      <text class='notice-type-text'>{{categoryName}}</text>
+    </view>
+  </image>
+</template>
+
+
 <template name='noticeItem'>
   <view class='noticeItem-container' bindtap='bindNavToDetail' data-id="{{id}}" hover-class='noticeItem-container_hover'>
-    <view class='notice-type-info-view' wx:if="{{categoryCode === 'notice' || categoryCode === 'questions'}}">
-      <text class='notice-type-text'>{{categoryName[0]}}</text>
-      <text class='notice-type-text'>{{categoryName[1]}}</text>
-    </view>
-    <view class='activity-type-info-view' wx:if="{{categoryCode === 'activity' || categoryCode === 'time'}}">
-      <text class='notice-type-text'>{{categoryName[0]}}</text>
-      <text class='notice-type-text'>{{categoryName[1]}}</text>
-    </view>
+    <template is='noticeImage' data="{{categoryName:categoryName,categoryCode:categoryCode}}" />
     <view class='notice-detail-info-view '>
       <view class='notice-title-view'>
         <text class='notice-title-section'>{{title}}</text>
@@ -16,8 +33,15 @@
         {{abstract}}
       </view>
       <view class='notice-otherinfo-view'>
-        <text class='notice-otherinfo-text'>{{readCount}}</text>
-        <text class='notice-otherinfo-text'>{{pubTime}}</text>
+        <view class='notice-otherinfo-cell-view'>
+          <image src='../../image/count_list.png' class='notice-otherinfo-cell-image' />
+          <text class='notice-otherinfo-text'>{{readCount}}
+          </text>
+        </view>
+        <view class='notice-otherinfo-cell-view'>
+          <image src='../../image/time_list.png' class='notice-otherinfo-cell-image' />
+          <text class='notice-otherinfo-text'>{{pubTime}}</text>
+        </view>
         <text class='notice-otherinfo-text'>{{creatorName}}</text>
       </view>
     </view>
@@ -39,8 +63,59 @@
 </template>
 
 <template name='scheduleCell'>
-  <view class='schedule-cell-view' bindtap='bindNavToScheduleDetail'>
-    <text>经济学院</text>
-    <text>2016年春季班</text>
+  <view bindtap='bindNavToScheduleDetail'>
+    <image src='../../image/2_chun.png' class='schedule-image' wx:if="{{gradeType === 'spring'}}">
+      <view class='schedule-cell-view'>
+        <text class='schedule-text'>{{college}}</text>
+        <text class='schedule-text'>{{gradeName}}</text>
+      </view>
+    </image>
+    <image src='../../image/2_xia.png' class='schedule-image' wx:if="{{gradeType === 'summer'}}">
+      <view class='schedule-cell-view'>
+        <text class='schedule-text'>{{college}}</text>
+        <text class='schedule-text'>{{gradeName}}</text>
+      </view>
+    </image>
+    <image src='../../image/2_qiu.png' class='schedule-image' wx:if="{{gradeType === 'autumn'}}">
+      <view class='schedule-cell-view'>
+        <text class='schedule-text'>{{college}}</text>
+        <text class='schedule-text'>{{gradeName}}</text>
+      </view>
+    </image>
+    <image src='../../image/2_dong.png' class='schedule-image' wx:if="{{gradeType === 'winter'}}">
+      <view class='schedule-cell-view'>
+        <text class='schedule-text'>{{college}}</text>
+        <text class='schedule-text'>{{gradeName}}</text>
+      </view>
+    </image>
   </view>
+</template>
+
+<template name='detail'>
+  <scorll-view scorll-y>
+    <view class='detail-title-view'>
+      <text class='detail-title'>
+        {{title}}
+      </text>
+    </view>
+    <view class='detail-otherinfo-view'>
+      <view class='detail-otherinfo-cell-view'>
+        <image src='../../image/count_detail.png' class='detail-otherinfo-cell-image' />
+        <text class='detail-otherinfo-text'>{{readCount}}
+        </text>
+      </view>
+      <view class='detail-otherinfo-cell-view'>
+        <image src='../../image/time_detail.png' class='detail-otherinfo-cell-image' />
+        <text class='detail-otherinfo-text'>{{pubTime}}
+        </text>
+      </view>
+      <text class='detail-otherinfo-text'>{{creatorName}}</text>
+      <view bindtap='deleteAction' data-id='{{id}}'>
+        <image src='../../image/delete_1.png' class='delete-image' />
+      </view>
+    </view>
+    <view class='detail-content-view'>
+      {{content}}
+    </view>
+  </scorll-view>
 </template>

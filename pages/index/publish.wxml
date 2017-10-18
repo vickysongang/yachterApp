@@ -1,7 +1,7 @@
 <import src="../../templates/template.wxml" />
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class='main-container'>
-  <scroll-view scroll-y>
+  <view>
     <view bindtap='bindTitleAction'>
       <template is="fieldCell" data="{{label:'标题', value:title}}" />
     </view>
@@ -33,5 +33,5 @@
         完成
       </button>
     </view>
-  </scroll-view>
+  </view>
 </view>

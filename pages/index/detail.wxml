@@ -1,15 +1,4 @@
+<import src="../../templates/template.wxml" />
 <view class='main-container'>
-  <view class='detail-title-view'>
-    <text class='detail-title'>
-      {{title}}
-    </text>
-  </view>
-  <view class='detail-otherinfo-view'>
-    <text class='detail-otherinfo-text'>{{readCount}}</text>
-    <text class='detail-otherinfo-text'>{{pubTime}}</text>
-    <text class='detail-otherinfo-text'>{{creatorName}}</text>
-  </view>
-  <view class='detail-content-view'>
-    {{content}}
-  </view>
+  <template is="detail" data="{{...detailInfo}}" />
 </view>

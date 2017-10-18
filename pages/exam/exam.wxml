@@ -1,16 +1,23 @@
 <!--index.wxml-->
 <import src="../../templates/template.wxml" />
-<scroll-view scroll-y>
+<view>
   <view class="buttonGroup">
     <view bindtap='changeTabType' data-type='college' class='{{examType === "college" ? "selected_tab_view":"tab_view"}}'>院考</view>
     <view bindtap='changeTabType' data-type='school' class='{{examType === "school" ? "selected_tab_view":"tab_view"}}'>校考</view>
     <view bindtap='changeTabType' data-type='country' class='{{examType === "country" ? "selected_tab_view":"tab_view"}}'>国考</view>
     <view bindtap='changeTabType' data-type='paper' class='{{examType === "paper" ? "selected_tab_view":"tab_view"}}'>论文</view>
   </view>
+  <swiper class='swiper-class' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="{{*this}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
   <block wx:for="{{exams}}" wx:for-item="item" wx:key="id">
     <template is="noticeItem" data="{{...item}}" />
   </block>
   <view class='publish-button-view'>
-    <image src='../../image/green_tri.png' class='publish-button-image' bindtap='bindPublishExam'></image>
+    <image src='../../image/edit.png' class='publish-button-image' bindtap='bindPublishExam'></image>
   </view>
-</scroll-view>
+</view>

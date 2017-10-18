@@ -49,7 +49,7 @@
 }
 
 .publish-button-image {
-  height: 50rpx;
-  width: 50rpx;
+  height: 100rpx;
+  width: 100rpx;
 }
 

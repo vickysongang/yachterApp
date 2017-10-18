@@ -6,7 +6,16 @@ Page({
   data: {
     noticeType: 'class',
     notices: [],
-    currPage: 0
+    currPage: 0,
+    imgUrls: [
+      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 500
   },
   onLoad: function () {
     this.loadNotices()
@@ -21,6 +30,14 @@ Page({
         notices: result.data,
         currPage: 0
       })
+    })
+  },
+  removeNoticeItem: function (id) {
+    var notices = this.data.notices.filter((val) => {
+      return val.id !== parseInt(id)
+    })
+    this.setData({
+      notices: notices
     })
   },
   onPullDownRefresh: function () {

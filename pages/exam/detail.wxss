@@ -1,36 +1,11 @@
+page {
+  background-color: #ffffff;
+  height: 100%;
+  line-height: 1.6;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.detail-title-view {
-  text-align: center;
-}
-
-.detail-title {
-  color: #000000;
-  font-size: 40rpx;
-}
-
-.detail-otherinfo-view {
-  margin-top: 28rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.detail-otherinfo-text {
-  font-size: 28rpx;
-  color: #E0E0E0;
-}
-
-.detail-content-view {
-  margin-top: 22rpx;
-  text-indent: 50rpx;
-  box-sizing: border-box;
-  font-size: 28rpx;
-  color: #A6A6A6;
-  padding: 0 40rpx;
-  line-height: 50rpx;
 }

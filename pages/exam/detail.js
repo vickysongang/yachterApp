@@ -5,11 +5,14 @@ var app = getApp()
 Page({
   data: {
     userInfo: {},
-    title: '',
-    readCount: 0,
-    pubTime: '',
-    creatorName: '',
-    content: ''
+    detailInfo: {
+      id: undefined,
+      title: '',
+      readCount: 0,
+      pubTime: '',
+      creatorName: '',
+      content: ''
+    }
   },
   onLoad: function (options) {
     var id = options.id
@@ -22,11 +25,14 @@ Page({
         if (res1.data.length > 0) {
           var detail = res1.data[0]
           this.setData({
-            title: detail.title,
-            readCount: detail.read_count,
-            pubTime: detail.pubTime,
-            creatorName: detail.creatorName,
-            content: detail.content
+            detailInfo: {
+              id: id,
+              title: detail.title,
+              readCount: detail.read_count,
+              pubTime: detail.pubTime,
+              creatorName: detail.creatorName,
+              content: detail.content
+            }
           })
         }
       })

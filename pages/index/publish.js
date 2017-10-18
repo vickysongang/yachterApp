@@ -69,11 +69,13 @@ Page({
     })
   },
   bindPublishNotice: function (e) {
-    if (this.data.title === undefined || this.data.title.length === 0) {
+    var title = this.data.title
+    var content = this.data.content
+    if (title === undefined || title.length === 0) {
       this.setData({
         popErrorMsg: "标题不能为空"
       })
-    } if (this.data.content === undefined || this.data.content.length === 0) {
+    } else if (content === undefined || content.length === 0) {
       this.setData({
         popErrorMsg: "内容不能为空"
       })
