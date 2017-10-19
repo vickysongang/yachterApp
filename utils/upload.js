@@ -13,6 +13,11 @@ function uploadFile(filePath) {
 }
 
 function batchUploadFiles(filePaths) {
+  if (filePaths.lenght === 0) {
+    return new Promise((resolve)=>{
+      resolve([])
+    })
+  }
   var promises = []
   filePaths.forEach((filePath)=>{
     var p = uploadFile(filePath)

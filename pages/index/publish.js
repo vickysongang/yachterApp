@@ -41,19 +41,9 @@ Page({
       sizeType: ['original', 'compressed'],
       count: 9,
       success: function (res) {
-        var filePath = res.tempFilePaths[0];
-        upload.batchUploadFiles(res.tempFilePaths).then((upRes)=>{
-          console.log('sdfksjflksdjf:', upRes)
+        that.setData({
+          imageList: res.tempFilePaths
         })
-        // qiniuUploader.upload(filePath,(upRes)=>{
-        //   console.log('sdfksjflksdjf:', upRes.imageURL)
-        // },(error)=>{
-        //   console.log('upload image error: ' + error)
-        //   }, constants.QINIU_OPTIONS)
-        // console.log(res)
-        // that.setData({
-        //   imageList: res.tempFilePaths
-        // })
       }
     })
   },
@@ -107,22 +97,28 @@ Page({
     var categoryId = this.data.categories[this.data.categoryIndex].id
     var content = this.data.content
     var imageList = this.data.imageList
-    noticeApis.insertNotice({
-      openId: openId,
-      title: title,
-      content: content,
-      type: this.data.noticeType,
-      categoryId: categoryId,
-      images: imageList && imageList.length > 0 ? imageList.join(',') : ''
-    }, (err, res) => {
-      var pages = getCurrentPages();
-      if (pages.length > 1) {
-        //上一个页面实例对象
-        var prePage = pages[pages.length - 2];
-        //关键在这里
-        prePage.loadNotices(0)
-      }
-      wx.navigateBack({
+    wx.showLoading({
+      title: '发布中...',
+    })
+    upload.batchUploadFiles(imageList).then((results) => {
+      var imageUrls = results.map((r)=>{
+        return r.imageURL
+      })
+      noticeApis.insertNotice({
+        openId: openId,
+        title: title,
+        content: content,
+        type: this.data.noticeType,
+        categoryId: categoryId,
+        images: imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
+      }, (err, res) => {
+        var pages = getCurrentPages();
+        if (pages.length > 1) {
+          var prePage = pages[pages.length - 2];
+          prePage.loadNotices(0)
+        }
+        wx.hideLoading()
+        wx.navigateBack({})
       })
     })
   }
