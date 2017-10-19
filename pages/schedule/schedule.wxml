@@ -8,8 +8,11 @@
     </block>
   </swiper>
   <view class='schedule-list-view'>
-    <block wx:for="{{schedules}}"  wx:for-item="item"  wx:key="{{id}}">
+    <block wx:for="{{schedules}}" wx:for-item="item" wx:key="{{id}}">
       <template is="scheduleCell" data="{{...item}}" />
     </block>
+  </view>
+  <view class='publish-button-view'>
+    <image src='../../image/edit.png' class='publish-button-image' bindtap='bindPublishSchedule'></image>
   </view>
 </view>

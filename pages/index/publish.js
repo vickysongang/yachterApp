@@ -1,7 +1,11 @@
 //logs.js
 const util = require('../../utils/util.js')
+const constants = require('../../constants/index.js')
+const qiniuUploader = require('../../utils/qiniuUploader.js')
+const upload = require('../../utils/upload.js')
 const commonApis = require('../../apis/common.js')
 const noticeApis = require('../../apis/notice.js')
+
 var app = getApp()
 Page({
   data: {
@@ -37,10 +41,19 @@ Page({
       sizeType: ['original', 'compressed'],
       count: 9,
       success: function (res) {
-        console.log(res)
-        that.setData({
-          imageList: res.tempFilePaths
+        var filePath = res.tempFilePaths[0];
+        upload.batchUploadFiles(res.tempFilePaths).then((upRes)=>{
+          console.log('sdfksjflksdjf:', upRes)
         })
+        // qiniuUploader.upload(filePath,(upRes)=>{
+        //   console.log('sdfksjflksdjf:', upRes.imageURL)
+        // },(error)=>{
+        //   console.log('upload image error: ' + error)
+        //   }, constants.QINIU_OPTIONS)
+        // console.log(res)
+        // that.setData({
+        //   imageList: res.tempFilePaths
+        // })
       }
     })
   },

@@ -42,14 +42,3 @@
   margin-top: 200px;
 }
 
-.publish-button-view {
-  position: fixed;
-  right: 10rpx;
-  bottom: 10rpx;
-}
-
-.publish-button-image {
-  height: 100rpx;
-  width: 100rpx;
-}
-

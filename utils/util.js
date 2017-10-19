@@ -1,3 +1,6 @@
+var Promise = require('./bluebird.js')
+var constants = require('../constants/index.js')
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -14,6 +17,36 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function wxPromisify(fn) {
+  return function (obj = {}) {
+    return new Promise((resolve, reject) => {
+      obj.success = function (res) {
+        resolve(res)
+      }
+      obj.fail = function (res) {
+        reject(res)
+      }
+      fn(obj)
+    })
+  }
+}
+
+function uploadPromisify(fn) {
+  return function (filePath) {
+    return new Promise((resolve, reject) => {
+      const success = (res) => {
+        resolve(res)
+      }
+      const fail = (res) => {
+        reject(res)
+      }
+      fn(filePath, success, fail, constants.QINIU_OPTIONS)
+    })
+  }
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  wxPromisify: wxPromisify,
+  uploadPromisify: uploadPromisify
 }

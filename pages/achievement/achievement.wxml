@@ -1,3 +1,8 @@
-<view class="container">
-  成绩
+<view class="main-container">
+  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/xk_bj/index.html' class='button-class'>题库选课
+  </button>
+  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/bjkstzd/' class='button-class'>考试通知单下载</button>
+  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/dyjftzd/index.html' class='button-class'>交费通知单下载</button>
+  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/cjcx/' class='button-class'>校考成绩查询</button>
+  <button bindtap='redirectToUrl' data-url='http://www.chinadegrees.cn/tdxlsqxt/login.shtml?action=forwardIndex' class='button-class'>国考成绩查询</button>
 </view>

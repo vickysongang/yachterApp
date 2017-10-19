@@ -46,4 +46,9 @@ Page({
       url: './detail',
     })
   },
+  bindPublishSchedule: function (event) {
+    wx.navigateTo({
+      url: './publish',
+    })
+  }
 })
