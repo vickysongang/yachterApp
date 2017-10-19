@@ -29,7 +29,7 @@ Page({
           var images = []
           var imageStr = detail.images
           if (imageStr && imageStr.length > 0) {
-            images: imageStr.split(',')
+            images = imageStr.split(',')
           }
           this.setData({
             detailInfo: {
@@ -45,6 +45,14 @@ Page({
           })
         }
       })
+    })
+  },
+  previewImage: function (e) {
+    var that = this
+    var current = e.target.dataset.src
+    wx.previewImage({
+      current: current,
+      urls: that.data.detailInfo.images
     })
   }
 })

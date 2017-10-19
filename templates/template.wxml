@@ -69,7 +69,7 @@
     </view>
     <view class='input-cell-right'>
       <view class='input-cell-right-view'>
-        <input placeholder='{{placeholder}}' focus='true'  style='width:400rpx;' maxlength='20'  bindblur='bindInputBlur' bindinput='bindInput' value='{{value}}'></input>
+        <input placeholder='{{placeholder}}' focus='true' style='width:400rpx;' maxlength='20' bindblur='bindInputBlur' bindinput='bindInput' value='{{value}}'></input>
       </view>
     </view>
   </view>
@@ -128,11 +128,11 @@
       </view>
     </view>
     <view style='height:20rpx' />
-    <!-- <view class='image-list' wx:if="{{images.length > 0}}">
-      <block wx:for="{{images}}" wx:for-item="item" wx:key="{{*this}}">
-        <image src='{{item}}' mode='aspectFit' />
+    <view class='image-list' wx:if="{{images.length > 0}}">
+      <block wx:for="{{images}}" wx:for-item="image" wx:key="{{*this}}">
+        <image src='{{image}}' mode='aspectFit' bindtap="previewImage" data-src="{{image}}"/>
       </block>
-    </view> -->
+    </view>
     <view class='detail-content-view'>
       {{content}}
     </view>
