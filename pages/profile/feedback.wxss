@@ -7,7 +7,6 @@
   box-sizing: border-box;
   font-size: 32rpx;
   background: white;
-  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 }
 
 textarea {
@@ -20,16 +19,16 @@ textarea {
   background-color: #fff;
 }
 
-.publish-button-view {
+.feeback-button-view {
   padding: 0 156rpx;
 }
 
-.publish-button {
+.feeback-button {
   background: #169afa;
   border-radius: 120rpx;
   color: #fff;
 }
 
-.publish-button-hover {
+.feeback-button-hover {
   background: #169aaa;
 }

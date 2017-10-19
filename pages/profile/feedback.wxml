@@ -1,10 +1,11 @@
+<view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class='main-container'>
   <view class="textarea-wrp">
-    <textarea placeholder='不能超过5000字' maxlength='5000' />
+    <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' />
   </view>
-  <view class='publish-button-view'>
-    <button class='publish-button' hover-class='publish-button-hover'>
-      发布
+  <view class='divider-line'></view>
+  <view class='feeback-button-view'>
+    <button class='feeback-button' hover-class='feeback-button-hover' bindtap='publishFeedback'>反馈
     </button>
   </view>
 </view>

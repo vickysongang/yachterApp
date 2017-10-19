@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/joinClass/joinClass",
     "pages/index/detail",
@@ -16,11 +16,11 @@
     "pages/profile/feedback",
     "pages/common/TextInput/Textinput"
   ],
-  "window":{
-    "backgroundTextStyle":"black",
+  "window": {
+    "backgroundTextStyle": "black",
     "navigationBarBackgroundColor": "#F8F8F8",
     "navigationBarTitleText": "在职小帮手",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle": "black",
     "backgroundColor": "#F8F8F8",
     "enablePullDownRefresh": true
   },
@@ -29,36 +29,38 @@
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "iconPath": "image/notice.png",
-      "selectedIconPath": "image/selected_notice.png",
-      "text": "通知"
-    },
-    {
-      "pagePath": "pages/schedule/schedule",
-      "iconPath": "image/schedule.png",
-      "selectedIconPath": "image/selected_schedule.png",
-      "text": "课表"
-    },
-    {
-      "pagePath": "pages/exam/exam",
-      "iconPath": "image/exam.png",
-      "selectedIconPath": "image/selected_exam.png",
-      "text": "考试"
-    },
-    {
-      "pagePath": "pages/achievement/achievement",
-      "iconPath": "image/achievement.png",
-      "selectedIconPath": "image/selected_achievement.png",
-      "text": "成绩"
-    },
-    {
-      "pagePath": "pages/profile/profile",
-      "iconPath": "image/profile.png",
-      "selectedIconPath": "image/selected_profile.png",
-      "text": "我"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/notice.png",
+        "selectedIconPath": "image/selected_notice.png",
+        "text": "通知"
+      },
+      {
+        "pagePath": "pages/schedule/schedule",
+        "iconPath": "image/schedule.png",
+        "selectedIconPath": "image/selected_schedule.png",
+        "text": "课表"
+      },
+      {
+        "pagePath": "pages/exam/exam",
+        "iconPath": "image/exam.png",
+        "selectedIconPath": "image/selected_exam.png",
+        "text": "考试"
+      },
+      {
+        "pagePath": "pages/achievement/achievement",
+        "iconPath": "image/achievement.png",
+        "selectedIconPath": "image/selected_achievement.png",
+        "text": "成绩"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "iconPath": "image/profile.png",
+        "selectedIconPath": "image/selected_profile.png",
+        "text": "我"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 10000,
