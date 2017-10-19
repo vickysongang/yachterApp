@@ -1,5 +1,5 @@
 //logs.js
-const util = require('../../utils/util.js')
+const upload = require('../../utils/upload.js')
 const commonApis = require('../../apis/common.js')
 const examApis = require('../../apis/exam.js')
 var app = getApp()
@@ -37,7 +37,6 @@ Page({
       sizeType: ['original', 'compressed'],
       count: 9,
       success: function (res) {
-        console.log(res)
         that.setData({
           imageList: res.tempFilePaths
         })
@@ -93,22 +92,28 @@ Page({
     var categoryId = this.data.categories[this.data.categoryIndex].id
     var content = this.data.content
     var imageList = this.data.imageList
-    examApis.insertExam({
-      openId: openId,
-      title: title,
-      content: content,
-      type: this.data.examType,
-      categoryId: categoryId,
-      images: imageList && imageList.length > 0 ? imageList.join(',') : ''
-    }, (err, res) => {
-      var pages = getCurrentPages();
-      if (pages.length > 1) {
-        //上一个页面实例对象
-        var prePage = pages[pages.length - 2];
-        //关键在这里
-        prePage.loadExams(0)
-      }
-      wx.navigateBack({
+    wx.showLoading({
+      title: '发布中...',
+    })
+    upload.batchUploadFiles(imageList).then((results) => {
+      var imageUrls = results.map((r) => {
+        return r.imageURL
+      })
+      examApis.insertExam({
+        openId: openId,
+        title: title,
+        content: content,
+        type: this.data.examType,
+        categoryId: categoryId,
+        images: imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
+      }, (err, res) => {
+        var pages = getCurrentPages();
+        if (pages.length > 1) {
+          var prePage = pages[pages.length - 2];
+          prePage.loadExams(0)
+        }
+        wx.hideLoading()
+        wx.navigateBack({})
       })
     })
   }

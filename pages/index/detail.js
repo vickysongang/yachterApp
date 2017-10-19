@@ -11,7 +11,8 @@ Page({
       readCount: 0,
       pubTime: '',
       creatorName: '',
-      content: ''
+      content: '',
+      images:[]
     }
   },
   onLoad: function (options) {
@@ -31,7 +32,8 @@ Page({
               readCount: detail.read_count,
               pubTime: detail.pubTime,
               creatorName: detail.creatorName,
-              content: detail.content
+              content: detail.content,
+              images: detail.images.split(',')
             }
           })
         }

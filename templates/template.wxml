@@ -114,6 +114,12 @@
         <image src='../../image/delete_1.png' class='delete-image' />
       </view>
     </view>
+    <view style='height:20rpx' />
+    <view class='image-list'>
+      <block wx:for="{{images}}" wx:for-item="item" wx:key="{{*this}}">
+        <image src='{{item}}' mode='aspectFit' />
+      </block>
+    </view>
     <view class='detail-content-view'>
       {{content}}
     </view>

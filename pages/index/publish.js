@@ -1,7 +1,4 @@
 //logs.js
-const util = require('../../utils/util.js')
-const constants = require('../../constants/index.js')
-const qiniuUploader = require('../../utils/qiniuUploader.js')
 const upload = require('../../utils/upload.js')
 const commonApis = require('../../apis/common.js')
 const noticeApis = require('../../apis/notice.js')
@@ -49,7 +46,6 @@ Page({
   },
   previewImage: function (e) {
     var current = e.target.dataset.src
-
     wx.previewImage({
       current: current,
       urls: this.data.imageList
