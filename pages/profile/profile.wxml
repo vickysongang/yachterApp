@@ -2,9 +2,13 @@
 <view class="main-container">
   <view class='userinfo'>
     <view class='user-baseinfo'>
+     <view class='nickname-gender'>
       <text class="userinfo-nickname">
-        {{userInfo.nickName + userInfo.gender}}
+        {{userInfo.nickName }}
       </text>
+      <image src='../../image/male.png' class='gender-image' wx:if="{{userInfo.gender === 1}}" mode='aspectFit'/>
+      <image src='../../image/female.png' class='gender-image' wx:if="{{userInfo.gender === 0}}" mode='aspectFit' />
+      </view>
       <text class="userinfo-school" style='margin-top:36rpx;'>{{schoolName + collegeName}}
       </text>
       <text class="userinfo-school">{{majorName}}
