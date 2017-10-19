@@ -12,7 +12,8 @@ Page({
       pubTime: '',
       creatorName: '',
       content: '',
-      images:[]
+      images:[],
+      canDelete: false
     }
   },
   onLoad: function (options) {
@@ -25,6 +26,11 @@ Page({
       noticeApis.getNoticeDetail(id, (err1, res1) => {
         if (res1.data.length > 0) {
           var detail = res1.data[0]
+          var images = []
+          var imageStr = detail.images
+          if (imageStr && imageStr.length > 0) {
+            images: imageStr.split(',')
+          }
           this.setData({
             detailInfo: {
               id: id,
@@ -33,7 +39,8 @@ Page({
               pubTime: detail.pubTime,
               creatorName: detail.creatorName,
               content: detail.content,
-              images: detail.images.split(',')
+              images: images,
+              canDelete: app.globalData.openId === detail.openId
             }
           })
         }

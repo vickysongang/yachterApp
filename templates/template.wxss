@@ -133,7 +133,7 @@
 
 .cell-right {
   display: flex;
-  width: 300rpx;
+  width: 600rpx;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
@@ -141,6 +141,23 @@
 }
 
 .cell-right-text-view {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  flex: 1;
+  margin-right: 40rpx;
+}
+
+.input-cell-right {
+  display: flex;
+  width: 500rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 12rpx;
+}
+
+.input-cell-rightt-view {
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
@@ -242,7 +259,7 @@
   box-sizing: border-box;
   font-size: 36rpx;
   color: #000000;
-  padding: 0 40rpx;
+  padding: 0 40rpx 40rpx 40rpx;
   line-height: 52rpx;
 }
 

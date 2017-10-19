@@ -13,7 +13,8 @@ Page({
     categoryIndex: 0,
     content: '',
     popErrorMsg: undefined,
-    examType: ''
+    examType: '',
+    editMode: 'read'
   },
   onLoad: function (options) {
     var that = this
@@ -51,9 +52,18 @@ Page({
     })
   },
   bindTitleAction: function () {
-    var params = 'key=title&value=' + this.data.title
-    wx.navigateTo({
-      url: '../common/TextInput/Textinput?' + params,
+    this.setData({
+      editMode: 'edit'
+    })
+  },
+  bindInput: function (e) {
+    this.setData({
+      title: e.detail.value
+    })
+  },
+  bindInputBlur: function () {
+    this.setData({
+      editMode: 'read'
     })
   },
   bindPickCategory: function (e) {

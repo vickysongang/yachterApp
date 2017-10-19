@@ -62,6 +62,19 @@
   </view>
 </template>
 
+<template name='inputFieldCell'>
+  <view class='cell-section'>
+    <view class='cell-left'>
+      <text class='cell-left-label'>{{label}}</text>
+    </view>
+    <view class='input-cell-right'>
+      <view class='input-cell-right-view'>
+        <input placeholder='{{placeholder}}' focus='true'  style='width:400rpx;' maxlength='20'  bindblur='bindInputBlur' bindinput='bindInput' value='{{value}}'></input>
+      </view>
+    </view>
+  </view>
+</template>
+
 <template name='scheduleCell'>
   <view bindtap='bindNavToScheduleDetail'>
     <image src='../../image/2_chun.png' class='schedule-image' wx:if="{{gradeType === 'spring'}}">
@@ -110,16 +123,16 @@
         </text>
       </view>
       <text class='detail-otherinfo-text'>{{creatorName}}</text>
-      <view bindtap='deleteAction' data-id='{{id}}'>
+      <view bindtap='deleteAction' data-id='{{id}}' wx:if="{{canDelete}}">
         <image src='../../image/delete_1.png' class='delete-image' />
       </view>
     </view>
     <view style='height:20rpx' />
-    <view class='image-list'>
+    <!-- <view class='image-list' wx:if="{{images.length > 0}}">
       <block wx:for="{{images}}" wx:for-item="item" wx:key="{{*this}}">
         <image src='{{item}}' mode='aspectFit' />
       </block>
-    </view>
+    </view> -->
     <view class='detail-content-view'>
       {{content}}
     </view>

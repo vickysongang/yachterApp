@@ -3,7 +3,8 @@
 <view class='main-container'>
   <view>
     <view bindtap='bindTitleAction'>
-      <template is="fieldCell" data="{{label:'标题', value:title}}" />
+      <template is="inputFieldCell" data="{{label:'标题', value:title,placeholder:'请输入标题'}}" wx:if="{{editMode === 'edit'}}" />
+      <template is="fieldCell" data="{{label:'标题',value:title}}" wx:if="{{editMode === 'read'}}" />
     </view>
     <view class='divider-line'></view>
     <template is="fieldCell" data="{{label:'发布人', value:userInfo.nickName}}" />
