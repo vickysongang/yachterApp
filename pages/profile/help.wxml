@@ -1,2 +1,3 @@
-<!--pages/profile/help.wxml-->
-<text>pages/profile/help.wxml</text>
+<view>
+  这是帮助页面
+</view>

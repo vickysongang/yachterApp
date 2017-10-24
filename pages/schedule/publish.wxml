@@ -1,14 +1,21 @@
 <import src="../../templates/template.wxml" />
+<view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class='main-container'>
-  <scroll-view scroll-y>
-    <template is="fieldCell" data="{{label:'学院', value:'经济学院'}}" />
+  <view scroll-y>
+    <template is="fieldCell" data="{{label:'学院', value:collegeName}}" />
     <view class='divider-line'></view>
-    <template is="fieldCell" data="{{label:'班级', value:'2016年春季班'}}" />
+    <picker bindchange="bindPickYear" value="{{yearIndex}}" range="{{yearNames}}">
+      <template is="fieldCell" data="{{label:'年度', value:years[yearIndex].name}}" />
+    </picker>
     <view class='divider-line'></view>
-    <template is="fieldCell" data="{{label:'发布人', value:'张大大'}}" />
+    <picker bindchange="bindPickSeason" value="{{seasonIndex}}" range="{{seasonNames}}">
+      <template is="fieldCell" data="{{label:'季度', value:seasons[seasonIndex].name}}" />
+    </picker>
+    <view class='divider-line'></view>
+    <template is="fieldCell" data="{{label:'发布人', value:userInfo.nickName}}" />
     <view class='divider-section'></view>
     <view class="textarea-wrp">
-      <textarea placeholder='不能超过5000字' maxlength='5000' />
+      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput'/>
     </view>
     <view class='divider-section'></view>
     <view class="weui-uploader__bd">
@@ -23,10 +30,10 @@
         <view class="weui-uploader__input" bindtap="chooseImage"></view>
       </view>
     </view>
-    <view class='finish-button-view'>
-      <button class='finish-button' hover-class='finish-button-hover'>
+     <view class='finish-button-view'>
+      <button class='finish-button' bindtap='bindPublishSchedule' hover-class='finish-button-hover'>
         完成
       </button>
     </view>
-  </scroll-view>
+  </view>
 </view>

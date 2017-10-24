@@ -1,15 +1,4 @@
+<import src="../../templates/template.wxml" />
 <view class='main-container'>
-  <view class='detail-title-view'>
-    <text class='detail-title'>
-      {{title}}
-    </text>
-  </view>
-  <view class='detail-otherinfo-view'>
-    <text class='detail-otherinfo-text'>发布人：123</text>
-    <text class='detail-otherinfo-text'>20122321</text>
-  </view>
-  <view class='detail-content-view'>
-    为保障国家重大活动期间的公共安全,现就10月香港证券期货从业员资格考试时间调整事宜公告如下: 一、考试日期由原定10月21日调整至11月4日,报名时间顺延至9月29日17时结束。 二、已报考成功的考生,如不能参加11月4日考试的,可在报名截止日前在协会考试报名网站办理退考;未办理退考的考生,将统一安排至11月4日参加考试。 三、其他 (一)考试客服电话:010-66575797。 (二)退考办理:登录考试报名网站,点击左侧导航菜单中“已支付科目”栏目,选择退款科目、并点击“退款”即完成退考。 字型:
-    "为保障国家重大活动期间的公共安全,现就10月香港证券期货从业员资格考试时间调整事宜公告如下: 一、考试日期由原定10月21日调整至11月4日,报名时间顺延至9月29日17时结束。二、已报考成功的考生,如不能参加11月4日考试的,可在报名截止日前在协会考试报名网站办理退考;未办理退考的考生,将统一安排至11月4日参加考试。三、其他(一)考试客服电话:010-66575797。(二)退考办理:登录考试报名网站,点击左侧导航菜单中“已支付科目”栏目,选择退款科目、并点击“退款”即完成退考。"
-  </view>
+  <template is="scheduleDetail" data="{{...detailInfo}}" />
 </view>

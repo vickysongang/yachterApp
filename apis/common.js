@@ -59,6 +59,32 @@ function fetchGrades(callback) {
   })
 }
 
+function fetchYears(callback) {
+  wx.request({
+    url: constants.SERVER_ADDRESS + '/years',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      callback(null, res)
+    }
+  })
+}
+
+function fetchSeasons(callback) {
+  wx.request({
+    url: constants.SERVER_ADDRESS + '/seasons',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      callback(null, res)
+    }
+  })
+}
+
 function fetchProvinces(callback) {
   wx.request({
     url: constants.SERVER_ADDRESS + '/provinces',
@@ -93,6 +119,8 @@ module.exports = {
   fetchColleges: fetchColleges,
   fetchMajors: fetchMajors,
   fetchGrades: fetchGrades,
+  fetchYears: fetchYears,
+  fetchSeasons: fetchSeasons,
   fetchProvinces: fetchProvinces,
   fetchCategories: fetchCategories
 }
