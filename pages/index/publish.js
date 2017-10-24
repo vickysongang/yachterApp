@@ -28,7 +28,7 @@ Page({
     commonApis.fetchCategories('notice', (err, res) => {
       that.setData({
         defaultTags: res.data.map(item => {
-          return { tagName: item.name}
+          return { tagName: item.name }
         })
       })
     })
@@ -111,7 +111,7 @@ Page({
       showModalStatus: false,
     });
   },
-  bindTagInput:function (e) {
+  bindTagInput: function (e) {
     var tagName = e.detail.value
     var selectedTagIndex = 0
     var defaultTags = this.data.defaultTags
@@ -133,10 +133,15 @@ Page({
   },
   bindPublishNotice: function (e) {
     var title = this.data.title
+    var categoryName = this.data.categoryName
     var content = this.data.content
     if (title === undefined || title.length === 0) {
       this.setData({
         popErrorMsg: "标题不能为空"
+      })
+    } else if (categoryName === undefined || categoryName.length === 0) {
+      this.setData({
+        popErrorMsg: "类别不能为空"
       })
     } else if (content === undefined || content.length === 0) {
       this.setData({
