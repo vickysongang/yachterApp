@@ -14,7 +14,7 @@
     </view>
     <view class='divider-section'></view>
     <view class="textarea-wrp">
-      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' />
+      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' placeholder-class='textarea-placeholder'/>
     </view>
     <view class='divider-section'></view>
     <view class="weui-uploader__bd">
@@ -31,7 +31,7 @@
     </view>
     <view class='finish-button-view'>
       <button class='finish-button' bindtap='bindPublishExam' hover-class='finish-button-hover'>
-        完成
+        发布
       </button>
     </view>
   </view>

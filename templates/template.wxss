@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   background: #fff;
-  margin: 28rpx;
+  margin: 44rpx 28rpx;
   padding: 16rpx;
   position: relative;
 }
@@ -28,29 +28,6 @@
   top:  22rpx;
 }
 
-.activity-type-info-view {
-  width: 50rpx;
-  height: 100rpx;
-  background: #1061f2;
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10rpx 5rpx;
-}
-
-.activity-type-info-view::after {
-  content: "";
-  position: absolute;
-  top: 91%;
-  margin-left: -3rpx;
-  border-right: 30rpx solid transparent;
-  border-bottom: 12rpx solid white;
-  border-left: 30rpx solid transparent;
-}
-
 .notice-type-text {
   text-align: center;
   color: #fff;
@@ -63,7 +40,7 @@
   flex: 1;
   flex-direction: column;
   color: #fff;
-  margin-left: 80rpx;
+  margin-left: 100rpx;
 }
 
 .notice-title-view {
@@ -71,19 +48,20 @@
 }
 
 .notice-title-section {
-  color: #000;
-  font-size: 36rpx;
+  color: #3e3e3e;
+  font-size: 42rpx;
+  font-weight: bold;
 }
 
 .notice-abstract-view {
-  margin-top: 22rpx;
+  margin-top: 50rpx;
   box-sizing: border-box;
-  font-size: 30rpx;
-  color: #909192;
+  font-size: 36rpx;
+  color: #919191;
 }
 
 .notice-otherinfo-view {
-  margin-top: 28rpx;
+  margin-top: 50rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -97,15 +75,15 @@
 }
 
 .notice-otherinfo-cell-image {
-  width: 30rpx;
-  height: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
   padding-right: 20rpx;
 }
 
 .notice-otherinfo-text {
   margin-top: 10rpx;
   font-size: 28rpx;
-  color: #e0e0e0;
+  color: #b4b4b4;
 }
 
 .cell-section {
@@ -129,6 +107,7 @@
 .cell-left-label {
   font-size: 36rpx;
   text-align: left;
+  color: #3e3e3e;
 }
 
 .cell-right {
@@ -146,6 +125,7 @@
   flex-direction: row;
   flex: 1;
   margin-right: 40rpx;
+  color: #919191;
 }
 
 .input-cell-right {
@@ -217,8 +197,9 @@
 }
 
 .detail-title {
-  color: #000000;
-  font-size: 40rpx;
+  color: #3e3e3e;
+  font-size: 42rpx;
+  font-weight: bold;
 }
 
 .detail-otherinfo-view {
@@ -250,12 +231,11 @@
 .detail-otherinfo-text {
   margin-top: 10rpx;
   font-size: 28rpx;
-  color: #b6b7b7;
+  color: #b4b4b4;
 }
 
 .detail-content-view {
   margin-top: 22rpx;
-  text-indent: 50rpx;
   box-sizing: border-box;
   font-size: 36rpx;
   color: #000000;

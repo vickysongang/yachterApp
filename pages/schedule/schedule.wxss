@@ -5,8 +5,10 @@
 }
 
 .schedule-list-view {
+  margin-top: 30rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-left: 15rpx;
 }

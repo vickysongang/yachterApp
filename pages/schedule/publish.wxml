@@ -1,7 +1,7 @@
 <import src="../../templates/template.wxml" />
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class='main-container'>
-  <view scroll-y>
+  <view>
     <template is="fieldCell" data="{{label:'学院', value:collegeName}}" />
     <view class='divider-line'></view>
     <picker bindchange="bindPickYear" value="{{yearIndex}}" range="{{yearNames}}">
@@ -15,7 +15,7 @@
     <template is="fieldCell" data="{{label:'发布人', value:userInfo.nickName}}" />
     <view class='divider-section'></view>
     <view class="textarea-wrp">
-      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput'/>
+      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' placeholder-class='textarea-placeholder' />
     </view>
     <view class='divider-section'></view>
     <view class="weui-uploader__bd">
@@ -30,9 +30,9 @@
         <view class="weui-uploader__input" bindtap="chooseImage"></view>
       </view>
     </view>
-     <view class='finish-button-view'>
+    <view class='finish-button-view'>
       <button class='finish-button' bindtap='bindPublishSchedule' hover-class='finish-button-hover'>
-        完成
+        发布
       </button>
     </view>
   </view>

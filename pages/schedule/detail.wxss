@@ -3,34 +3,3 @@
   flex-direction: column;
   justify-content: center;
 }
-
-.detail-title-view {
-  text-align: center;
-}
-
-.detail-title {
-  color: #000;
-  font-size: 40rpx;
-}
-
-.detail-otherinfo-view {
-  margin-top: 28rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.detail-otherinfo-text {
-  font-size: 28rpx;
-  color: #e0e0e0;
-}
-
-.detail-content-view {
-  margin-top: 22rpx;
-  text-indent: 50rpx;
-  box-sizing: border-box;
-  font-size: 28rpx;
-  color: #a6a6a6;
-  padding: 0 40rpx;
-  line-height: 50rpx;
-}

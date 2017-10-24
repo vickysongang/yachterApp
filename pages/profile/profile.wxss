@@ -29,12 +29,12 @@
 
 .userinfo-nickname {
   font-size: 72rpx;
-  color: #000;
+  color: #3e3e3e;
 }
 
 .userinfo-school {
   font-size: 32rpx;
-  color: #000;
+  color: #919191;
 }
 
 .nickname-gender {
@@ -47,8 +47,8 @@
 .gender-image {
   margin-top: 120rpx;
   margin-left: 10rpx;
-  width: 50rpx;
-  height: 50rpx;
+  width: 22rpx;
+  height: 34rpx;
 }
 
 .userinfo-avatar {
@@ -65,6 +65,7 @@
   height: 100rpx;
   width: 100%;
   background: #fff;
+  color:#919191;
 }
 
 .contact-button::after {
@@ -73,10 +74,11 @@
 
 .navigator-left {
   display: flex;
-  width: 260rpx;
+  width: 200rpx;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  margin-left:-40rpx;
 }
 
 .navigator-right {

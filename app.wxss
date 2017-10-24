@@ -50,10 +50,10 @@ form {
 }
 
 .divider-section {
-  height: 32rpx;
+  height: 40rpx;
   background: #f7f7f7;
 }
-
+ 
 .ad_popError {
   background: #de352d;
   color: #fff;
@@ -69,17 +69,16 @@ form {
 }
 
 .swiper-class {
-  height: 210rpx;
+  height: 300rpx;
   width: 100%;
 }
 
 .slide-image {
-  height: 210rpx;
+  height: 300rpx;
   width: 100%;
 }
 
-/**index.wxss**/
-
+/**swiper**/
 .swiper-tab {
   width: 100%;
   border-bottom: 2rpx solid #777;
@@ -95,8 +94,12 @@ form {
 }
 
 .on {
-  color: #da7c0c;
-  border-bottom: 5rpx solid #da7c0c;
+  color: #005af5;
+  border-bottom: 5rpx solid #005af5;
+}
+
+.off {
+  color: #919191;
 }
 
 .swiper-box {
@@ -121,7 +124,7 @@ form {
   width: 100rpx;
 }
 
-/*mask*/
+/*弹出框*/
 .drawer_screen {
   width: 100%;
   height: 100%;
@@ -133,8 +136,6 @@ form {
   opacity: 0.5;
   overflow: hidden;
 }
-
-/*content*/
 
 .drawer_box {
   width: 90%;
@@ -183,7 +184,7 @@ form {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-left:10%;
+  margin-left: 10%;
   margin-top: 50rpx;
 }
 
@@ -233,3 +234,100 @@ form {
   height: 86rpx;
 }
 
+/**textarea**/
+textarea {
+  width: 100%;
+  padding: 25rpx 0;
+  color: #919191;
+}
+
+.textarea-wrp {
+  padding: 0 25rpx;
+  background-color: #fff;
+}
+
+.textarea-placeholder {
+  color: #cfcfcf;
+}
+
+/**finish button**/
+.finish-button-view {
+   padding: 40rpx 156rpx;
+   background: #fff;
+}
+
+.finish-button {
+  background: #1161F2;
+  color: #ffffff;
+  border-radius: 120rpx;
+}
+
+.finish-button-hover {
+  background: #1161F2;
+}
+
+/**uploader**/
+.weui-uploader__bd {
+  margin-bottom: -4px;
+  margin-right: -9px;
+  overflow: hidden;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.weui-uploader__file {
+  float: left;
+  margin-right: 9px;
+  margin-bottom: 9px;
+}
+
+.weui-uploader__img {
+  display: block;
+  width: 79px;
+  height: 79px;
+}
+
+.weui-uploader__input-box {
+  float: left;
+  position: relative;
+  margin-right: 9px;
+  margin-bottom: 9px;
+  width: 77px;
+  height: 77px;
+  border: 1px solid #D9D9D9;
+}
+.weui-uploader__input-box:before,
+.weui-uploader__input-box:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #D9D9D9;
+}
+.weui-uploader__input-box:before {
+  width: 2px;
+  height: 39.5px;
+}
+.weui-uploader__input-box:after {
+  width: 39.5px;
+  height: 2px;
+}
+.weui-uploader__input-box:active {
+  border-color: #999999;
+}
+.weui-uploader__input-box:active:before,
+.weui-uploader__input-box:active:after {
+  background-color: #999999;
+}
+
+.weui-uploader__input {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
