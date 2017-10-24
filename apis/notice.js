@@ -12,7 +12,7 @@ function insertNotice(payload, callback) {
       title: payload.title,
       content: payload.content,
       type: payload.type,
-      categoryId: payload.categoryId,
+      categoryName: payload.categoryName,
       images: payload.images
     },
     success: function (res) {

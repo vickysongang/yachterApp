@@ -8,13 +8,15 @@ Page({
     userInfo: {},
     imageList: [],
     title: '',
-    categories: [],
-    categoryNames: [],
-    categoryIndex: 0,
     content: '',
     popErrorMsg: undefined,
     examType: '',
-    editMode: 'read'
+    editMode: 'read',
+    showModalStatus: false,
+    tagName: '',
+    categoryName: '',
+    selectedTagIndex: undefined,
+    defaultTags: []
   },
   onLoad: function (options) {
     var that = this
@@ -24,9 +26,8 @@ Page({
     })
     commonApis.fetchCategories('exam', (err, res) => {
       that.setData({
-        categories: res.data,
-        categoryNames: res.data.map(item => {
-          return item.name
+        defaultTags: res.data.map(item => {
+          return { tagName: item.name }
         })
       })
     })
@@ -67,13 +68,75 @@ Page({
     })
   },
   bindPickCategory: function (e) {
+    var selectedTagIndex = 0
+    var defaultTags = this.data.defaultTags
+    for (var i = 0; i < defaultTags.length; i++) {
+      if (defaultTags[i].tagName === this.data.categoryName) {
+        selectedTagIndex = i + 1
+        break
+      }
+    }
     this.setData({
-      categoryIndex: e.detail.value
+      showModalStatus: true,
+      tagName: this.data.categoryName,
+      selectedTagIndex: selectedTagIndex
+    });
+  },
+  confirmSelectTag: function () {
+    var tagName = this.data.tagName
+    if (tagName === undefined || tagName.length === 0) {
+      this.setData({
+        popErrorMsg: "内容不能为空"
+      })
+    }
+    var popErrorMsg = this.data.popErrorMsg
+    if (popErrorMsg && popErrorMsg.length > 0) {
+      setTimeout(() => {
+        this.setData({
+          popErrorMsg: ''
+        });
+      }, 1000)
+      return
+    }
+    this.setData({
+      showModalStatus: false,
+      selectedTagIndex: 0,
+      categoryName: this.data.tagName,
+      tagName: ''
+    });
+  },
+  cancelSelectTag: function () {
+    this.setData({
+      showModalStatus: false,
+    });
+  },
+  bindTagInput: function (e) {
+    var tagName = e.detail.value
+    var selectedTagIndex = 0
+    var defaultTags = this.data.defaultTags
+    for (var i = 0; i < defaultTags.length; i++) {
+      if (defaultTags[i].tagName === tagName) {
+        selectedTagIndex = i + 1
+        break
+      }
+    }
+    this.setData({
+      selectedTagIndex: selectedTagIndex,
+      tagName: tagName
     })
   },
   bindTextAreaInput: function (e) {
     this.setData({
       content: e.detail.value
+    })
+  },
+  selectTag: function (e) {
+    var dataset = e.currentTarget.dataset
+    var index = dataset.index
+    var tagName = dataset.tagname
+    this.setData({
+      selectedTagIndex: parseInt(index),
+      tagName: tagName
     })
   },
   bindPublishExam: function (e) {
@@ -99,7 +162,7 @@ Page({
     }
     var title = this.data.title
     var openId = app.globalData.openId
-    var categoryId = this.data.categories[this.data.categoryIndex].id
+    var categoryName = this.data.categoryName
     var content = this.data.content
     var imageList = this.data.imageList
     wx.showLoading({
@@ -114,7 +177,7 @@ Page({
         title: title,
         content: content,
         type: this.data.examType,
-        categoryId: categoryId,
+        categoryName: categoryName,
         images: imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
       }, (err, res) => {
         var pages = getCurrentPages();

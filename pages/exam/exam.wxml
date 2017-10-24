@@ -2,10 +2,10 @@
 <import src="../../templates/template.wxml" />
 <view>
   <view class="swiper-tab">
-    <view class="swiper-tab-list {{examType=='college' ? 'on' : ''}}" data-current="college" bindtap="swichNav">院考</view>
-    <view class="swiper-tab-list {{examType=='school' ? 'on' : ''}}" data-current="school" bindtap="swichNav">校考</view>
-    <view class="swiper-tab-list {{examType=='country' ? 'on' : ''}}" data-current="country" bindtap="swichNav">国考</view>
-    <view class="swiper-tab-list {{examType=='paper' ? 'on' : ''}}" data-current="paper" bindtap="swichNav">论文</view>
+    <view class="swiper-tab-list {{examType=='college' ? 'on' : ''}}" data-current="college" bindtap="switchNav">院考</view>
+    <view class="swiper-tab-list {{examType=='school' ? 'on' : ''}}" data-current="school" bindtap="switchNav">校考</view>
+    <view class="swiper-tab-list {{examType=='country' ? 'on' : ''}}" data-current="country" bindtap="switchNav">国考</view>
+    <view class="swiper-tab-list {{examType=='paper' ? 'on' : ''}}" data-current="paper" bindtap="switchNav">论文</view>
   </view>
   <swiper class='swiper-class' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{imgUrls}}" wx:key="{{*this}}">

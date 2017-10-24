@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const noticeApis = require('../../apis/notice.js')
+const commonApis = require('../../apis/common.js')
 const app = getApp()
 Page({
   data: {
@@ -15,18 +16,20 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
-    duration: 500
+    duration: 500,
+    defaultTags: [],
+    categories: []
   },
   onLoad: function () {
     var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
-      }
-    });
+    commonApis.fetchCategories('notice', (err, res) => {
+      that.setData({
+        categories: res.data,
+        defaultTags: res.data.map(item => {
+          return { tagName: item.name }
+        })
+      })
+    })
     this.loadNotices()
   },
   loadNotices: function () {
@@ -36,12 +39,27 @@ Page({
       count: 10
     }, (err, result) => {
       this.setData({
-        notices: result.data,
+        notices: this.parseNoticeDatas(result.data),
         currPage: 0
       })
     })
   },
-  swichNav: function (e) {
+  parseNoticeDatas: function (datas) {
+    return datas.map((data) => {
+      var color = this.getCategoryColor(data.categoryName)
+      return Object.assign(data, { color: color })
+    })
+  },
+  getCategoryColor: function (categoryName) {
+    var categories = this.data.categories
+    for (var i = 0; i < categories.length; i++) {
+      if (categoryName === categories[i].name) {
+        return categories[i].color
+      }
+    }
+    return 'other'
+  },
+  switchNav: function (e) {
     var that = this;
     if (this.data.noticeType === e.target.dataset.current) {
       return false;
@@ -68,7 +86,7 @@ Page({
       count: 10
     }, (err, result) => {
       this.setData({
-        notices: result.data,
+        notices: this.parseNoticeDatas(result.data),
         currPage: 0
       })
       wx.stopPullDownRefresh()
@@ -83,7 +101,7 @@ Page({
       var datas = result.data
       if (datas.length > 0) {
         this.setData({
-          notices: this.data.notices.concat(result.data),
+          notices: this.parseNoticeDatas(this.data.notices.concat(result.data)),
           currPage: this.data.currPage + 1
         })
       }

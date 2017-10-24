@@ -11,6 +11,7 @@ function getUserAuthInfo(code, callback) {
       code: code
     },
     success: function (res) {
+      console.log('sdfsfds:', res)
       callback(null, res)
     }
   })

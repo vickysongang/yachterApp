@@ -1,7 +1,7 @@
 <import src="../../templates/template.wxml" />
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class='main-container'>
-  <scroll-view scroll-y>
+  <view>
     <view bindtap='bindTitleAction'>
       <template is="inputFieldCell" data="{{label:'标题', value:title,placeholder:'请输入标题'}}" wx:if="{{editMode === 'edit'}}" />
       <template is="fieldCell" data="{{label:'标题',value:title}}" wx:if="{{editMode === 'read'}}" />
@@ -9,9 +9,9 @@
     <view class='divider-line'></view>
     <template is="fieldCell" data="{{label:'发布人', value:userInfo.nickName}}" />
     <view class='divider-line'></view>
-    <picker bindchange="bindPickCategory" value="{{categoryIndex}}" range="{{categoryNames}}">
-      <template is="fieldCell" data="{{label:'类别', value:categories[categoryIndex].name}}" />
-    </picker>
+    <view bindtap="bindPickCategory" data-status="open">
+      <template is="fieldCell" data="{{label:'类别', value:categoryName}}" />
+    </view>
     <view class='divider-section'></view>
     <view class="textarea-wrp">
       <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' />
@@ -34,5 +34,26 @@
         完成
       </button>
     </view>
-  </scroll-view>
+  </view>
+  <!--mask-->
+  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <!--content-->
+  <!--使用animation属性指定需要执行的动画-->
+  <view class="drawer_box" wx:if="{{showModalStatus}}">
+    <!--drawer content-->
+    <view class="drawer_content">
+      <view class='tag_input_view'>
+        <input class="tag_input" maxlength='2' placeholder="最多两个字哦" placeholder-class='tag_input_placeholder' value='{{tagName}}' bindinput='bindTagInput'></input>
+      </view>
+      <view class='tags_view'>
+        <view wx:for="{{defaultTags}}" wx:for-item="item" wx:for-index="idx" wx:key="idx+1" class='{{selectedTagIndex === (idx+1) ? "selected_tag_cell":"tag_cell"}}' data-index='{{idx+1}}' bindtap='selectTag' data-tagname='{{item.tagName}}'>{{item.tagName}}</view>
+      </view>
+    </view>
+    <view class="btn_ok" bindtap="confirmSelectTag" data-status="close">
+      <image src='../../image/xianghaole_2.png' class='btn_ok_image' mode='scaleToFill' />
+    </view>
+    <view class="btn_cancel" bindtap="confirmSelectTag" data-status="close" bindtap='cancelSelectTag'>
+      <image class='btn_cancel_image' src='../../image/guanbi.png' mode='scaleToFill' />
+    </view>
+  </view>
 </view>

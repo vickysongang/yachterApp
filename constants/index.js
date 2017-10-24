@@ -1,10 +1,11 @@
 const RANDCODE_USERNAME = 'ZSZM005389'
 const RANDCODE_PASSWORD = '123456'
 
-const SERVER_ADDRESS = 'https://api.sa9051.top'
+// const SERVER_ADDRESS = 'https://api.sa9051.top'
+const SERVER_ADDRESS = 'http://47.95.114.220:8080'
 
 const QINIU_REGION = 'NCN'
-const QINIU_UPTOKEN = 'me0n-EolWG-KGgXau-Bcm4UWpjS61ssZu288V5bl:2PS3M85DS00DKM2vzD6xoYylEKc=:eyJzY29wZSI6InlhY2h0ZXIiLCJkZWFkbGluZSI6MTUwODQ2MDAzOX0='
+const QINIU_UPTOKEN = 'me0n-EolWG-KGgXau-Bcm4UWpjS61ssZu288V5bl:9cwY4iQcOjeHxJnz9oTJj6FaCTE=:eyJzY29wZSI6InlhY2h0ZXIiLCJkZWFkbGluZSI6MTUwODg5NzYxMn0='
 const QINIU_DOMAIN = 'http://oy1wh09ro.bkt.clouddn.com'
 const QINIU_OPTIONS = {
   region: QINIU_REGION,

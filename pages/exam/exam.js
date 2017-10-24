@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const examApis = require('../../apis/exam.js')
+const commonApis = require('../../apis/common.js')
 const app = getApp()
 
 Page({
@@ -16,9 +17,20 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
-    duration: 500
+    duration: 500,
+    defaultTags: [],
+    categories: []
   },
   onLoad: function () {
+    var that = this;
+    commonApis.fetchCategories('exam', (err, res) => {
+      that.setData({
+        categories: res.data,
+        defaultTags: res.data.map(item => {
+          return { tagName: item.name }
+        })
+      })
+    })
     this.loadExams()
   },
   loadExams: function () {
@@ -27,11 +39,27 @@ Page({
       page: 0,
       count: 10
     }, (err, result) => {
+      console.log()
       this.setData({
-        exams: result.data,
+        exams: this.parseExamDatas(result.data),
         currPage: 0
       })
     })
+  },
+  parseExamDatas: function (datas) {
+    return datas.map((data) => {
+      var color = this.getCategoryColor(data.categoryName)
+      return Object.assign(data, { color: color })
+    })
+  },
+  getCategoryColor: function (categoryName) {
+    var categories = this.data.categories
+    for (var i = 0; i < categories.length; i++) {
+      if (categoryName === categories[i].name) {
+        return categories[i].color
+      }
+    }
+    return 'other'
   },
   onPullDownRefresh: function () {
     examApis.queryExams({
@@ -40,7 +68,7 @@ Page({
       count: 10
     }, (err, result) => {
       this.setData({
-        exams: result.data,
+        exams: this.parseExamDatas(result.data),
         currPage: 0
       })
       wx.stopPullDownRefresh()
@@ -55,13 +83,13 @@ Page({
       var datas = result.data
       if (datas.length > 0) {
         this.setData({
-          exams: this.data.exams.concat(result.data),
+          exams: this.parseExamDatas(this.data.exams.concat(result.data)),
           currPage: this.data.currPage + 1
         })
       }
     })
   },
-  swichNav: function (e) {
+  switchNav: function (e) {
     var that = this;
     if (this.data.examType === e.target.dataset.current) {
       return false;
