@@ -15,7 +15,7 @@
   <block wx:for="{{notices}}" wx:for-item="item" wx:key="id">
     <template is="noticeItem" data="{{...item}}" />
   </block>
-  <view class='publish-button-view'>
+  <view class='publish-button-view' wx:if="{{noticeType==='class'}}">
     <image src='../../image/edit.png' class='publish-button-image' bindtap='bindPublishNotice'></image>
   </view>
 </view>

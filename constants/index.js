@@ -5,7 +5,7 @@ const RANDCODE_PASSWORD = '123456'
 const SERVER_ADDRESS = 'https://zaizhi.bjzhishanzhimei.com'
 
 const QINIU_REGION = 'NCN'
-const QINIU_UPTOKEN = 'me0n-EolWG-KGgXau-Bcm4UWpjS61ssZu288V5bl:9cwY4iQcOjeHxJnz9oTJj6FaCTE=:eyJzY29wZSI6InlhY2h0ZXIiLCJkZWFkbGluZSI6MTUwODg5NzYxMn0='
+const QINIU_UPTOKEN = 'me0n-EolWG-KGgXau-Bcm4UWpjS61ssZu288V5bl:zkJcMRK6Sp9rN6k8OHh0KolDKDY=:eyJzY29wZSI6InlhY2h0ZXIiLCJkZWFkbGluZSI6MTYzODU1MjE4M30='
 const QINIU_DOMAIN = 'http://oy1wh09ro.bkt.clouddn.com'
 const QINIU_OPTIONS = {
   region: QINIU_REGION,
