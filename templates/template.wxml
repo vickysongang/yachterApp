@@ -58,7 +58,7 @@
     </view>
     <view class='input-cell-right'>
       <view class='input-cell-right-view'>
-        <input placeholder='{{placeholder}}' focus='true' style='width:400rpx;' maxlength='20' bindblur='bindInputBlur' bindinput='bindInput' value='{{value}}'></input>
+        <input placeholder='{{placeholder}}' focus='true' style='width:400rpx;' maxlength='{{maxlength}}' bindblur='bindInputBlur' bindinput='bindInput' value='{{value}}' type='{{type}}' confirm-type='done'></input>
       </view>
     </view>
   </view>

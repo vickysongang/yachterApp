@@ -22,7 +22,9 @@ Page({
     provinceIndex: undefined,
     phone: '',
     randCodeButtonText: '获取验证码',
-    popErrorMsg: undefined
+    popErrorMsg: undefined,
+    editMode: 'read',
+    randCode: ''
   },
   onLoad: function () {
     commonApis.fetchSchools((err, res) => {
@@ -94,17 +96,41 @@ Page({
     })
   },
   bindGetRandCode: function (e) {
+    var phone = this.data.phone
+    if (phone === undefined || phone.length === 0) {
+      this.setData({
+        popErrorMsg: "手机号不能为空"
+      })
+    } else if (phone.length < 11) {
+      this.setData({
+        popErrorMsg: "手机号长度为11位"
+      })
+    } else if (!util.validatePhone(phone)) {
+      this.setData({
+        popErrorMsg: "手机号不合法"
+      })
+    }
+    var popErrorMsg = this.data.popErrorMsg
+    if (popErrorMsg && popErrorMsg.length > 0) {
+      setTimeout(() => {
+        this.setData({
+          popErrorMsg: ''
+        });
+      }, 1000)
+      return
+    }
     var that = this
     var time = 60
     that.setData({
       randCodeButtonText: time + 's'
     })
-    randCodeApis.getRandCode('18600397392', function (err, code) {
+    randCodeApis.getRandCode(phone, function (err, code) {
       wx.setStorage({
         key: 'randCode',
         data: code,
       })
     })
+    //改变按钮文字
     var interval = setInterval(function () {
       time--
       that.setData({
@@ -112,20 +138,37 @@ Page({
       })
       if (time === 0) {
         interval && clearInterval(interval)
-        wx.removeStorage({
-          key: 'randCode',
-          success: function (res) { },
-        })
         that.setData({
           randCodeButtonText: '获取验证码'
         })
       }
     }, 1000)
+    //设置验证码的失效时间
+    setTimeout(function () {
+      wx.removeStorage({
+        key: 'randCode',
+        success: function (res) { },
+      })
+    }, 1000 * 60 * 10)
   },
   bindPhoneAction: function () {
-    var params = 'key=phone&value=' + this.data.phone
-    wx.navigateTo({
-      url: '../common/TextInput/Textinput?' + params,
+    this.setData({
+      editMode: 'edit'
+    })
+  },
+  bindInputRandCode: function (e) {
+    this.setData({
+      randCode: e.detail.value
+    })
+  },
+  bindInput: function (e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
+  bindInputBlur: function () {
+    this.setData({
+      editMode: 'read'
     })
   },
   bindComfirm: function (e) {
@@ -154,6 +197,14 @@ Page({
       this.setData({
         popErrorMsg: "手机号码不能为空"
       })
+    } else if (this.data.randCode === undefined || this.data.randCode === '') {
+      this.setData({
+        popErrorMsg: "验证码不能为空"
+      })
+    } else if (randCode !== this.data.randCode) {
+      this.setData({
+        popErrorMsg: "验证码不匹配"
+      })
     }
     var popErrorMsg = this.data.popErrorMsg
     if (popErrorMsg && popErrorMsg.length > 0) {
@@ -162,6 +213,7 @@ Page({
           popErrorMsg: ''
         });
       }, 1000)
+      return
     }
     var userInfo = app.globalData.userInfo
     var schoolId = this.data.schools[this.data.schoolIndex].id

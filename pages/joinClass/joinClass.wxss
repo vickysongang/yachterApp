@@ -73,5 +73,5 @@
 
 .randcode-input {
   color: #000;
-  font-size: 72rpx;
+  font-size: 50rpx;
 }
