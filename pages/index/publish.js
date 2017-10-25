@@ -89,6 +89,10 @@ Page({
       this.setData({
         popErrorMsg: "内容不能为空"
       })
+    } else if (tagName.length > 2) {
+      this.setData({
+        popErrorMsg: "不能超过两个字噢"
+      })
     }
     var popErrorMsg = this.data.popErrorMsg
     if (popErrorMsg && popErrorMsg.length > 0) {

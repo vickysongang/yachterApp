@@ -250,6 +250,11 @@ textarea {
   color: #cfcfcf;
 }
 
+.empty_textarea {
+  width: 100%;
+  height: 500rpx;
+}
+
 /**finish button**/
 .finish-button-view {
    padding: 40rpx 156rpx;

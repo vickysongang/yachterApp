@@ -14,7 +14,9 @@
     </view>
     <view class='divider-section'></view>
     <view class="textarea-wrp">
-      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' placeholder-class='textarea-placeholder'/>
+      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' placeholder-class='textarea-placeholder' wx:if="{{!showModalStatus}}" />
+    </view>
+    <view class='empty_textarea' wx:if="{{showModalStatus}}">
     </view>
     <view class='divider-section'></view>
     <view class="weui-uploader__bd">
@@ -43,7 +45,7 @@
     <!--drawer content-->
     <view class="drawer_content">
       <view class='tag_input_view'>
-        <input class="tag_input" maxlength='2' placeholder="最多两个字哦" placeholder-class='tag_input_placeholder' value='{{tagName}}' bindinput='bindTagInput'></input>
+        <input class="tag_input" placeholder="最多两个字哦" placeholder-class='tag_input_placeholder' value='{{tagName}}' bindinput='bindTagInput'></input>
       </view>
       <view class='tags_view'>
         <view wx:for="{{defaultTags}}" wx:for-item="item" wx:for-index="idx" wx:key="idx+1" class='{{selectedTagIndex === (idx+1) ? "selected_tag_cell":"tag_cell"}}' data-index='{{idx+1}}' bindtap='selectTag' data-tagname='{{item.tagName}}'>{{item.tagName}}</view>
