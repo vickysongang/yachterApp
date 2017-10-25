@@ -30,11 +30,20 @@ Page({
         })
       })
     })
-    this.loadNotices()
+    wx.showNavigationBarLoading()
+    var interval = setInterval(()=>{
+      var openId = app.globalData.userDetailInfo.open_id
+      if (openId && openId.length > 0) {
+        interval && clearInterval(interval)
+        this.loadNotices()
+        wx.hideNavigationBarLoading()
+      }
+    },1000)
   },
   loadNotices: function () {
     noticeApis.queryNotices({
       type: this.data.noticeType,
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -82,6 +91,7 @@ Page({
   onPullDownRefresh: function () {
     noticeApis.queryNotices({
       type: this.data.noticeType,
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -95,6 +105,7 @@ Page({
   onReachBottom: function () {
     noticeApis.queryNotices({
       type: this.data.noticeType,
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: this.data.currPage + 1,
       count: 10
     }, (err, result) => {

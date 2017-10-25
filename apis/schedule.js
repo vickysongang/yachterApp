@@ -30,6 +30,7 @@ function querySchedules(payload, callback) {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
     data: {
+      collegeId: payload.collegeId,
       page: payload.page,
       count: payload.count
     },

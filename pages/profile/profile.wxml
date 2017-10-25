@@ -21,7 +21,6 @@
   <view class='divider-section'></view>
   <button class='contact-button' open-type="contact" session-from="weapp" send-message-title='在职小帮手'>
     <view class='navigator-left'>
-      <image class='navigator-image' src='resources/kind/feedback.png'></image>
       <view class='navigator-left-text'>客服</view>
     </view>
     <view class='navigator-right'>
@@ -31,7 +30,6 @@
   </button>
   <button class='contact-button' bindtap='bindNavToPage' data-url='./help'>
     <view class='navigator-left'>
-      <image class='navigator-image' src='resources/kind/feedback.png'></image>
       <view class='navigator-left-text'>帮助</view>
     </view>
     <view class='navigator-right'>
@@ -41,7 +39,6 @@
   </button>
   <button class='contact-button' bindtap='bindNavToPage' data-url='./feedback'>
     <view class='navigator-left'>
-      <image class='navigator-image' src='resources/kind/feedback.png'></image>
       <view class='navigator-left-text'>意见反馈</view>
     </view>
     <view class='navigator-right'>

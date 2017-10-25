@@ -30,6 +30,7 @@ function queryNotices(payload, callback) {
     },
     data: {
       type: payload.type,
+      collegeId: payload.collegeId,
       page: payload.page,
       count: payload.count
     },

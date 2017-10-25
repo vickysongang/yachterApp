@@ -36,6 +36,7 @@ Page({
   loadExams: function () {
     examApis.queryExams({
       type: this.data.examType,
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -64,6 +65,7 @@ Page({
   onPullDownRefresh: function () {
     examApis.queryExams({
       type: this.data.examType,
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -77,6 +79,7 @@ Page({
   onReachBottom: function () {
     examApis.queryExams({
       type: this.data.examType,
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: this.data.currPage + 1,
       count: 10
     }, (err, result) => {

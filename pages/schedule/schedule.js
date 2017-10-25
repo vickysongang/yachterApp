@@ -20,6 +20,7 @@ Page({
   },
   loadSchedules: function () {
     scheduleApis.querySchedules({
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -31,6 +32,7 @@ Page({
   },
   onPullDownRefresh: function () {
     scheduleApis.querySchedules({
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -43,6 +45,7 @@ Page({
   },
   onReachBottom: function () {
     scheduleApis.querySchedules({
+      collegeId: app.globalData.userDetailInfo.college_id,
       page: this.data.currPage + 1,
       count: 10
     }, (err, result) => {
