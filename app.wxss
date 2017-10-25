@@ -174,7 +174,7 @@ form {
 
 .tag_input_placeholder {
   text-align: center;
-  font-size: 48rpx;
+  font-size: 40rpx;
   color: #cdcdcd;
 }
 
@@ -227,11 +227,19 @@ form {
   left: 50%;
   margin-left: -43rpx;
   text-align: center;
+  background: red;
 }
 
 .btn_cancel_image {
+  position: fixed;
+  top: 75%;
+  left: 50%;
+  margin-left: -43rpx;
   width: 86rpx;
   height: 86rpx;
+  background: #919191;
+  border-radius: 50%;
+  z-index: 1000;
 }
 
 /**textarea**/
