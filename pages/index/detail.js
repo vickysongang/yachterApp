@@ -1,5 +1,6 @@
 //logs.js
 const util = require('../../utils/util.js')
+const htmlUtil = require('../../utils/htmlUtil.js')
 const noticeApis = require('../../apis/notice.js')
 var app = getApp()
 Page({
@@ -38,7 +39,7 @@ Page({
               readCount: detail.read_count,
               pubTime: detail.pubTime,
               creatorName: detail.creatorName,
-              content: detail.content,
+              content: htmlUtil.replaceEscape(detail.content),
               images: images,
               canDelete: app.globalData.openId === detail.openId
             }

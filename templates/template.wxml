@@ -105,7 +105,7 @@
       </block>
     </view>
     <view class='detail-content-view'>
-      {{content}}
+      <text decode="{{true}}">{{content}}</text>
     </view>
   </scorll-view>
 </template>

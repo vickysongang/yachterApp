@@ -1,7 +1,7 @@
 <import src="../../templates/template.wxml" />
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class='main-container'>
-  <view>
+  <view style='overflow:{{showModalStatus ? "hidden":"scroll"}};'>
     <view bindtap='bindTitleAction'>
       <template is="inputFieldCell" data="{{label:'标题', value:title,placeholder:'请输入标题', maxlength:40, type:'text'}}" wx:if="{{editMode === 'edit'}}" />
       <template is="fieldCell" data="{{label:'标题',value:title}}" wx:if="{{editMode === 'read'}}" />

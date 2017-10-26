@@ -1,7 +1,7 @@
 <import src="../../templates/template.wxml" />
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class='main-container'>
-  <view>
+  <view style='overflow:{{showModalStatus ? "hidden":"scroll"}};'>
     <view bindtap='bindTitleAction'>
       <template is="inputFieldCell" data="{{label:'标题', value:title,placeholder:'请输入标题', maxlength:40, type:'text'}}" wx:if="{{editMode === 'edit'}}" />
       <template is="fieldCell" data="{{label:'标题',value:title}}" wx:if="{{editMode === 'read'}}" />
@@ -14,8 +14,7 @@
     </view>
     <view class='divider-section'></view>
     <view class="textarea-wrp">
-      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' placeholder-class='textarea-placeholder' 
-      wx:if="{{!showModalStatus}}"/>
+      <textarea placeholder='不能超过5000字' maxlength='5000' bindinput='bindTextAreaInput' placeholder-class='textarea-placeholder' wx:if="{{!showModalStatus}}" />
     </view>
     <view class='empty_textarea' wx:if="{{showModalStatus}}">
     </view>
@@ -39,7 +38,7 @@
     </view>
   </view>
   <!--mask-->
-  <view class="drawer_screen"  data-status="close" wx:if="{{showModalStatus}}"></view>
+  <view class="drawer_screen" data-status="close" wx:if="{{showModalStatus}}"></view>
   <!--content-->
   <!--使用animation属性指定需要执行的动画-->
   <view class="drawer_box" wx:if="{{showModalStatus}}">
@@ -56,5 +55,5 @@
       <image src='../../image/xianghaole_2.png' class='btn_ok_image' mode='scaleToFill' />
     </view>
   </view>
-   <image class='btn_cancel_image' src='../../image/guanbi.png' wx:if="{{showModalStatus}}" mode='scaleToFill' bindtap='cancelSelectTag' />
+  <image class='btn_cancel_image' src='../../image/guanbi.png' wx:if="{{showModalStatus}}" mode='scaleToFill' bindtap='cancelSelectTag' />
 </view>
