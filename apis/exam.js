@@ -13,7 +13,10 @@ function insertExam(payload, callback) {
       content: payload.content,
       type: payload.type,
       categoryName: payload.categoryName,
-      images: payload.images
+      images: payload.images,
+      schoolId:payload.schoolId,
+      collegeId: payload.collegeId,
+      approveFlag: payload.approveFlag,
     },
     success: function (res) {
       callback(null, res)

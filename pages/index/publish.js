@@ -177,7 +177,6 @@ Page({
     var title = this.data.title
     var openId = app.globalData.openId
     var userDetailInfo = app.globalData.userDetailInfo
-    console.log('userDetailInfo:', userDetailInfo)
     var categoryName = this.data.categoryName
     var content = this.data.content
     var imageList = this.data.imageList
