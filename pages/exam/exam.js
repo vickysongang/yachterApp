@@ -2,22 +2,15 @@
 //获取应用实例
 const examApis = require('../../apis/exam.js')
 const commonApis = require('../../apis/common.js')
-const app = getApp()
+const bannerApis = require('../../apis/banner.js')
 
+const app = getApp()
 Page({
   data: {
     examType: 'college',
     exams: [],
     currPage: 0,
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    interval: 5000,
-    duration: 500,
+    bannerInfo: {},
     defaultTags: [],
     categories: []
   },
@@ -32,6 +25,26 @@ Page({
       })
     })
     this.loadExams()
+    this.loadBanners()
+  },
+  loadBanners: function () {
+    var collegeId = app.globalData.userDetailInfo.college_id
+    bannerApis.queryBanners({
+      module: 'exam',
+      type: this.data.examType,
+      collegeId: collegeId,
+      gradeId: 0,
+    }, (err, res) => {
+      this.setData({
+        bannerInfo: {
+          indicatorDots: false,
+          autoplay: true,
+          interval: 5000,
+          duration: 500,
+          banners: res.data || []
+        }
+      })
+    })
   },
   loadExams: function () {
     examApis.queryExams({
@@ -102,6 +115,7 @@ Page({
         currPage: 0
       })
       this.loadExams()
+      this.loadBanners()
     }
   },
   bindNavToDetail: function (event) {

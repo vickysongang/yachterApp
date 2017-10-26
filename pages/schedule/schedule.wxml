@@ -1,12 +1,6 @@
 <import src="../../templates/template.wxml" />
 <view>
-  <swiper class='swiper-class' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key="{{*this}}">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image" width="355" height="150" />
-      </swiper-item>
-    </block>
-  </swiper>
+  <template is="banner" data="{{...bannerInfo}}" wx:if="{{bannerInfo.banners.length >0}}" />
   <view class='schedule-list-view'>
     <block wx:for="{{schedules}}" wx:for-item="item" wx:key="{{id}}">
       <template is="scheduleCell" data="{{...item}}" />

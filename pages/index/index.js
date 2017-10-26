@@ -2,26 +2,20 @@
 //获取应用实例
 const noticeApis = require('../../apis/notice.js')
 const commonApis = require('../../apis/common.js')
+const bannerApis = require('../../apis/banner.js')
 const app = getApp()
 Page({
   data: {
     noticeType: 'college',
     notices: [],
     currPage: 0,
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    interval: 5000,
-    duration: 500,
+    bannerInfo: {},
     defaultTags: [],
     categories: []
   },
   onLoad: function () {
     var that = this;
+    wx.showNavigationBarLoading()
     commonApis.fetchCategories('notice', (err, res) => {
       that.setData({
         categories: res.data,
@@ -30,15 +24,36 @@ Page({
         })
       })
     })
-    wx.showNavigationBarLoading()
-    var interval = setInterval(()=>{
+    var interval = setInterval(() => {
       var openId = app.globalData.userDetailInfo.open_id
       if (openId && openId.length > 0) {
         interval && clearInterval(interval)
         this.loadNotices()
+        this.loadBanners()
         wx.hideNavigationBarLoading()
       }
-    },1000)
+    }, 1000)
+  },
+  loadBanners: function () {
+    var noticeType = this.data.noticeType
+    var collegeId = app.globalData.userDetailInfo.college_id
+    var gradeId = app.globalData.userDetailInfo.grade_id
+    bannerApis.queryBanners({
+      module: 'notice',
+      type: noticeType,
+      collegeId: collegeId,
+      gradeId: noticeType === 'class' ? gradeId : 0,
+    }, (err, res) => {
+      this.setData({
+        bannerInfo: {
+          indicatorDots: false,
+          autoplay: true,
+          interval: 5000,
+          duration: 500,
+          banners: res.data || []
+        }
+      })
+    })
   },
   loadNotices: function () {
     noticeApis.queryNotices({
@@ -79,6 +94,7 @@ Page({
         currPage: 0
       })
       this.loadNotices()
+      this.loadBanners()
     }
   },
   removeNoticeItem: function (id) {

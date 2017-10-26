@@ -1,22 +1,36 @@
 const commonApis = require('../../apis/common.js')
 const scheduleApis = require('../../apis/schedule.js')
+const bannerApis = require('../../apis/banner.js')
 var app = getApp()
 Page({
   data: {
     currPage: 0,
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    indicatorDots: true,
-    autoplay: true,
-    interval: 5000,
-    duration: 500,
+    bannerInfo: {},
     schedules: []
   },
   onLoad: function () {
+    this.loadBanners()
     this.loadSchedules()
+  },
+  loadBanners: function () {
+    var noticeType = this.data.noticeType
+    var collegeId = app.globalData.userDetailInfo.college_id
+    bannerApis.queryBanners({
+      module: 'schedule',
+      type: 'schedule',
+      collegeId: collegeId,
+      gradeId: 0,
+    }, (err, res) => {
+      this.setData({
+        bannerInfo: {
+          indicatorDots: false,
+          autoplay: true,
+          interval: 5000,
+          duration: 500,
+          banners: res.data || []
+        }
+      })
+    })
   },
   loadSchedules: function () {
     scheduleApis.querySchedules({
