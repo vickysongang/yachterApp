@@ -2,8 +2,8 @@
 <import src="../../templates/template.wxml" />
 <view>
   <view class="swiper-tab">
-    <view class="swiper-tab-list {{noticeType=='class' ? 'on' : 'off'}}" data-current="class" bindtap="switchNav">班级</view>
     <view class="swiper-tab-list {{noticeType=='college' ? 'on' : 'off'}}" data-current="college" bindtap="switchNav">学院</view>
+    <view class="swiper-tab-list {{noticeType=='class' ? 'on' : 'off'}}" data-current="class" bindtap="switchNav">班级</view>
   </view>
   <swiper class='swiper-class' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{imgUrls}}" wx:key="{{*this}}">

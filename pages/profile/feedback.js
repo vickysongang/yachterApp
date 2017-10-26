@@ -1,5 +1,7 @@
 // pages/profile/feedback.js
 const feedbackApis = require('../../apis/feedback.js')
+const textUtil = require('../../utils/textUtil.js')
+
 var app = getApp()
 Page({
 
@@ -27,6 +29,10 @@ Page({
     if (content === undefined || content.length === 0) {
       this.setData({
         popErrorMsg: "内容不能为空"
+      })
+    } else if (textUtil.checkSensitiveWord(content)) {
+      this.setData({
+        popErrorMsg: "内容不能包含敏感词"
       })
     }
     var popErrorMsg = this.data.popErrorMsg

@@ -5,7 +5,7 @@ const commonApis = require('../../apis/common.js')
 const app = getApp()
 Page({
   data: {
-    noticeType: 'class',
+    noticeType: 'college',
     notices: [],
     currPage: 0,
     imgUrls: [

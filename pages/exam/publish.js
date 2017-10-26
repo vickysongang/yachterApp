@@ -1,5 +1,6 @@
 //logs.js
 const upload = require('../../utils/upload.js')
+const textUtil = require('../../utils/textUtil.js')
 const commonApis = require('../../apis/common.js')
 const examApis = require('../../apis/exam.js')
 var app = getApp()
@@ -88,6 +89,10 @@ Page({
       this.setData({
         popErrorMsg: "内容不能为空"
       })
+    } else if (textUtil.checkSensitiveWord(tagName)) {
+      this.setData({
+        popErrorMsg: "内容不能包含敏感词"
+      })
     } else if (tagName.length > 2) {
       this.setData({
         popErrorMsg: "不能超过两个字噢"
@@ -151,6 +156,10 @@ Page({
       this.setData({
         popErrorMsg: "标题不能为空"
       })
+    } else if (textUtil.checkSensitiveWord(title)) {
+      this.setData({
+        popErrorMsg: "标题不能包含敏感词"
+      })
     } else if (categoryName === undefined || categoryName.length === 0) {
       this.setData({
         popErrorMsg: "类别不能为空"
@@ -158,6 +167,10 @@ Page({
     } else if (content === undefined || content.length === 0) {
       this.setData({
         popErrorMsg: "内容不能为空"
+      })
+    } else if (textUtil.checkSensitiveWord(content)) {
+      this.setData({
+        popErrorMsg: "内容不能包含敏感词"
       })
     }
     var popErrorMsg = this.data.popErrorMsg

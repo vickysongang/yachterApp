@@ -87,10 +87,11 @@ form {
 }
 
 .swiper-tab-list {
-  font-size: 30rpx;
+  font-size: 36rpx;
   display: inline-block;
   width: 25%;
   color: #777;
+  font-weight: bold;
 }
 
 .on {
