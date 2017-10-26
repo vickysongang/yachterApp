@@ -11,7 +11,6 @@ function replaceEscape(htmlStr) {
   if (!htmlStr) {
     return ''
   }
-  console.log('ssss:', htmlStr)
   htmlStr = htmlStr.replace(/( )/g, "&nbsp;")
   htmlStr = htmlStr.replace(/\u0008/g, "&nbsp;")
   htmlStr = htmlStr.replace(/\u0009/g, "&nbsp;&nbsp;&nbsp;&nbsp;")
@@ -26,7 +25,6 @@ function replaceEscape(htmlStr) {
   htmlStr = htmlStr.replace(/\u2028/g, "")
   htmlStr = htmlStr.replace(/\u2029/g, "")
   htmlStr = htmlStr.replace(/\uFEFF/g, "")
-  console.log('ssss:', htmlStr)
   return htmlStr
 }
 

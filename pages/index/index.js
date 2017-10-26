@@ -44,6 +44,7 @@ Page({
     noticeApis.queryNotices({
       type: this.data.noticeType,
       collegeId: app.globalData.userDetailInfo.college_id,
+      gradeId: app.globalData.userDetailInfo.grade_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -92,6 +93,7 @@ Page({
     noticeApis.queryNotices({
       type: this.data.noticeType,
       collegeId: app.globalData.userDetailInfo.college_id,
+      gradeId: app.globalData.userDetailInfo.grade_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -106,6 +108,7 @@ Page({
     noticeApis.queryNotices({
       type: this.data.noticeType,
       collegeId: app.globalData.userDetailInfo.college_id,
+      gradeId: app.globalData.userDetailInfo.grade_id,
       page: this.data.currPage + 1,
       count: 10
     }, (err, result) => {

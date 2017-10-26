@@ -13,7 +13,11 @@ function insertNotice(payload, callback) {
       content: payload.content,
       type: payload.type,
       categoryName: payload.categoryName,
-      images: payload.images
+      images: payload.images,
+      schoolId: payload.schoolId,
+      collegeId: payload.collegeId,
+      gradeId: payload.type === 'class' ? payload.gradeId : 0,
+      approveFlag: payload.approveFlag
     },
     success: function (res) {
       callback(null, res)
@@ -31,6 +35,7 @@ function queryNotices(payload, callback) {
     data: {
       type: payload.type,
       collegeId: payload.collegeId,
+      gradeId: payload.type === 'class' ? payload.gradeId : 0,
       page: payload.page,
       count: payload.count
     },

@@ -176,6 +176,8 @@ Page({
     }
     var title = this.data.title
     var openId = app.globalData.openId
+    var userDetailInfo = app.globalData.userDetailInfo
+    console.log('userDetailInfo:', userDetailInfo)
     var categoryName = this.data.categoryName
     var content = this.data.content
     var imageList = this.data.imageList
@@ -186,13 +188,18 @@ Page({
       var imageUrls = results.map((r) => {
         return r.imageURL
       })
+      var images = imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
       noticeApis.insertNotice({
         openId: openId,
         title: title,
         content: content,
         type: this.data.noticeType,
         categoryName: categoryName,
-        images: imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
+        images: images,
+        schoolId: userDetailInfo.school_id,
+        collegeId: userDetailInfo.college_id,
+        gradeId: userDetailInfo.grade_id,
+        approveFlag: 'Y'
       }, (err, res) => {
         var pages = getCurrentPages();
         if (pages.length > 1) {
