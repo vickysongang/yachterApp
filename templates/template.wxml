@@ -66,7 +66,7 @@
 
 <template name='scheduleCell'>
   <view bindtap='bindNavToScheduleDetail' data-id='{{id}}'>
-    <image src='../../image/2_{{seasonCode}}.png' class='schedule-image'>
+    <image src='../../image/2_{{seasonCode}}.png' class='schedule-image' wx:if="{{seasonCode}}">
       <view class='schedule-cell-view'>
         <text class='schedule-text'>{{collegeName}}</text>
         <text class='schedule-text'>{{year + seasonName + '班'}}</text>
