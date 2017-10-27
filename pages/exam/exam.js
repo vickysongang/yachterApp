@@ -134,5 +134,17 @@ Page({
     wx.navigateTo({
       url: './publish?examType=' + this.data.examType,
     })
+  },
+  incrReadCount: function (id) {
+    var exams = this.data.exams
+    var newExams = exams.map((exam) => {
+      if (exam.id === parseInt(id)) {
+        exam.readCount = exam.readCount + 1
+      }
+      return exam
+    })
+    this.setData({
+      exams: newExams
+    })
   }
 })

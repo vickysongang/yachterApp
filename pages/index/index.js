@@ -153,5 +153,17 @@ Page({
     wx.navigateTo({
       url: './publish?noticeType=' + this.data.noticeType,
     })
+  },
+  incrReadCount: function(id){
+    var notices = this.data.notices
+    var newNotices = notices.map((notice)=>{
+      if (notice.id === parseInt(id)) {
+        notice.readCount = notice.readCount + 1
+      }
+      return notice
+    })
+    this.setData({
+      notices: newNotices
+    })
   }
 })
