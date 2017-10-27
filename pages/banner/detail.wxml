@@ -1,0 +1,4 @@
+<import src="../../templates/template.wxml" />
+<view class='main-container'>
+  <template is="detail" data="{{...detailInfo}}" />
+</view>

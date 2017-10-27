@@ -86,6 +86,12 @@ Page({
       url: './detail?id=' + id,
     })
   },
+  navToBannerDetail: function (e) {
+    var id = e.currentTarget.dataset.bannerid
+    wx.navigateTo({
+      url: '../banner/detail?id=' + id,
+    })
+  },
   bindPublishSchedule: function (event) {
     wx.navigateTo({
       url: './publish',

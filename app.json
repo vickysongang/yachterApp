@@ -13,7 +13,8 @@
     "pages/achievement/achievement",
     "pages/profile/profile",
     "pages/profile/help",
-    "pages/profile/feedback"
+    "pages/profile/feedback",
+    "pages/banner/detail"
   ],
   "window": {
     "backgroundTextStyle": "black",

@@ -143,6 +143,12 @@ Page({
       url: './detail?id=' + id,
     })
   },
+  navToBannerDetail: function (e) {
+    var id = e.currentTarget.dataset.bannerid
+    wx.navigateTo({
+      url: '../banner/detail?id=' + id,
+    })
+  },
   bindPublishNotice: function (event) {
     wx.navigateTo({
       url: './publish?noticeType=' + this.data.noticeType,

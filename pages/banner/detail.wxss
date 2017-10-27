@@ -1,0 +1,11 @@
+page {
+  background-color: #ffffff;
+  height: 100%;
+  line-height: 1.6;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

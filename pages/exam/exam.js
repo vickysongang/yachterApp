@@ -124,6 +124,12 @@ Page({
       url: './detail?id=' + id,
     })
   },
+  navToBannerDetail: function (e) {
+    var id = e.currentTarget.dataset.bannerid
+    wx.navigateTo({
+      url: '../banner/detail?id=' + id,
+    })
+  },
   bindPublishExam: function (event) {
     wx.navigateTo({
       url: './publish?examType=' + this.data.examType,
