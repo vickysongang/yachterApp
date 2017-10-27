@@ -36,13 +36,14 @@ Page({
   },
   chooseImage: function () {
     var that = this
+    var imageList = this.data.imageList
     wx.chooseImage({
       sourceType: ['album', 'camera'],
       sizeType: ['original', 'compressed'],
       count: 9,
       success: function (res) {
         that.setData({
-          imageList: res.tempFilePaths
+          imageList: imageList.concat(res.tempFilePaths)
         })
       }
     })
