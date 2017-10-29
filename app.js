@@ -1,6 +1,7 @@
 //app.js
 var authApis = require('./apis/auth.js')
 var userApis = require('./apis/user.js')
+var commonApis = require('./apis/common.js')
 App({
   onLaunch: function () {
     var that = this
@@ -17,12 +18,14 @@ App({
             success: res => {
               if (res.authSetting['scope.userInfo']) {
                 that.getUserInfo()
+                that.getConfigInfo()
                 that.navToJoinClassPage(openId)
               } else {
                 wx.authorize({
                   scope: 'scope.userInfo',
                   success(res) {
                     that.getUserInfo()
+                    that.getConfigInfo()
                     that.navToJoinClassPage(openId)
                   }
                 })
@@ -48,6 +51,11 @@ App({
       }
     })
   },
+  getConfigInfo: function() {
+    commonApis.fetchConfig((err,res)=>{
+      this.globalData.config = res.data
+    })
+  },
   navToJoinClassPage: function (openId) {
     userApis.queryUserById(openId, (err, r1) => {
       if (r1.data.length === 0) {
@@ -60,6 +68,7 @@ App({
   globalData: {
     userInfo: {},
     userDetailInfo: {},
+    config: {},
     openId: ''
   }
 })

@@ -192,6 +192,18 @@ Page({
     wx.showLoading({
       title: '发布中...',
     })
+    var examType = this.data.examType
+    var config = app.globalData.config
+    var approveFlag = 'Y'
+    if (examType === 'college' && config.college_eaf === 'Y') {
+      approveFlag = 'N'
+    } else if (examType === 'school' && config.school_eaf === 'Y') {
+      approveFlag = 'N'
+    } else if (examType === 'country' && config.country_eaf === 'Y') {
+      approveFlag = 'N'
+    } else if (examType === 'paper' && config.paper_eaf === 'Y') {
+      approveFlag = 'N'
+    }
     upload.batchUploadFiles(imageList).then((results) => {
       var imageUrls = results.map((r) => {
         return r.imageURL
@@ -201,20 +213,33 @@ Page({
         openId: openId,
         title: title,
         content: content,
-        type: this.data.examType,
+        type: examType,
         categoryName: categoryName,
         images: images,
         schoolId: userDetailInfo.school_id,
         collegeId: userDetailInfo.college_id,
         approveFlag: 'Y'
       }, (err, res) => {
-        var pages = getCurrentPages();
-        if (pages.length > 1) {
-          var prePage = pages[pages.length - 2];
-          prePage.loadExams(0)
-        }
-        wx.hideLoading()
-        wx.navigateBack({})
+          wx.hideLoading()
+          if (approveFlag === 'N') {
+            wx.showModal({
+              title: '提示',
+              content: '通知已发布，请耐心等待审核！',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  wx.navigateBack({})
+                }
+              }
+            })
+          } else {
+            var pages = getCurrentPages();
+            if (pages.length > 1) {
+              var prePage = pages[pages.length - 2];
+              prePage.loadExams(0)
+            }
+            wx.navigateBack({})
+          }
       })
     })
   }

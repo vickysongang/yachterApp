@@ -184,6 +184,14 @@ Page({
     wx.showLoading({
       title: '发布中...',
     })
+    var noticeType = this.data.noticeType
+    var config = app.globalData.config
+    var approveFlag = 'Y'
+    if (noticeType === 'class' && config.class_naf === 'Y') {
+      approveFlag = 'N'
+    } else if (noticeType === 'college' && config.college_naf === 'Y') {
+      approveFlag = 'N'
+    }
     upload.batchUploadFiles(imageList).then((results) => {
       var imageUrls = results.map((r) => {
         return r.imageURL
@@ -193,21 +201,34 @@ Page({
         openId: openId,
         title: title,
         content: content,
-        type: this.data.noticeType,
+        type: noticeType,
         categoryName: categoryName,
         images: images,
         schoolId: userDetailInfo.school_id,
         collegeId: userDetailInfo.college_id,
         gradeId: userDetailInfo.grade_id,
-        approveFlag: 'Y'
+        approveFlag: approveFlag
       }, (err, res) => {
-        var pages = getCurrentPages();
-        if (pages.length > 1) {
-          var prePage = pages[pages.length - 2];
-          prePage.loadNotices(0)
-        }
         wx.hideLoading()
-        wx.navigateBack({})
+        if (approveFlag === 'N') {
+          wx.showModal({
+            title: '提示',
+            content: '通知已发布，请耐心等待审核！',
+            showCancel:false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack({})
+              } 
+            }
+          })
+        } else {
+          var pages = getCurrentPages();
+          if (pages.length > 1) {
+            var prePage = pages[pages.length - 2];
+            prePage.loadNotices(0)
+          }
+          wx.navigateBack({})
+        }
       })
     })
   },
