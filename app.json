@@ -11,6 +11,7 @@
     "pages/exam/detail",
     "pages/exam/publish",
     "pages/achievement/achievement",
+    "pages/achievement/detail",
     "pages/profile/profile",
     "pages/profile/help",
     "pages/profile/feedback",

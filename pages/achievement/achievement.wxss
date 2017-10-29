@@ -3,6 +3,21 @@
   flex-direction: column;
 }
 
-.button-class {
-  width: 400rpx;
+.tip-text {
+  color: #919191;
+  padding: 20rpx;
+}
+
+.input-style {
+  padding-left: 20rpx;
+  height: 80rpx;
+  background: #fff;
+}
+
+.query_button {
+  width: 85%;
+}
+
+.reset_button {
+  width: 85%;
 }

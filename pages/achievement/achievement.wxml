@@ -1,8 +1,11 @@
+<view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class="main-container">
-  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/xk_bj/index.html' class='button-class'>题库选课
-  </button>
-  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/bjkstzd/' class='button-class'>考试通知单下载</button>
-  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/dyjftzd/index.html' class='button-class'>交费通知单下载</button>
-  <button bindtap='redirectToUrl' data-url='http://tdxl.ruc.edu.cn/cjcx/' class='button-class'>校考成绩查询</button>
-  <button bindtap='redirectToUrl' data-url='http://www.chinadegrees.cn/tdxlsqxt/login.shtml?action=forwardIndex' class='button-class'>国考成绩查询</button>
+  <text class='tip-text'>同等学力学员考试成绩查询</text>
+  <input class='input-style' placeholder='资格卡号(或姓名)' value='{{bh}}' bindinput='bindBhInput'></input>
+  <input class='input-style' style='margin-top:20rpx;' placeholder='身份证号' type='number' value='{{sfzh}}' bindinput='bindSfzhInput'></input>
+  <text class='tip-text'>
+    注:题库课程若两次以上参加考试并不及格,以最高成绩为准;成绩数据为实时更新，已经考试但是还没有成绩的同学一定联系所申请学院要求及时更新成绩，否则后果自负。所有成绩都通过的同学请及时联系申请院系为后期的答辩做好准备。
+  </text>
+  <button type="primary" size="{{default}}" loading="{{loading}}" plain="{{false}}" disabled="{{false}}" bindtap="primary" class='query_button' bindtap='bindQueryAction'> 查询 </button>
+  <button type="default" size="{{default}}" loading="{{false}}" plain="{{false}}" disabled="{{false}}" bindtap="default" class='reset_button' bindtap='bindResetAction'> 重置 </button>
 </view>

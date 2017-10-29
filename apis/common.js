@@ -114,6 +114,19 @@ function fetchCategories(moduleName, callback) {
   })
 }
 
+function fetchConfig(callback) {
+  wx.request({
+    url: constants.SERVER_ADDRESS + '/config',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      callback(null, res)
+    }
+  })
+}
+
 module.exports = {
   fetchSchools: fetchSchools,
   fetchColleges: fetchColleges,
@@ -122,5 +135,6 @@ module.exports = {
   fetchYears: fetchYears,
   fetchSeasons: fetchSeasons,
   fetchProvinces: fetchProvinces,
-  fetchCategories: fetchCategories
+  fetchCategories: fetchCategories,
+  fetchConfig: fetchConfig
 }

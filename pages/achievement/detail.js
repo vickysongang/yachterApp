@@ -1,0 +1,21 @@
+// pages/achievement/detail.js
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    scoreItems:[]
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var result = options.result
+    this.setData({
+      scoreItems:JSON.parse(result)
+    })
+    console.log('resultresultresult:', this.data.scoreItems)
+  }
+})

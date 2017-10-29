@@ -1,0 +1,48 @@
+page {
+  background-color: #fff;
+  height: 100%;
+  line-height: 1.6;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20rpx;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  background: #B0B0B0;
+  padding: 20rpx;
+}
+
+.odd-row-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+  background: #E8E8E8;
+}
+
+.even-row-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.subject-text-cell {
+  width: 50%;
+  text-align: center;
+}
+
+.score-text-cell {
+  width: 25%;
+   text-align: center;
+}
+
+.date-text-cell {
+  width: 25%;
+   text-align: center;
+}

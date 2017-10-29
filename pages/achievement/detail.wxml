@@ -1,0 +1,14 @@
+<view class='main-container'>
+  <view class='header-container'>
+    <text class='subject-text-cell'>科目名称</text>
+    <text class='score-text-cell'>成　　绩</text>
+    <text class='date-text-cell'>考试日期</text>
+  </view>
+  <block wx:for="{{scoreItems}}" wx:for-item="item" wx:for-index="idx"  wx:key="{{subject}}">
+    <view class='{{idx % 2 === 0 ? "even-row-container" : "odd-row-container"}}'>
+      <text class='subject-text-cell'>{{item.subject}}</text>
+      <text class='score-text-cell'>{{item.score}}</text>
+      <text class='date-text-cell'>{{item.date}}</text>
+    </view>
+  </block>
+</view>
