@@ -218,7 +218,7 @@ Page({
         images: images,
         schoolId: userDetailInfo.school_id,
         collegeId: userDetailInfo.college_id,
-        approveFlag: 'Y'
+        approveFlag: approveFlag
       }, (err, res) => {
           wx.hideLoading()
           if (approveFlag === 'N') {
