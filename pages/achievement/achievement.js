@@ -8,7 +8,13 @@ Page({
     popErrorMsg: ''
   },
   onLoad: function () {
-
+    var queryInfo = wx.getStorageSync('queryInfo')
+    if (queryInfo) {
+      this.setData({
+        bh: queryInfo.bh,
+        sfzh: queryInfo.sfzh
+      })
+    }
   },
   bindBhInput: function (e) {
     this.setData({
@@ -56,6 +62,13 @@ Page({
       }
       this.setData({
         loading: false
+      })
+      wx.setStorage({
+        key: 'queryInfo',
+        data: {
+          bh: this.data.bh,
+          sfzh: this.data.sfzh
+        },
       })
       wx.navigateTo({
         url: './detail?result=' + JSON.stringify(data.result)

@@ -11,20 +11,17 @@ function generateRandCode() {
   return code;
 }
 
-function getRandCode (phone, callback) {
+function getRandCode(phone, callback) {
   var code = generateRandCode()
-  var content = '验证码为：'+ code + '【至善至美】'
   wx.request({
-    url: 'https://mb345.com/ws/BatchSend2.aspx',
+    url: constants.SERVER_ADDRESS + '/randcode/send',
     method: 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
     data: {
-      CorpID: constants.USERNAME,
-      Pwd: constants.PASSWORD,
-      Mobile: phone,
-      Content: encodeURIComponent(content)
+      phone: phone,
+      code: code
     },
     success: function (res) {
       callback(null, code)

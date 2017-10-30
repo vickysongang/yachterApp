@@ -24,7 +24,6 @@ App({
                 wx.authorize({
                   scope: 'scope.userInfo',
                   success(res) {
-                    that.getUserInfo()
                     that.getConfigInfo()
                     that.navToJoinClassPage(openId)
                   }
@@ -47,7 +46,14 @@ App({
     })
     userApis.queryUserInfoById(this.globalData.openId, (err, info) => {
       if (info.data && info.data.length > 0) {
-        this.globalData.userDetailInfo = info.data[0]
+        var detailInfo = info.data[0]
+        this.globalData.userDetailInfo = detailInfo
+        if (detailInfo.status === 2) {
+          wx.redirectTo({
+            url: '../../pages/common/forbidden',
+          })
+          return
+        }
       }
     })
   },

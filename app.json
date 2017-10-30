@@ -15,7 +15,8 @@
     "pages/profile/profile",
     "pages/profile/help",
     "pages/profile/feedback",
-    "pages/banner/detail"
+    "pages/banner/detail",
+    "pages/common/forbidden"
   ],
   "window": {
     "backgroundTextStyle": "black",

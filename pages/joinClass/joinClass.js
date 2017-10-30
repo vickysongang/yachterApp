@@ -173,6 +173,8 @@ Page({
   },
   bindComfirm: function (e) {
     var randCode = wx.getStorageSync('randCode')
+    console.log('ssdlsjdflsjdf:', randCode)
+    console.log('ttttttt:', this.data.randCode)
     if (this.data.schoolIndex === undefined) {
       this.setData({
         popErrorMsg: "学校不能为空"
@@ -234,6 +236,7 @@ Page({
       gender: userInfo.gender,
       avatarUrl: userInfo.avatarUrl
     }, (err, res) => {
+      app.getUserInfo()
       wx.switchTab({
         url: '../index/index',
       })

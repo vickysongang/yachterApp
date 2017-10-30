@@ -1,0 +1,6 @@
+<!--pages/common/forbidden.wxml-->
+<view class='main-container'>
+  <text>
+    对不起，你的账号已被禁止使用！如果疑问，请联系管理员。
+  </text>
+</view>

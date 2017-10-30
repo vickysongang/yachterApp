@@ -16,6 +16,5 @@ Page({
     this.setData({
       scoreItems:JSON.parse(result)
     })
-    console.log('resultresultresult:', this.data.scoreItems)
   }
 })
