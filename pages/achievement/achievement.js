@@ -59,6 +59,10 @@ Page({
           content: data.msg,
           showCancel: false
         })
+        this.setData({
+          loading: false
+        })
+        return
       }
       this.setData({
         loading: false
