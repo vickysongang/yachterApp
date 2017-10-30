@@ -236,7 +236,7 @@ Page({
       gender: userInfo.gender,
       avatarUrl: userInfo.avatarUrl
     }, (err, res) => {
-      app.getUserInfo()
+      app.getUserDetailInfo()
       wx.switchTab({
         url: '../index/index',
       })

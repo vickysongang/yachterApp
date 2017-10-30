@@ -18,6 +18,7 @@ App({
             success: res => {
               if (res.authSetting['scope.userInfo']) {
                 that.getUserInfo()
+                that.getUserDetailInfo()
                 that.getConfigInfo()
                 that.navToJoinClassPage(openId)
               } else {
@@ -44,6 +45,8 @@ App({
         }
       }
     })
+  },
+  getUserDetailInfo: function(){
     userApis.queryUserInfoById(this.globalData.openId, (err, info) => {
       if (info.data && info.data.length > 0) {
         var detailInfo = info.data[0]
