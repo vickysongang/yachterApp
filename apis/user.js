@@ -23,18 +23,7 @@ function insertUser(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      openId: payload.openId,
-      schoolId: payload.schoolId,
-      collegeId: payload.collegeId,
-      majorId: payload.majorId,
-      gradeId: payload.gradeId,
-      provinceId: payload.provinceId,
-      phone: payload.phone,
-      nickname: payload.nickname,
-      gender: payload.gender,
-      avatarUrl: payload.avatarUrl
-    },
+    data: payload,
     success: function (res) {
       callback(null, res)
     }

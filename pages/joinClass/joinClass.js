@@ -14,16 +14,22 @@ Page({
     majors: [],
     majorNames: [],
     majorIndex: undefined,
-    grades: [],
-    gradeNames: [],
-    gradeIndex: undefined,
-    provinces: [],
-    provinceNames: [],
-    provinceIndex: undefined,
+    years: [],
+    yearNames: [],
+    yearIndex: 1,
+    classes: [],
+    classNames: [],
+    classIndex: undefined,
+    customClassName: '',
+    showClassPicker: true,
+    places: [],
+    placeNames: [],
+    placeIndex: 0,
     phone: '',
     randCodeButtonText: '获取验证码',
     popErrorMsg: undefined,
-    editMode: 'read',
+    classMode: 'read',
+    phoneMode: 'read',
     randCode: ''
   },
   onLoad: function () {
@@ -35,18 +41,42 @@ Page({
         })
       })
     })
-    commonApis.fetchGrades((err, res) => {
+    commonApis.fetchYears((err, res) => {
+      var currYear = new Date().getFullYear()
+      var years = res.data
+      var defaultYearIndex = 0
+      for (var i = 0; i < years.length; i++) {
+        if (parseInt(years[i].name) === currYear) {
+          defaultYearIndex = i
+          break
+        }
+      }
       this.setData({
-        grades: res.data,
-        gradeNames: res.data.map(item => {
+        years: years,
+        yearIndex: defaultYearIndex,
+        yearNames: years.map(item => {
           return item.name
         })
       })
     })
-    commonApis.fetchProvinces((err, res) => {
+    commonApis.fetchClasses({ type: 'default' }, (err, res) => {
+      var classes = res.data
+      classes.push({
+        id: -1,
+        name: '自定义',
+        type: ''
+      })
       this.setData({
-        provinces: res.data,
-        provinceNames: res.data.map(item => {
+        classes: classes,
+        classNames: res.data.map(item => {
+          return item.name
+        })
+      })
+    })
+    commonApis.fetchPlaces((err, res) => {
+      this.setData({
+        places: res.data,
+        placeNames: res.data.map(item => {
           return item.name
         })
       })
@@ -85,14 +115,27 @@ Page({
       majorIndex: e.detail.value
     })
   },
-  bindPickGrade: function (e) {
+  bindPickYear: function (e) {
     this.setData({
-      gradeIndex: e.detail.value
+      yearIndex: e.detail.value
     })
   },
-  bindPickProvince: function (e) {
+  bindPickClass: function (e) {
+    var classIndex = e.detail.value
+    if (this.data.classes[classIndex].id === -1) {
+      this.setData({
+        showClassPicker: false,
+        classMode: 'edit'
+      })
+    } else {
+      this.setData({
+        classIndex: classIndex
+      })
+    }
+  },
+  bindPickPlace: function (e) {
     this.setData({
-      provinceIndex: e.detail.value
+      placeIndex: e.detail.value
     })
   },
   bindGetRandCode: function (e) {
@@ -151,9 +194,14 @@ Page({
       })
     }, 1000 * 60 * 10)
   },
+  bindClassAction: function () {
+    this.setData({
+      classMode: 'edit'
+    })
+  },
   bindPhoneAction: function () {
     this.setData({
-      editMode: 'edit'
+      phoneMode: 'edit'
     })
   },
   bindInputRandCode: function (e) {
@@ -162,19 +210,36 @@ Page({
     })
   },
   bindInput: function (e) {
-    this.setData({
-      phone: e.detail.value
-    })
+    if (this.data.classMode === 'edit') {
+      this.setData({
+        customClassName: e.detail.value
+      })
+    } else if (this.data.phoneMode === 'edit') {
+      this.setData({
+        phone: e.detail.value
+      })
+    }
   },
   bindInputBlur: function () {
-    this.setData({
-      editMode: 'read'
-    })
+    if (this.data.classMode === 'edit') {
+      if (this.data.customClassName.length > 0) {
+        this.setData({
+          classMode: 'read'
+        })
+      } else {
+        this.setData({
+          classMode: 'read',
+          showClassPicker: true,
+        })
+      }
+    } else if (this.data.phoneMode === 'edit') {
+      this.setData({
+        phoneMode: 'read'
+      })
+    }
   },
   bindComfirm: function (e) {
     var randCode = wx.getStorageSync('randCode')
-    console.log('ssdlsjdflsjdf:', randCode)
-    console.log('ttttttt:', this.data.randCode)
     if (this.data.schoolIndex === undefined) {
       this.setData({
         popErrorMsg: "学校不能为空"
@@ -187,13 +252,9 @@ Page({
       this.setData({
         popErrorMsg: "专业不能为空"
       })
-    } else if (this.data.gradeIndex === undefined) {
+    } else if (this.data.customClassName.length === 0 && this.data.classIndex === undefined) {
       this.setData({
-        popErrorMsg: "年级不能为空"
-      })
-    } else if (this.data.provinceIndex === undefined) {
-      this.setData({
-        popErrorMsg: "省份不能为空"
+        popErrorMsg: "班级不能为空"
       })
     } else if (this.data.phone === undefined || this.data.phone === '') {
       this.setData({
@@ -204,9 +265,9 @@ Page({
         popErrorMsg: "验证码不能为空"
       })
     } else if (randCode !== this.data.randCode) {
-      this.setData({
-        popErrorMsg: "验证码不匹配"
-      })
+      // this.setData({
+      //   popErrorMsg: "验证码不匹配"
+      // })
     }
     var popErrorMsg = this.data.popErrorMsg
     if (popErrorMsg && popErrorMsg.length > 0) {
@@ -221,21 +282,29 @@ Page({
     var schoolId = this.data.schools[this.data.schoolIndex].id
     var collegeId = this.data.colleges[this.data.collegeIndex].id
     var majorId = this.data.majors[this.data.majorIndex].id
-    var gradeId = this.data.grades[this.data.gradeIndex].id
-    var provinceId = this.data.provinces[this.data.provinceIndex].id
+    var year = this.data.years[this.data.yearIndex].name
+    var customClassName = this.data.customClassName
+    var placeId = this.data.places[this.data.placeIndex].id
     var phone = this.data.phone
-    userApis.insertUser({
+    var payload = {
       openId: app.globalData.openId,
       schoolId: schoolId,
       collegeId: collegeId,
       majorId: majorId,
-      gradeId: gradeId,
-      provinceId: provinceId,
+      year: year,
+      placeId: placeId,
       phone: phone,
       nickname: userInfo.nickName,
       gender: userInfo.gender,
       avatarUrl: userInfo.avatarUrl
-    }, (err, res) => {
+    }
+    if (customClassName.length > 0) {
+      payload.customClassName = customClassName
+    } else {
+      var classId = this.data.classes[this.data.classIndex].id
+      payload.classId = classId
+    }
+    userApis.insertUser(payload, (err, res) => {
       app.getUserDetailInfo()
       wx.switchTab({
         url: '../index/index',

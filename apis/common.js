@@ -46,12 +46,15 @@ function fetchMajors(collegeId, callback) {
   })
 }
 
-function fetchGrades(callback) {
+function fetchClasses(payload,callback) {
   wx.request({
-    url: constants.SERVER_ADDRESS + '/grades',
+    url: constants.SERVER_ADDRESS + '/classes',
     method: 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    data: {
+      type: payload.type
     },
     success: function (res) {
       callback(null, res)
@@ -72,9 +75,9 @@ function fetchYears(callback) {
   })
 }
 
-function fetchSeasons(callback) {
+function fetchPlaces(callback) {
   wx.request({
-    url: constants.SERVER_ADDRESS + '/seasons',
+    url: constants.SERVER_ADDRESS + '/places',
     method: 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -131,10 +134,10 @@ module.exports = {
   fetchSchools: fetchSchools,
   fetchColleges: fetchColleges,
   fetchMajors: fetchMajors,
-  fetchGrades: fetchGrades,
   fetchYears: fetchYears,
-  fetchSeasons: fetchSeasons,
+  fetchClasses: fetchClasses,
   fetchProvinces: fetchProvinces,
+  fetchPlaces: fetchPlaces,
   fetchCategories: fetchCategories,
   fetchConfig: fetchConfig
 }

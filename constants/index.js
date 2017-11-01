@@ -1,5 +1,6 @@
 // const SERVER_ADDRESS = 'https://api.sa9051.top'
-const SERVER_ADDRESS = 'https://zaizhi.bjzhishanzhimei.com'
+// const SERVER_ADDRESS = 'https://zaizhi.bjzhishanzhimei.com'
+const SERVER_ADDRESS = 'http://47.95.114.220:8080'
 
 const QINIU_REGION = 'NCN'
 const QINIU_UPTOKEN = 'me0n-EolWG-KGgXau-Bcm4UWpjS61ssZu288V5bl:zkJcMRK6Sp9rN6k8OHh0KolDKDY=:eyJzY29wZSI6InlhY2h0ZXIiLCJkZWFkbGluZSI6MTYzODU1MjE4M30='

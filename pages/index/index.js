@@ -15,7 +15,6 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    wx.showNavigationBarLoading()
     commonApis.fetchCategories('notice', (err, res) => {
       that.setData({
         categories: res.data,
@@ -24,6 +23,7 @@ Page({
         })
       })
     })
+    wx.showNavigationBarLoading()
     var interval = setInterval(() => {
       var openId = app.globalData.userDetailInfo.open_id
       if (openId && openId.length > 0) {
