@@ -73,19 +73,11 @@ Page({
         })
       })
     })
-    commonApis.fetchPlaces((err, res) => {
-      this.setData({
-        places: res.data,
-        placeNames: res.data.map(item => {
-          return item.name
-        })
-      })
-    })
   },
   bindPickSchool: function (e) {
     var schoolIndex = e.detail.value
     var school = this.data.schools[schoolIndex]
-    commonApis.fetchColleges(school.id, (err, res) => {
+    commonApis.fetchColleges({ schoolId: school.id }, (err, res) => {
       this.setData({
         colleges: res.data,
         collegeNames: res.data.map(item => {
@@ -96,11 +88,20 @@ Page({
         majorIndex: undefined,
       })
     })
+    commonApis.fetchPlaces({ schoolId: school.id }, (err, res) => {
+      this.setData({
+        places: res.data,
+        placeNames: res.data.map(item => {
+          return item.name
+        })
+      })
+    })
   },
   bindPickCollege: function (e) {
     var collegeIndex = e.detail.value
     var college = this.data.colleges[collegeIndex]
-    commonApis.fetchMajors(college.id, (err, res) => {
+    var year = parseInt(this.data.years[this.data.yearIndex].name)
+    commonApis.fetchMajors({ collegeId: college.id, year: year }, (err, res) => {
       this.setData({
         majors: res.data,
         majorNames: res.data.map(item => {
@@ -116,9 +117,24 @@ Page({
     })
   },
   bindPickYear: function (e) {
-    this.setData({
-      yearIndex: e.detail.value
-    })
+    var yearIndex = e.detail.value
+    var year = parseInt(this.data.years[yearIndex].name)
+    if (this.data.collegeIndex !== undefined) {
+      var collegeId = this.data.colleges[this.data.collegeIndex].id
+      commonApis.fetchMajors({ collegeId: collegeId, year: year }, (err, res) => {
+        this.setData({
+          majors: res.data,
+          majorNames: res.data.map(item => {
+            return item.name
+          }),
+          yearIndex: yearIndex
+        })
+      })
+    } else {
+      this.setData({
+        yearIndex: yearIndex
+      })
+    }
   },
   bindPickClass: function (e) {
     var classIndex = e.detail.value

@@ -14,7 +14,7 @@ function fetchSchools(callback) {
   })
 }
 
-function fetchColleges(schoolId,callback) {
+function fetchColleges(payload,callback) {
   wx.request({
     url: constants.SERVER_ADDRESS + '/colleges',
     method: 'POST',
@@ -22,7 +22,7 @@ function fetchColleges(schoolId,callback) {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
     data: {
-      schoolId: schoolId
+      schoolId: payload.schoolId
     },
     success: function (res) {
       callback(null, res)
@@ -30,7 +30,7 @@ function fetchColleges(schoolId,callback) {
   })
 }
 
-function fetchMajors(collegeId, callback) {
+function fetchMajors(payload, callback) {
   wx.request({
     url: constants.SERVER_ADDRESS + '/majors',
     method: 'POST',
@@ -38,7 +38,8 @@ function fetchMajors(collegeId, callback) {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
     data: {
-      collegeId: collegeId
+      collegeId: payload.collegeId,
+      year: payload.year
     },
     success: function (res) {
       callback(null, res)
@@ -75,12 +76,15 @@ function fetchYears(callback) {
   })
 }
 
-function fetchPlaces(callback) {
+function fetchPlaces(payload,callback) {
   wx.request({
     url: constants.SERVER_ADDRESS + '/places',
     method: 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    data: {
+      schoolId: payload.schoolId
     },
     success: function (res) {
       callback(null, res)
