@@ -37,12 +37,14 @@ Page({
   loadBanners: function () {
     var noticeType = this.data.noticeType
     var collegeId = app.globalData.userDetailInfo.college_id
-    var gradeId = app.globalData.userDetailInfo.grade_id
+    var schoolId = app.globalData.userDetailInfo.school_id
+    var majorId = app.globalData.userDetailInfo.major_id
     bannerApis.queryBanners({
       module: 'notice',
       type: noticeType,
       collegeId: collegeId,
-      gradeId: noticeType === 'class' ? gradeId : 0,
+      schoolId: schoolId,
+      majorId: majorId
     }, (err, res) => {
       this.setData({
         bannerInfo: {
@@ -58,6 +60,7 @@ Page({
   loadNotices: function () {
     noticeApis.queryNotices({
       type: this.data.noticeType,
+      schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
       majorId: app.globalData.userDetailInfo.major_id,
       placeId: app.globalData.userDetailInfo.place_id,
@@ -65,6 +68,7 @@ Page({
       page: 0,
       count: 10
     }, (err, result) => {
+      console.log(result)
       this.setData({
         notices: this.parseNoticeDatas(result.data),
         currPage: 0
@@ -110,6 +114,7 @@ Page({
   onPullDownRefresh: function () {
     noticeApis.queryNotices({
       type: this.data.noticeType,
+      schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
       majorId: app.globalData.userDetailInfo.major_id,
       placeId: app.globalData.userDetailInfo.place_id,
@@ -127,6 +132,7 @@ Page({
   onReachBottom: function () {
     noticeApis.queryNotices({
       type: this.data.noticeType,
+      schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
       majorId: app.globalData.userDetailInfo.major_id,
       placeId: app.globalData.userDetailInfo.place_id,

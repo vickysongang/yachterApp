@@ -13,13 +13,13 @@ Page({
     this.loadSchedules()
   },
   loadBanners: function () {
-    var noticeType = this.data.noticeType
+    var schoolId = app.globalData.userDetailInfo.school_id
     var collegeId = app.globalData.userDetailInfo.college_id
     bannerApis.queryBanners({
       module: 'schedule',
       type: 'schedule',
       collegeId: collegeId,
-      gradeId: 0,
+      schoolId: schoolId
     }, (err, res) => {
       this.setData({
         bannerInfo: {

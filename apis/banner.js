@@ -7,12 +7,7 @@ function queryBanners(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      module: payload.module,
-      type: payload.type,
-      collegeId: payload.collegeId,
-      gradeId: payload.gradeId
-    },
+    data: payload,
     success: function (res) {
       callback(null, res)
     }
