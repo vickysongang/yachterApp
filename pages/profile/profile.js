@@ -7,8 +7,7 @@ Page({
     userInfo: {},
     schoolName: '',
     collegeName: '',
-    majorName: '',
-    gradeName: ''
+    majorName: ''
   },
   onLoad: function () {
     var that = this
@@ -21,8 +20,7 @@ Page({
         that.setData({
           schoolName: data.school_name,
           collegeName: data.college_name,
-          majorName: data.major_name,
-          gradeName: data.grade_name
+          majorName: data.major_name
         })
       }
     })

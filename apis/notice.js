@@ -7,18 +7,7 @@ function insertNotice(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      openId: payload.openId,
-      title: payload.title,
-      content: payload.content,
-      type: payload.type,
-      categoryName: payload.categoryName,
-      images: payload.images,
-      schoolId: payload.schoolId,
-      collegeId: payload.collegeId,
-      gradeId: payload.type === 'class' ? payload.gradeId : 0,
-      approveFlag: payload.approveFlag
-    },
+    data:payload,
     success: function (res) {
       callback(null, res)
     }
@@ -32,13 +21,7 @@ function queryNotices(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      type: payload.type,
-      collegeId: payload.collegeId,
-      gradeId: payload.type === 'class' ? payload.gradeId : 0,
-      page: payload.page,
-      count: payload.count
-    },
+    data: payload,
     success: function (res) {
       callback(null, res)
     }

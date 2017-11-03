@@ -7,17 +7,7 @@ function insertExam(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      openId: payload.openId,
-      title: payload.title,
-      content: payload.content,
-      type: payload.type,
-      categoryName: payload.categoryName,
-      images: payload.images,
-      schoolId:payload.schoolId,
-      collegeId: payload.collegeId,
-      approveFlag: payload.approveFlag,
-    },
+    data: payload,
     success: function (res) {
       callback(null, res)
     }
@@ -31,12 +21,7 @@ function queryExams(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      type: payload.type,
-      collegeId: payload.collegeId,
-      page: payload.page,
-      count: payload.count
-    },
+    data: payload,
     success: function (res) {
       callback(null, res)
     }

@@ -218,6 +218,7 @@ Page({
         images: images,
         schoolId: userDetailInfo.school_id,
         collegeId: userDetailInfo.college_id,
+        placeId: userDetailInfo.place_id,
         approveFlag: approveFlag
       }, (err, res) => {
           wx.hideLoading()

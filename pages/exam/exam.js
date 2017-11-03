@@ -29,11 +29,12 @@ Page({
   },
   loadBanners: function () {
     var collegeId = app.globalData.userDetailInfo.college_id
+    var placeId = app.globalData.userDetailInfo.place_id
     bannerApis.queryBanners({
       module: 'exam',
       type: this.data.examType,
       collegeId: collegeId,
-      gradeId: 0,
+      placeId: placeId,
     }, (err, res) => {
       this.setData({
         bannerInfo: {
@@ -50,6 +51,7 @@ Page({
     examApis.queryExams({
       type: this.data.examType,
       collegeId: app.globalData.userDetailInfo.college_id,
+      placeId: app.globalData.userDetailInfo.place_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -79,6 +81,7 @@ Page({
     examApis.queryExams({
       type: this.data.examType,
       collegeId: app.globalData.userDetailInfo.college_id,
+      placeId: app.globalData.userDetailInfo.place_id,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -93,6 +96,7 @@ Page({
     examApis.queryExams({
       type: this.data.examType,
       collegeId: app.globalData.userDetailInfo.college_id,
+      placeId: app.globalData.userDetailInfo.place_id,
       page: this.data.currPage + 1,
       count: 10
     }, (err, result) => {

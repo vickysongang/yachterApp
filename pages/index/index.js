@@ -59,7 +59,9 @@ Page({
     noticeApis.queryNotices({
       type: this.data.noticeType,
       collegeId: app.globalData.userDetailInfo.college_id,
-      gradeId: app.globalData.userDetailInfo.grade_id,
+      majorId: app.globalData.userDetailInfo.major_id,
+      placeId: app.globalData.userDetailInfo.place_id,
+      year: app.globalData.userDetailInfo.year,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -109,7 +111,9 @@ Page({
     noticeApis.queryNotices({
       type: this.data.noticeType,
       collegeId: app.globalData.userDetailInfo.college_id,
-      gradeId: app.globalData.userDetailInfo.grade_id,
+      majorId: app.globalData.userDetailInfo.major_id,
+      placeId: app.globalData.userDetailInfo.place_id,
+      year: app.globalData.userDetailInfo.year,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -124,7 +128,9 @@ Page({
     noticeApis.queryNotices({
       type: this.data.noticeType,
       collegeId: app.globalData.userDetailInfo.college_id,
-      gradeId: app.globalData.userDetailInfo.grade_id,
+      majorId: app.globalData.userDetailInfo.major_id,
+      placeId: app.globalData.userDetailInfo.place_id,
+      year: app.globalData.userDetailInfo.year,
       page: this.data.currPage + 1,
       count: 10
     }, (err, result) => {

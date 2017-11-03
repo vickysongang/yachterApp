@@ -206,7 +206,9 @@ Page({
         images: images,
         schoolId: userDetailInfo.school_id,
         collegeId: userDetailInfo.college_id,
-        gradeId: userDetailInfo.grade_id,
+        majorId: userDetailInfo.major_id,
+        placeId: userDetailInfo.place_id,
+        year: userDetailInfo.year,
         approveFlag: approveFlag
       }, (err, res) => {
         wx.hideLoading()
@@ -214,11 +216,11 @@ Page({
           wx.showModal({
             title: '提示',
             content: '通知已发布，请耐心等待审核！',
-            showCancel:false,
+            showCancel: false,
             success: function (res) {
               if (res.confirm) {
                 wx.navigateBack({})
-              } 
+              }
             }
           })
         } else {
