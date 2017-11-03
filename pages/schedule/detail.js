@@ -14,6 +14,7 @@ Page({
     }
   },
   onLoad: function (options) {
+    console.log('ssssss:', options)
     var id = options.id
     var that = this
     this.setData({
@@ -30,7 +31,7 @@ Page({
         this.setData({
           detailInfo: {
             id: id,
-            title: detail.year + detail.seasonName + '班课表',
+            title: options.title,
             pubTime: detail.pubTime,
             creatorName: detail.creatorName,
             content: detail.content,

@@ -34,6 +34,7 @@ Page({
   },
   loadSchedules: function () {
     scheduleApis.querySchedules({
+      schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
@@ -46,6 +47,7 @@ Page({
   },
   onPullDownRefresh: function () {
     scheduleApis.querySchedules({
+      schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
       page: 0,
       count: 10
@@ -59,6 +61,7 @@ Page({
   },
   onReachBottom: function () {
     scheduleApis.querySchedules({
+      schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
       page: this.data.currPage + 1,
       count: 10
@@ -82,15 +85,22 @@ Page({
   },
   bindNavToScheduleDetail: function (event) {
     var id = event.currentTarget.dataset.id
+    var data = this.data
+    var schedules = data.schedules.filter((item)=>{
+      return item.id === parseInt(id)
+    })
+    var schedule = schedules[0]
+    var title = schedule.collegeName + schedule.placeName + schedule.year + '年' + schedule.className + '班'
     wx.navigateTo({
-      url: './detail?id=' + id,
+      url: './detail?id=' + id + '&title=' + title,
     })
   },
   navToBannerDetail: function (e) {
     var id = e.currentTarget.dataset.bannerid
-    wx.navigateTo({
-      url: '../banner/detail?id=' + id,
-    })
+    var title =
+      wx.navigateTo({
+        url: '../banner/detail?id=' + id
+      })
   },
   bindPublishSchedule: function (event) {
     wx.navigateTo({

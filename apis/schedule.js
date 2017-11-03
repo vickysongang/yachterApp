@@ -7,15 +7,7 @@ function insertSchedule(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      openId: payload.openId,
-      collegeId: payload.collegeId,
-      schoolId: payload.schoolId,
-      content: payload.content,
-      year: payload.year,
-      seasonId: payload.seasonId,
-      images: payload.images
-    },
+    data: payload,
     success: function (res) {
       callback(null, res)
     }
@@ -29,11 +21,7 @@ function querySchedules(payload, callback) {
     header: {
       'content-type': 'application/x-www-form-urlencoded' // 默认值
     },
-    data: {
-      collegeId: payload.collegeId,
-      page: payload.page,
-      count: payload.count
-    },
+    data: payload,
     success: function (res) {
       callback(null, res)
     }

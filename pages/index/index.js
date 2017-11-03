@@ -68,7 +68,6 @@ Page({
       page: 0,
       count: 10
     }, (err, result) => {
-      console.log(result)
       this.setData({
         notices: this.parseNoticeDatas(result.data),
         currPage: 0

@@ -4,12 +4,12 @@
   <view>
     <template is="fieldCell" data="{{label:'学院', value:collegeName}}" />
     <view class='divider-line'></view>
-    <picker bindchange="bindPickYear" value="{{yearIndex}}" range="{{yearNames}}">
-      <template is="fieldCell" data="{{label:'年度', value:years[yearIndex].name}}" />
-    </picker>
+    <template is="fieldCell" data="{{label:'专业', value:majorName}}" />
     <view class='divider-line'></view>
-    <picker bindchange="bindPickSeason" value="{{seasonIndex}}" range="{{seasonNames}}">
-      <template is="fieldCell" data="{{label:'季度', value:seasons[seasonIndex].name}}" />
+    <template is="fieldCell" data="{{label:'就读地点', value:placeName}}" />
+    <view class='divider-line'></view>
+    <picker bindchange="bindPickYear" value="{{yearIndex}}" range="{{yearNames}}">
+      <template is="fieldCell" data="{{label:'入学年份', value:years[yearIndex].name}}" />
     </picker>
     <view class='divider-line'></view>
     <template is="fieldCell" data="{{label:'发布人', value:userInfo.nickName}}" />

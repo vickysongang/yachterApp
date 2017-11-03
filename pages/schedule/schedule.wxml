@@ -2,8 +2,8 @@
 <view>
   <template is="banner" data="{{...bannerInfo}}" wx:if="{{bannerInfo.banners.length >0}}" />
   <view class='schedule-list-view'>
-    <block wx:for="{{schedules}}" wx:for-item="item" wx:key="{{id}}">
-      <template is="scheduleCell" data="{{...item}}" />
+    <block wx:for="{{schedules}}" wx:for-item="item" wx:for-index="idx" wx:key="{{id}}">
+      <template is="scheduleCell" data="{{...item,index:idx}}" />
     </block>
   </view>
   <view class='publish-button-view'>

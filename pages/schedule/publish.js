@@ -15,15 +15,14 @@ Page({
     collegeName: '',
     majorId: undefined,
     majorName: '',
-    gradeId: undefined,
-    gradeName: '',
+    placeId: undefined,
+    placeName: '',
+    classId:undefined,
+    className:'',
     imageList: [],
     years: [],
     yearNames: [],
-    yearIndex: 0,
-    seasons: [],
-    seasonNames: [],
-    seasonIndex: 0
+    yearIndex: 0
   },
   onLoad: function () {
     var that = this
@@ -31,36 +30,42 @@ Page({
       userInfo: app.globalData.userInfo
     })
     commonApis.fetchYears((err, res) => {
+      var currYear = new Date().getFullYear()
+      var years = res.data
+      var defaultYearIndex = 0
+      for (var i = 0; i < years.length; i++) {
+        if (parseInt(years[i].name) === currYear) {
+          defaultYearIndex = i
+          break
+        }
+      }
       that.setData({
-        years: res.data,
-        yearNames: res.data.map(item => {
+        years: years,
+        yearIndex: defaultYearIndex,
+        yearNames: years.map(item => {
           return item.name
         })
       })
     })
-    commonApis.fetchSeasons((err, res) => {
-      that.setData({
-        seasons: res.data,
-        seasonNames: res.data.map(item => {
-          return item.name
+
+    userApis.queryUserInfoById(app.globalData.openId, (err, res) => {
+      if (res.data.length > 0) {
+        var data = res.data[0]
+        that.setData({
+          schoolId: data.school_id,
+          schoolName: data.school_name,
+          collegeId: data.college_id,
+          collegeName: data.college_name,
+          majorId: data.major_id,
+          majorName: data.major_name,
+          year: data.year,
+          placeId: data.place_id,
+          placeName: data.place_name,
+          classId:data.class_id,
+          className: data.class_name
         })
-      })
-    }),
-      userApis.queryUserInfoById(app.globalData.openId, (err, res) => {
-        if (res.data.length > 0) {
-          var data = res.data[0]
-          that.setData({
-            schoolId: data.school_id,
-            schoolName: data.school_name,
-            collegeId: data.college_id,
-            collegeName: data.college_name,
-            majorId: data.major_id,
-            majorName: data.major_name,
-            gradeId: data.grade_id,
-            gradeName: data.grade_name
-          })
-        }
-      })
+      }
+    })
   },
   bindPickYear: function (e) {
     var yearIndex = e.detail.value
@@ -123,6 +128,8 @@ Page({
     var openId = app.globalData.openId
     var collegeId = this.data.collegeId
     var schoolId = this.data.schoolId
+    var placeId = this.data.placeId
+    var classId = this.data.classId
     var content = this.data.content
     var imageList = this.data.imageList
     wx.showLoading({
@@ -138,7 +145,8 @@ Page({
         schoolId: schoolId,
         content: content,
         year: this.data.years[this.data.yearIndex].name,
-        seasonId: this.data.seasons[this.data.seasonIndex].id,
+        placeId: placeId,
+        classId: classId,
         images: imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
       }, (err, res) => {
         var pages = getCurrentPages();

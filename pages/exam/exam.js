@@ -56,7 +56,6 @@ Page({
       page: 0,
       count: 10
     }, (err, result) => {
-      console.log()
       this.setData({
         exams: this.parseExamDatas(result.data),
         currPage: 0
