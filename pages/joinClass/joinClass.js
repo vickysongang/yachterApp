@@ -272,6 +272,10 @@ Page({
       this.setData({
         popErrorMsg: "班级不能为空"
       })
+    } else if (this.data.customClassName.length > 2) {
+      this.setData({
+        popErrorMsg: "班级名称不能超过两个字"
+      })
     } else if (this.data.phone === undefined || this.data.phone === '') {
       this.setData({
         popErrorMsg: "手机号码不能为空"

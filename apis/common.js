@@ -14,6 +14,22 @@ function fetchSchools(callback) {
   })
 }
 
+function getSchoolDetail(schoolId,callback) {
+  wx.request({
+    url: constants.SERVER_ADDRESS + '/school/detail',
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    data: {
+      schoolId: schoolId
+    },
+    success: function (res) {
+      callback(null, res)
+    }
+  })
+}
+
 function fetchColleges(payload,callback) {
   wx.request({
     url: constants.SERVER_ADDRESS + '/colleges',
@@ -136,6 +152,7 @@ function fetchConfig(callback) {
 
 module.exports = {
   fetchSchools: fetchSchools,
+  getSchoolDetail: getSchoolDetail,
   fetchColleges: fetchColleges,
   fetchMajors: fetchMajors,
   fetchYears: fetchYears,

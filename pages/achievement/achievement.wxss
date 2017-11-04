@@ -21,3 +21,11 @@
 .reset_button {
   width: 85%;
 }
+
+.main-container-nodata {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 50rpx;
+}

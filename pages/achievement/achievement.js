@@ -1,13 +1,23 @@
 const achievementApis = require('../../apis/achievement.js')
+const commonApis = require('../../apis/common.js')
 var app = getApp()
 Page({
   data: {
     bh: '',
     sfzh: '',
     loading: false,
-    popErrorMsg: ''
+    popErrorMsg: '',
+    canQueryScore: false
   },
   onLoad: function () {
+    var userDetailInfo = app.globalData.userDetailInfo
+    commonApis.getSchoolDetail(userDetailInfo.school_id, (err,res)=>{
+      if(res.data && res.data.length > 0){
+        this.setData({
+          canQueryScore: res.data[0].can_query_score === 'Y'
+        })
+      }
+    })
     var queryInfo = wx.getStorageSync('queryInfo')
     if (queryInfo) {
       this.setData({

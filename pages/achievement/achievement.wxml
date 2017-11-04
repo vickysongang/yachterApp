@@ -1,5 +1,5 @@
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
-<view class="main-container">
+<view class="main-container" wx:if='{{canQueryScore}}'>
   <text class='tip-text'>同等学力学员考试成绩查询</text>
   <input class='input-style' placeholder='资格卡号(或姓名)' value='{{bh}}' bindinput='bindBhInput'></input>
   <input class='input-style' style='margin-top:20rpx;' placeholder='身份证号' type='number' value='{{sfzh}}' bindinput='bindSfzhInput'></input>
@@ -8,4 +8,7 @@
   </text>
   <button type="primary" size="{{default}}" loading="{{loading}}" plain="{{false}}" disabled="{{false}}" bindtap="primary" class='query_button' bindtap='bindQueryAction'> 查询 </button>
   <button type="default" size="{{default}}" loading="{{false}}" plain="{{false}}" disabled="{{false}}" bindtap="default" class='reset_button' bindtap='bindResetAction'> 重置 </button>
+</view>
+<view class="main-container-nodata" wx:if='{{!canQueryScore}}'>
+  <text class='tip-text'>对不起，你所在学校的成绩查询功能暂未上线！</text>
 </view>
