@@ -130,6 +130,7 @@ Page({
     var schoolId = this.data.schoolId
     var placeId = this.data.placeId
     var classId = this.data.classId
+    var majorId = this.data.majorId
     var content = this.data.content
     var imageList = this.data.imageList
     wx.showLoading({
@@ -147,6 +148,7 @@ Page({
         year: this.data.years[this.data.yearIndex].name,
         placeId: placeId,
         classId: classId,
+        majorId: majorId,
         images: imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
       }, (err, res) => {
         var pages = getCurrentPages();

@@ -1,5 +1,5 @@
 // const SERVER_ADDRESS = 'https://api.sa9051.top'
-const SERVER_ADDRESS = 'http://zaizhi.bjzhishanzhimei.com:8080'
+const SERVER_ADDRESS = 'https://zaizhi.bjzhishanzhimei.com'
 // const SERVER_ADDRESS = 'http://47.95.114.220:8080'
 
 const QINIU_REGION = 'NCN'

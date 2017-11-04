@@ -90,7 +90,7 @@ Page({
       return item.id === parseInt(id)
     })
     var schedule = schedules[0]
-    var title = schedule.collegeName + schedule.placeName + schedule.year + '年' + schedule.className + '班'
+    var title = schedule.collegeName + schedule.year + '年' + schedule.majorName
     wx.navigateTo({
       url: './detail?id=' + id + '&title=' + title,
     })

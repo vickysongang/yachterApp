@@ -14,7 +14,6 @@ Page({
     }
   },
   onLoad: function (options) {
-    console.log('ssssss:', options)
     var id = options.id
     var that = this
     this.setData({
