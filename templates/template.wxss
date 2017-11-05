@@ -190,6 +190,7 @@
 .schedule-text {
   font-size: 36rpx;
   opacity: 0.8;
+  text-align: center;
 }
 
 .detail-title-view {

@@ -68,8 +68,7 @@
   <view bindtap='bindNavToScheduleDetail' data-id='{{id}}'>
     <image src='../../image/{{index%4}}_schedule.png' class='schedule-image' >
       <view class='schedule-cell-view'>
-        <text class='schedule-text'>{{collegeName}}</text>
-        <text class='schedule-text'>{{year + '年'+  majorName}}</text>
+        <text class='schedule-text'>{{collegeName + majorName + year + className + '课表'}}</text>
       </view>
     </image>
   </view>

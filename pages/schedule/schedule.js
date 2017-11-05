@@ -86,11 +86,11 @@ Page({
   bindNavToScheduleDetail: function (event) {
     var id = event.currentTarget.dataset.id
     var data = this.data
-    var schedules = data.schedules.filter((item)=>{
+    var schedules = data.schedules.filter((item) => {
       return item.id === parseInt(id)
     })
     var schedule = schedules[0]
-    var title = schedule.collegeName + schedule.year + '年' + schedule.majorName
+    var title = schedule.collegeName + schedule.majorName + schedule.year + schedule.className + '课表'
     wx.navigateTo({
       url: './detail?id=' + id + '&title=' + title,
     })
