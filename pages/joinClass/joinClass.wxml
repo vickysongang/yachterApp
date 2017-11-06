@@ -1,56 +1,76 @@
 <import src="../../templates/template.wxml" />
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class="main-container">
-  <picker bindchange="bindPickSchool" value="{{schoolIndex}}" range="{{schoolNames}}">
-    <template is="fieldCell" data="{{label:'学校', value:schools[schoolIndex].name}}" />
-  </picker>
-  <view class='divider-line'></view>
-  <picker bindchange="bindPickCollege" value="{{collegeIndex}}" range="{{collegeNames}}">
-    <template is="fieldCell" data="{{label:'学院', value:colleges[collegeIndex].name}}" />
-  </picker>
-  <view class='divider-line'></view>
-  <picker bindchange="bindPickPlace" value="{{placeIndex}}" range="{{placeNames}}">
-    <template is="fieldCell" data="{{label:'就读地点', value:places[placeIndex].name}}" />
-  </picker>
-   <view class='divider-line'></view>
-  <picker bindchange="bindPickYear" value="{{yearIndex}}" range="{{yearNames}}">
-    <template is="fieldCell" data="{{label:'入学年份', value:years[yearIndex].name}}" />
-  </picker>
-  <view class='divider-line'></view>
-  <picker bindchange="bindPickMajor" value="{{majorIndex}}" range="{{majorNames}}">
-    <template is="fieldCell" data="{{label:'专业', value:majors[majorIndex].name}}" />
-  </picker>
-  <view class='divider-line'></view>
-  <picker bindchange="bindPickClass" value="{{classIndex}}" range="{{classNames}}" wx:if="{{showClassPicker}}">
-    <template is="fieldCell" data="{{label:'班级', value:classes[classIndex].name}}" />
-  </picker>
-  <view wx:if="{{!showClassPicker}}" bindtap='bindClassAction'>
-    <template is="inputFieldCell" data="{{label:'班级', value:customClassName,placeholder:'请输入班级名称',maxlength:10, type:'text'}}" wx:if="{{classMode === 'edit'}}" />
-    <template is="fieldCell" data="{{label:'班级',value:customClassName}}" wx:if="{{classMode === 'read'}}" />
-  </view>
-  <view class='divider-section'></view>
-  <view bindtap='bindPhoneAction'>
-    <template is="inputFieldCell" data="{{label:'手机号', value:phone,placeholder:'请输入11位手机号', maxlength:11, type:'number'}}" wx:if="{{phoneMode === 'edit'}}" />
-    <template is="fieldCell" data="{{label:'手机号',value:phone}}" wx:if="{{phoneMode === 'read'}}" />
-  </view>
-  <view class='divider-line'></view>
-  <view class='cell-section' style='margin-bottom:10rpx;'>
-    <view class='randCode-left-view'>
-      <input class="randcode-input" placeholder-style='font-size:32rpx;' maxlength="6" type="number" placeholder="输入六位验证码" bindinput='bindInputRandCode' />
+  <view style='overflow:{{showModalStatus ? "hidden":"scroll"}};'>
+    <picker bindchange="bindPickSchool" value="{{schoolIndex}}" range="{{schoolNames}}">
+      <template is="fieldCell" data="{{label:'学校', value:schools[schoolIndex].name}}" />
+    </picker>
+    <view class='divider-line'></view>
+    <picker bindchange="bindPickCollege" value="{{collegeIndex}}" range="{{collegeNames}}">
+      <template is="fieldCell" data="{{label:'学院', value:colleges[collegeIndex].name}}" />
+    </picker>
+    <view class='divider-line'></view>
+    <picker bindchange="bindPickPlace" value="{{placeIndex}}" range="{{placeNames}}">
+      <template is="fieldCell" data="{{label:'就读地点', value:places[placeIndex].name}}" />
+    </picker>
+    <view class='divider-line'></view>
+    <picker bindchange="bindPickYear" value="{{yearIndex}}" range="{{yearNames}}">
+      <template is="fieldCell" data="{{label:'入学年份', value:years[yearIndex].name}}" />
+    </picker>
+    <view class='divider-line'></view>
+    <picker bindchange="bindPickMajor" value="{{majorIndex}}" range="{{majorNames}}">
+      <template is="fieldCell" data="{{label:'专业', value:majors[majorIndex].name}}" />
+    </picker>
+    <view class='divider-line'></view>
+    <view bindtap='bindClassAction' data-status="open">
+      <template is="fieldCell" data="{{label:'班级',value:selectedClassName}}" />
     </view>
-    <view class='randCode-right-view'>
-      <button class='randCode-button' bindtap='bindGetRandCode'>
-        <text class='randCode-label'>{{randCodeButtonText}}</text>
+    <view class='divider-section'></view>
+    <view bindtap='bindPhoneAction'>
+      <template is="inputFieldCell" data="{{label:'手机号', value:phone,placeholder:'请输入11位手机号', maxlength:11, type:'number'}}" wx:if="{{phoneMode === 'edit'}}" />
+      <template is="fieldCell" data="{{label:'手机号',value:phone}}" wx:if="{{phoneMode === 'read'}}" />
+    </view>
+    <view class='divider-line'></view>
+    <view class='cell-section' style='margin-bottom:10rpx;'>
+      <view class='randCode-left-view'>
+        <input class="randcode-input" placeholder-style='font-size:32rpx;' maxlength="6" type="number" placeholder="输入六位验证码" bindinput='bindInputRandCode' />
+      </view>
+      <view class='randCode-right-view'>
+        <button class='randCode-button' bindtap='bindGetRandCode'>
+          <text class='randCode-label'>{{randCodeButtonText}}</text>
+        </button>
+      </view>
+    </view>
+    <view class='divider-line'></view>
+    <view class='finish-button-view'>
+      <button bindtap='bindComfirm' class='finish-button' hover-class='finish-button-hover'>
+        <text class='finish-button-label'>我来啦</text>
       </button>
     </view>
+    <view class='tip-view'>
+      <text class='tip-text'>请慎重填写，不能修改哦</text>
+    </view>
   </view>
-  <view class='divider-line'></view>
-  <view class='finish-button-view'>
-    <button bindtap='bindComfirm' class='finish-button' hover-class='finish-button-hover'>
-      <text class='finish-button-label'>我来啦</text>
-    </button>
+  <!--mask-->
+  <view class="drawer_screen" data-status="close" wx:if="{{showModalStatus}}"></view>
+  <!--content-->
+  <!--使用animation属性指定需要执行的动画-->
+  <view class="drawer_box" wx:if="{{showModalStatus}}">
+    <!--drawer content-->
+    <view class="class_drawer_content">
+      <view class='tag_input_view'>
+        <input class="tag_input" placeholder="最多两个字哦" placeholder-class='tag_input_placeholder' value='{{className}}' bindinput='bindClassInput'></input>
+      </view>
+      <view class='classes_view'>
+        <view class='{{selectedClassIndex === -1 ? "selected_class_cell_1":"class_cell_1"}}' data-index='{{-1}}' bindtap='selectClass' data-classname='{{"不分班"}}'>不分班</view>
+      </view>
+      <view class='classes_view'>
+        <view wx:for="{{defaultClasses}}" wx:for-item="item" wx:for-index="idx" wx:key="idx+1" class='{{selectedClassIndex === (idx+1) ? "selected_class_cell":"class_cell"}}' data-index='{{idx+1}}' bindtap='selectClass' data-classname='{{item.className}}'>{{item.className}}</view>
+      </view>
+    </view>
+    <view class="btn_ok" bindtap="confirmSelectClass" data-status="close">
+      <image src='../../image/xianghaole_2.png' class='btn_ok_image' mode='scaleToFill' />
+    </view>
   </view>
-  <view class='tip-view'>
-    <text class='tip-text'>请慎重填写，不能修改哦</text>
-  </view>
+  <image class='class_btn_cancel_image' src='../../image/guanbi.png' wx:if="{{showModalStatus}}" mode='scaleToFill' bindtap='cancelSelectClass' />
 </view>

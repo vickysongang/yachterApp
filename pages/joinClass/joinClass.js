@@ -2,6 +2,8 @@ const util = require('../../utils/util.js')
 const randCodeApis = require('../../apis/randCode.js')
 const commonApis = require('../../apis/common.js')
 const userApis = require('../../apis/user.js')
+const textUtil = require('../../utils/textUtil.js')
+
 var app = getApp()
 Page({
   data: {
@@ -17,20 +19,19 @@ Page({
     years: [],
     yearNames: [],
     yearIndex: 1,
-    classes: [],
-    classNames: [],
-    classIndex: undefined,
-    customClassName: '',
-    showClassPicker: true,
     places: [],
     placeNames: [],
     placeIndex: 0,
     phone: '',
     randCodeButtonText: '获取验证码',
     popErrorMsg: undefined,
-    classMode: 'read',
     phoneMode: 'read',
-    randCode: ''
+    randCode: '',
+    showModalStatus: false,
+    className: '',
+    selectedClassName: '',
+    selectedClassIndex: undefined,
+    defaultClasses: []
   },
   onLoad: function () {
     commonApis.fetchSchools((err, res) => {
@@ -61,15 +62,9 @@ Page({
     })
     commonApis.fetchClasses({ type: 'default' }, (err, res) => {
       var classes = res.data
-      classes.push({
-        id: -1,
-        name: '自定义',
-        type: ''
-      })
       this.setData({
-        classes: classes,
-        classNames: res.data.map(item => {
-          return item.name
+        defaultClasses: res.data.map(item => {
+          return { className: item.name }
         })
       })
     })
@@ -136,18 +131,91 @@ Page({
       })
     }
   },
-  bindPickClass: function (e) {
-    var classIndex = e.detail.value
-    if (this.data.classes[classIndex].id === -1) {
+  confirmSelectClass: function () {
+    var className = this.data.className
+    var selectedClassIndex = this.data.selectedClassIndex
+    if (selectedClassIndex === -1) {
+      className = '不分班'
+    }
+    if (className === undefined || className.length === 0) {
       this.setData({
-        showClassPicker: false,
-        classMode: 'edit'
+        popErrorMsg: "内容不能为空"
+      })
+    } else if (textUtil.checkSensitiveWord(className)) {
+      this.setData({
+        popErrorMsg: "内容不能包含敏感词"
+      })
+    } else if (className.length > 2 && selectedClassIndex !== -1) {
+      this.setData({
+        popErrorMsg: "不能超过两个字噢"
+      })
+    }
+    var popErrorMsg = this.data.popErrorMsg
+    if (popErrorMsg && popErrorMsg.length > 0) {
+      setTimeout(() => {
+        this.setData({
+          popErrorMsg: ''
+        });
+      }, 1000)
+      return
+    }
+    this.setData({
+      showModalStatus: false,
+      selectedClassIndex: 0,
+      selectedClassName: className,
+      className: ''
+    });
+  },
+  cancelSelectClass: function () {
+    this.setData({
+      showModalStatus: false,
+    });
+  },
+  bindClassAction: function () {
+    var selectedClassIndex = undefined
+    var defaultClasses = this.data.defaultClasses
+    for (var i = 0; i < defaultClasses.length; i++) {
+      if (defaultClasses[i].className === this.data.className) {
+        selectedClassIndex = i + 1
+        break
+      }
+    }
+    this.setData({
+      showModalStatus: true,
+      className: this.data.className,
+      selectedClassIndex: selectedClassIndex
+    });
+  },
+  selectClass: function (e) {
+    var dataset = e.currentTarget.dataset
+    var index = parseInt(dataset.index)
+    var className = dataset.classname
+    if (index === -1) {
+      this.setData({
+        selectedClassIndex: parseInt(index),
+        className: ''
       })
     } else {
       this.setData({
-        classIndex: classIndex
+        selectedClassIndex: parseInt(index),
+        className: className
       })
     }
+  },
+  bindClassInput: function (e) {
+    var className = e.detail.value
+    var selectedClassIndex = 0
+    var defaultClasses = this.data.defaultClasses
+    for (var i = 0; i < defaultClasses.length; i++) {
+      if (defaultClasses[i].className === className) {
+        selectedClassIndex = i + 1
+        break
+      }
+    }
+    this.setData({
+      selectedClassIndex: selectedClassIndex,
+      className: className
+    })
   },
   bindPickPlace: function (e) {
     this.setData({
@@ -210,11 +278,6 @@ Page({
       })
     }, 1000 * 60 * 10)
   },
-  bindClassAction: function () {
-    this.setData({
-      classMode: 'edit'
-    })
-  },
   bindPhoneAction: function () {
     this.setData({
       phoneMode: 'edit'
@@ -226,29 +289,14 @@ Page({
     })
   },
   bindInput: function (e) {
-    if (this.data.classMode === 'edit') {
-      this.setData({
-        customClassName: e.detail.value
-      })
-    } else if (this.data.phoneMode === 'edit') {
+    if (this.data.phoneMode === 'edit') {
       this.setData({
         phone: e.detail.value
       })
     }
   },
   bindInputBlur: function () {
-    if (this.data.classMode === 'edit') {
-      if (this.data.customClassName.length > 0) {
-        this.setData({
-          classMode: 'read'
-        })
-      } else {
-        this.setData({
-          classMode: 'read',
-          showClassPicker: true,
-        })
-      }
-    } else if (this.data.phoneMode === 'edit') {
+    if (this.data.phoneMode === 'edit') {
       this.setData({
         phoneMode: 'read'
       })
@@ -256,6 +304,7 @@ Page({
   },
   bindComfirm: function (e) {
     var randCode = wx.getStorageSync('randCode')
+    var selectedClassName = this.data.selectedClassName
     if (this.data.schoolIndex === undefined) {
       this.setData({
         popErrorMsg: "学校不能为空"
@@ -268,13 +317,9 @@ Page({
       this.setData({
         popErrorMsg: "专业不能为空"
       })
-    } else if (this.data.customClassName.length === 0 && this.data.classIndex === undefined) {
+    } else if (selectedClassName.length === 0) {
       this.setData({
         popErrorMsg: "班级不能为空"
-      })
-    } else if (this.data.customClassName.length > 2) {
-      this.setData({
-        popErrorMsg: "班级名称不能超过两个字"
       })
     } else if (this.data.phone === undefined || this.data.phone === '') {
       this.setData({
@@ -285,9 +330,9 @@ Page({
         popErrorMsg: "验证码不能为空"
       })
     } else if (randCode !== this.data.randCode) {
-      this.setData({
-        popErrorMsg: "验证码不匹配"
-      })
+      // this.setData({
+      //   popErrorMsg: "验证码不匹配"
+      // })
     }
     var popErrorMsg = this.data.popErrorMsg
     if (popErrorMsg && popErrorMsg.length > 0) {
@@ -303,7 +348,6 @@ Page({
     var collegeId = this.data.colleges[this.data.collegeIndex].id
     var majorId = this.data.majors[this.data.majorIndex].id
     var year = this.data.years[this.data.yearIndex].name
-    var customClassName = this.data.customClassName
     var placeId = this.data.places[this.data.placeIndex].id
     var phone = this.data.phone
     var payload = {
@@ -316,13 +360,8 @@ Page({
       phone: phone,
       nickname: userInfo.nickName,
       gender: userInfo.gender,
-      avatarUrl: userInfo.avatarUrl
-    }
-    if (customClassName.length > 0) {
-      payload.customClassName = customClassName
-    } else {
-      var classId = this.data.classes[this.data.classIndex].id
-      payload.classId = classId
+      avatarUrl: userInfo.avatarUrl,
+      customClassName: selectedClassName
     }
     userApis.insertUser(payload, (err, res) => {
       app.getUserDetailInfo()

@@ -150,7 +150,7 @@
 }
 
 .cell-arrow {
-  padding-right: 26rpx;
+  padding-right: 56rpx;
   position: relative;
 }
 
@@ -191,6 +191,7 @@
   font-size: 36rpx;
   opacity: 0.8;
   text-align: center;
+  padding: 10rpx;
 }
 
 .detail-title-view {
