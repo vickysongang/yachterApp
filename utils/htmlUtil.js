@@ -28,7 +28,13 @@ function replaceEscape(htmlStr) {
   return htmlStr
 }
 
+function isHtml(content) {
+  var reg = new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$');
+  return reg.test(content)
+}
+
 module.exports = {
   delHtmlTag,
+  isHtml,
   replaceEscape
 }

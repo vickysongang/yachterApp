@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "./wxParse/wxParse.wxss";
 @import "./templates/template.wxss";
 
 page {

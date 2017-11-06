@@ -1,6 +1,9 @@
 //logs.js
 const util = require('../../utils/util.js')
 const examApis = require('../../apis/exam.js')
+const htmlUtil = require('../../utils/htmlUtil.js')
+var WxParse = require('../../wxParse/wxParse.js')
+
 var app = getApp()
 Page({
   data: {
@@ -31,6 +34,9 @@ Page({
           if (imageStr && imageStr.length > 0) {
             images = imageStr.split(',')
           }
+          if (htmlUtil.isHtml(detail.content)) {
+            WxParse.wxParse('richContent', 'html', detail.content, this, 5);
+          } 
           this.setData({
             detailInfo: {
               id: id,
@@ -38,7 +44,7 @@ Page({
               readCount: detail.read_count,
               pubTime: detail.pubTime,
               creatorName: detail.creatorName,
-              content: detail.content,
+              content: htmlUtil.replaceEscape(detail.content),
               images: images,
               canDelete: app.globalData.openId === detail.openId
             }

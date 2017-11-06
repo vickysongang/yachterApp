@@ -2,6 +2,7 @@
 const util = require('../../utils/util.js')
 const htmlUtil = require('../../utils/htmlUtil.js')
 const noticeApis = require('../../apis/notice.js')
+var WxParse = require('../../wxParse/wxParse.js')
 var app = getApp()
 Page({
   data: {
@@ -32,6 +33,9 @@ Page({
           if (imageStr && imageStr.length > 0) {
             images = imageStr.split(',')
           }
+          if (htmlUtil.isHtml(detail.content)) {
+            WxParse.wxParse('richContent', 'html', detail.content, this, 5);
+          } 
           this.setData({
             detailInfo: {
               id: id,

@@ -1,4 +1,4 @@
 <import src="../../templates/template.wxml" />
 <view class='main-container'>
-  <template is="scheduleDetail" data="{{...detailInfo}}" />
+  <template is="scheduleDetail" data="{{...detailInfo, richContent:richContent}}" />
 </view>

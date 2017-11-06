@@ -31,7 +31,7 @@
 .notice-type-text {
   text-align: center;
   color: #fff;
-  height: 36rpx;
+  height: 72rpx;
   line-height: 36rpx;
 }
 

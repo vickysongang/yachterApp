@@ -1,3 +1,4 @@
+<import src="../wxParse/wxParse.wxml" />
 <template name='noticeImage'>
   <image src='../../image/1_{{color}}.png' wx:if="{{color !== 'other'}}" class='notice-image-view'>
     <view class='notice-type-info-view'>
@@ -19,7 +20,7 @@
         <text class='notice-title-section'>{{title}}</text>
       </view>
       <view class='notice-abstract-view'>
-        {{abstract}}
+        {{abstract || ''}}
       </view>
       <view class='notice-otherinfo-view'>
         <view class='notice-otherinfo-cell-view'>
@@ -66,7 +67,7 @@
 
 <template name='scheduleCell'>
   <view bindtap='bindNavToScheduleDetail' data-id='{{id}}'>
-    <image src='../../image/{{index%4}}_schedule.png' class='schedule-image' >
+    <image src='../../image/{{index%4}}_schedule.png' class='schedule-image'>
       <view class='schedule-cell-view'>
         <text class='schedule-text'>{{collegeName + majorName + year + className + '课表'}}</text>
       </view>
@@ -92,7 +93,7 @@
         <text class='detail-otherinfo-text'>{{pubTime}}
         </text>
       </view>
-      <text class='detail-otherinfo-text'>{{creatorName  || '在职小帮手'}}</text>
+      <text class='detail-otherinfo-text'>{{creatorName || '在职小帮手'}}</text>
       <view bindtap='deleteAction' data-id='{{id}}' wx:if="{{canDelete}}">
         <image src='../../image/delete_1.png' class='delete-image' />
       </view>
@@ -104,7 +105,8 @@
       </block>
     </view>
     <view class='detail-content-view'>
-      <text decode="{{true}}">{{content}}</text>
+      <template is="wxParse" data="{{wxParseData:richContent.nodes}}" wx:if="{{richContent}}" />
+      <text decode="{{true}}" wx:if="{{!richContent}}">{{content}}</text>
     </view>
   </scorll-view>
 </template>
@@ -122,7 +124,7 @@
         <text class='detail-otherinfo-text'>{{pubTime}}
         </text>
       </view>
-      <text class='detail-otherinfo-text'>{{creatorName  || '在职小帮手'}}</text>
+      <text class='detail-otherinfo-text'>{{creatorName || '在职小帮手'}}</text>
       <view bindtap='deleteAction' data-id='{{id}}' wx:if="{{canDelete}}">
         <image src='../../image/delete_1.png' class='delete-image' />
       </view>
@@ -130,11 +132,12 @@
     <view style='height:20rpx' />
     <view class='image-list' wx:if="{{images.length > 0}}">
       <block wx:for="{{images}}" wx:for-item="image" wx:key="{{*this}}">
-        <image src='{{image}}' mode='aspectFit' bindtap="previewImage" data-src="{{image}}" wx:if="{{image}}"/>
+        <image src='{{image}}' mode='aspectFit' bindtap="previewImage" data-src="{{image}}" wx:if="{{image}}" />
       </block>
     </view>
     <view class='detail-content-view'>
-      {{content}}
+      <template is="wxParse" data="{{wxParseData:richContent.nodes}}" wx:if="{{richContent}}" />
+      <text decode="{{true}}" wx:if="{{!richContent}}">{{content}}</text>
     </view>
   </scorll-view>
 </template>

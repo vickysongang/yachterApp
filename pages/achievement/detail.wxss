@@ -14,21 +14,19 @@ page {
 .header-container {
   display: flex;
   flex-direction: row;
-  background: #B0B0B0;
-  padding: 20rpx;
+  background: #f5f5f5;
+  padding: 2rpx;
 }
 
 .odd-row-container {
   display: flex;
   flex-direction: row;
-  padding: 20rpx;
-  background: #E8E8E8;
+  background: #f5f5f5;
 }
 
 .even-row-container {
   display: flex;
   flex-direction: row;
-  padding: 20rpx;
   background: #fff;
 }
 
@@ -39,10 +37,10 @@ page {
 
 .score-text-cell {
   width: 25%;
-   text-align: center;
+  text-align: center;
 }
 
 .date-text-cell {
   width: 25%;
-   text-align: center;
+  text-align: center;
 }
