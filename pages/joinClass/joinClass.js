@@ -330,9 +330,9 @@ Page({
         popErrorMsg: "验证码不能为空"
       })
     } else if (randCode !== this.data.randCode) {
-      // this.setData({
-      //   popErrorMsg: "验证码不匹配"
-      // })
+      this.setData({
+        popErrorMsg: "验证码不匹配"
+      })
     }
     var popErrorMsg = this.data.popErrorMsg
     if (popErrorMsg && popErrorMsg.length > 0) {
