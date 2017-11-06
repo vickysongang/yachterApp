@@ -76,8 +76,20 @@
 }
 
 .class_drawer_content {
-  height: 260px;
+  height: 50%;
   overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+
+.class_drawer_box {
+  width: 90%;
+  overflow: hidden;
+  position: fixed;
+  top: 30%;
+  left: 5%;
+  z-index: 1001;
+  background: #fafafa;
+  margin: -150px 0 0 0rpx;
+  border-radius: 20px;
 }
 
 .classes_view {
@@ -131,7 +143,7 @@
 
 .class_btn_cancel_image {
   position: fixed;
-  top: 85%;
+  top: 80%;
   left: 50%;
   margin-left: -43rpx;
   width: 86rpx;

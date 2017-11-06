@@ -364,6 +364,9 @@ Page({
       customClassName: selectedClassName
     }
     userApis.insertUser(payload, (err, res) => {
+      wx.showToast({
+        title: '加入成功',
+      })
       app.getUserDetailInfo()
       wx.switchTab({
         url: '../index/index',

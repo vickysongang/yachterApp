@@ -55,7 +55,7 @@
   <view class="drawer_screen" data-status="close" wx:if="{{showModalStatus}}"></view>
   <!--content-->
   <!--使用animation属性指定需要执行的动画-->
-  <view class="drawer_box" wx:if="{{showModalStatus}}">
+  <view class="class_drawer_box" wx:if="{{showModalStatus}}">
     <!--drawer content-->
     <view class="class_drawer_content">
       <view class='tag_input_view'>
