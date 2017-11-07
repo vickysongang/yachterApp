@@ -10,5 +10,5 @@
   <button type="default" size="{{default}}" loading="{{false}}" plain="{{false}}" disabled="{{false}}" bindtap="default" class='reset_button' bindtap='bindResetAction'> 重置 </button>
 </view>
 <view class="main-container-nodata" wx:if='{{!canQueryScore}}'>
-  <text class='tip-text'>对不起，你所在学校的成绩查询功能暂未上线！</text>
+  <text class='tip-text'>对不起，你所在学校的成绩查询功能暂未上线。如有你校成绩查询信息，可通过客服联系。</text>
 </view>
