@@ -3,6 +3,14 @@
   flex-direction: column;
 }
 
+.header-text {
+  color: #919191;
+  padding: 10rpx;
+  text-align: center;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
 .tip-text {
   color: #919191;
   padding: 20rpx;

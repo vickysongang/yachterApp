@@ -1,7 +1,8 @@
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
 <view class="main-container" wx:if='{{canQueryScore}}'>
-  <text class='tip-text'>同等学力学员考试成绩查询</text>
-  <input class='input-style' placeholder='资格卡号(或姓名)' value='{{bh}}' bindinput='bindBhInput'></input>
+  <text class='header-text'>中国人民大学</text>
+  <text class='header-text'>同等学力学员考试成绩查询</text>
+  <input class='input-style' placeholder='资格卡号(或姓名)' value='{{bh}}' bindinput='bindBhInput' style='margin-top:20rpx;'></input>
   <input class='input-style' style='margin-top:20rpx;' placeholder='身份证号' type='number' value='{{sfzh}}' bindinput='bindSfzhInput'></input>
   <text class='tip-text'>
     注:题库课程若两次以上参加考试并不及格,以最高成绩为准;成绩数据为实时更新，已经考试但是还没有成绩的同学一定联系所申请学院要求及时更新成绩，否则后果自负。所有成绩都通过的同学请及时联系申请院系为后期的答辩做好准备。

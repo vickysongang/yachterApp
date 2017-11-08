@@ -1,4 +1,5 @@
 // pages/home/blank.js
+var app = getApp()
 Page({
 
   /**
@@ -15,6 +16,11 @@ Page({
     wx.showLoading({
       title: '正在加载中...',
     })
+    if (app.globalData.userDetailInfo.open_id) {
+      wx.switchTab({
+        url: '../../pages/index/index',
+      })
+    }
   },
 
   /**

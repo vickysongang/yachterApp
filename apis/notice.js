@@ -1,7 +1,6 @@
 var constants = require('../constants/index.js')
 
 function insertNotice(payload, callback) {
-  console.log('sdfsdf:', payload)
   wx.request({
     url: constants.SERVER_ADDRESS + '/notice/insert',
     method: 'POST',
