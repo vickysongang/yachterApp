@@ -8,9 +8,7 @@
     <view class='divider-line'></view>
     <template is="fieldCell" data="{{label:'就读地点', value:placeName}}" />
     <view class='divider-line'></view>
-    <picker bindchange="bindPickYear" value="{{yearIndex}}" range="{{yearNames}}">
-      <template is="fieldCell" data="{{label:'入学年份', value:years[yearIndex].name}}" />
-    </picker>
+    <template is="fieldCell" data="{{label:'入学年份', value:year}}" />
     <view class='divider-line'></view>
     <template is="fieldCell" data="{{label:'发布人', value:userInfo.nickName}}" />
     <view class='divider-section'></view>

@@ -67,7 +67,6 @@ App({
   },
   navToJoinHomePage: function (openId) {
     userApis.queryUserById(openId, (err, r1) => {
-      console.log('sfsfsddffs:', r1)
       if (r1.data.length === 0) {
         wx.redirectTo({
           url: '../../pages/home/home',

@@ -20,34 +20,13 @@ Page({
     classId: undefined,
     className: '',
     imageList: [],
-    years: [],
-    yearNames: [],
-    yearIndex: 0
+    year: undefined,
   },
   onLoad: function () {
     var that = this
     that.setData({
       userInfo: app.globalData.userInfo
     })
-    commonApis.fetchYears((err, res) => {
-      var currYear = new Date().getFullYear()
-      var years = res.data
-      var defaultYearIndex = 0
-      for (var i = 0; i < years.length; i++) {
-        if (parseInt(years[i].name) === currYear) {
-          defaultYearIndex = i
-          break
-        }
-      }
-      that.setData({
-        years: years,
-        yearIndex: defaultYearIndex,
-        yearNames: years.map(item => {
-          return item.name
-        })
-      })
-    })
-
     userApis.queryUserInfoById(app.globalData.openId, (err, res) => {
       if (res.data.length > 0) {
         var data = res.data[0]
@@ -132,6 +111,7 @@ Page({
     var classId = this.data.classId
     var majorId = this.data.majorId
     var content = this.data.content
+    var year = this.data.year
     var imageList = this.data.imageList
     wx.showLoading({
       title: '发布中...',
@@ -150,7 +130,7 @@ Page({
         collegeId: collegeId,
         schoolId: schoolId,
         content: content,
-        year: this.data.years[this.data.yearIndex].name,
+        year: year,
         placeId: placeId,
         classId: classId,
         majorId: majorId,
