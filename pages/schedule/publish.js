@@ -17,8 +17,8 @@ Page({
     majorName: '',
     placeId: undefined,
     placeName: '',
-    classId:undefined,
-    className:'',
+    classId: undefined,
+    className: '',
     imageList: [],
     years: [],
     yearNames: [],
@@ -61,7 +61,7 @@ Page({
           year: data.year,
           placeId: data.place_id,
           placeName: data.place_name,
-          classId:data.class_id,
+          classId: data.class_id,
           className: data.class_name
         })
       }
@@ -136,6 +136,11 @@ Page({
     wx.showLoading({
       title: '发布中...',
     })
+    var config = app.globalData.config
+    var approveFlag = 'Y'
+    if (config.schedule_af === 'Y') {
+      approveFlag = 'N'
+    }
     upload.batchUploadFiles(imageList).then((results) => {
       var imageUrls = results.map((r) => {
         return r.imageURL
@@ -149,15 +154,29 @@ Page({
         placeId: placeId,
         classId: classId,
         majorId: majorId,
+        approveFlag: approveFlag,
         images: imageUrls && imageUrls.length > 0 ? imageUrls.join(',') : ''
       }, (err, res) => {
-        var pages = getCurrentPages();
-        if (pages.length > 1) {
-          var prePage = pages[pages.length - 2];
-          prePage.loadSchedules()
-        }
         wx.hideLoading()
-        wx.navigateBack({})
+        if (approveFlag === 'N') {
+          wx.showModal({
+            title: '提示',
+            content: '课表已提交，请耐心等待审核！',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateBack({})
+              }
+            }
+          })
+        } else {
+          var pages = getCurrentPages();
+          if (pages.length > 1) {
+            var prePage = pages[pages.length - 2];
+            prePage.loadSchedules()
+          }
+          wx.navigateBack({})
+        }
       })
     })
   },

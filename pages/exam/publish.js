@@ -225,7 +225,7 @@ Page({
           if (approveFlag === 'N') {
             wx.showModal({
               title: '提示',
-              content: '通知已发布，请耐心等待审核！',
+              content: '已提交，请耐心等待审核！',
               showCancel: false,
               success: function (res) {
                 if (res.confirm) {
