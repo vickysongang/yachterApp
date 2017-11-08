@@ -26,6 +26,9 @@ Page({
       })
     }
   },
+  onShareAppMessage: function () {
+    return {}
+  },
   bindBhInput: function (e) {
     this.setData({
       bh: e.detail.value

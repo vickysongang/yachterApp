@@ -25,8 +25,10 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     })
+    wx.showNavigationBarLoading()
     examApis.incrExamReadCount(id, (err, res) => {
       examApis.getExamDetail(id, (err1, res1) => {
+        wx.hideNavigationBarLoading()
         if (res1.data.length > 0) {
           var detail = res1.data[0]
           var images = []
@@ -59,6 +61,9 @@ Page({
         }
       })
     })
+  },
+  onShareAppMessage: function () {
+    return {}
   },
   previewImage: function (e) {
     var that = this

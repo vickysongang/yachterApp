@@ -16,5 +16,8 @@ Page({
     this.setData({
       scoreItems:JSON.parse(result)
     })
-  }
+  },
+  onShareAppMessage: function () {
+    return {}
+  },
 })

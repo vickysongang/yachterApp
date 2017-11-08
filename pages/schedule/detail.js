@@ -22,7 +22,9 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     })
+    wx.showNavigationBarLoading()
     scheduleApis.getScheduleDetail(id, (err1, res1) => {
+      wx.hideNavigationBarLoading()
       if (res1.data.length > 0) {
         var detail = res1.data[0]
         var images = []
@@ -46,6 +48,9 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function () {
+    return {}
   },
   deleteAction: function (e) {
     var id = e.currentTarget.dataset.id

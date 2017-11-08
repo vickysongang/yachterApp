@@ -12,5 +12,8 @@ Page({
   onLoad: function (options) {
     var config = app.globalData.config
     WxParse.wxParse('richContent', 'html', config ? config.help_content : '', this, 5);
+  },
+  onShareAppMessage: function () {
+    return {}
   }
 })

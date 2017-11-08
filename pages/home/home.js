@@ -20,6 +20,9 @@ Page({
   onPullDownRefresh: function () {
     return
   },
+  onShareAppMessage: function () {
+    return {}
+  },
 
   /**
    * 页面上拉触底事件的处理函数

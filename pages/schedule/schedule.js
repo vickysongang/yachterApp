@@ -12,6 +12,9 @@ Page({
     this.loadBanners()
     this.loadSchedules()
   },
+  onShareAppMessage: function () {
+    return {}
+  },
   loadBanners: function () {
     var schoolId = app.globalData.userDetailInfo.school_id
     var collegeId = app.globalData.userDetailInfo.college_id

@@ -27,6 +27,9 @@ Page({
     this.loadExams()
     this.loadBanners()
   },
+  onShareAppMessage: function () {
+    return {}
+  },
   loadBanners: function () {
     var schoolId = app.globalData.userDetailInfo.school_id
     var collegeId = app.globalData.userDetailInfo.college_id

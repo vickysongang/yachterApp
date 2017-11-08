@@ -34,6 +34,9 @@ Page({
       }
     }, 1000)
   },
+  onShareAppMessage: function() {
+    return {}
+  },
   loadBanners: function () {
     var noticeType = this.data.noticeType
     var collegeId = app.globalData.userDetailInfo.college_id
