@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/home/blank",
     "pages/index/index",
+    "pages/home/home",
     "pages/joinClass/joinClass",
     "pages/index/detail",
     "pages/index/publish",

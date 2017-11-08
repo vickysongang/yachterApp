@@ -1,0 +1,6 @@
+<view class='main-container'>
+  <image src='../../image/home.jpeg' class='home_image'
+  mode='widthFix'></image>
+  <image src='../../image/joinclass.png' class='image_btn'
+  mode='widthFix' bindtap='bindJoinClassAction'></image>
+</view>

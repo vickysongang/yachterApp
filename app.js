@@ -20,13 +20,13 @@ App({
                 that.getUserInfo()
                 that.getUserDetailInfo()
                 that.getConfigInfo()
-                that.navToJoinClassPage(openId)
+                that.navToJoinHomePage(openId)
               } else {
                 wx.authorize({
                   scope: 'scope.userInfo',
                   success(res) {
                     that.getConfigInfo()
-                    that.navToJoinClassPage(openId)
+                    that.navToJoinHomePage(openId)
                   }
                 })
               }
@@ -65,11 +65,16 @@ App({
       this.globalData.config = res.data
     })
   },
-  navToJoinClassPage: function (openId) {
+  navToJoinHomePage: function (openId) {
     userApis.queryUserById(openId, (err, r1) => {
+      console.log('sfsfsddffs:', r1)
       if (r1.data.length === 0) {
         wx.redirectTo({
-          url: '../../pages/joinClass/joinClass',
+          url: '../../pages/home/home',
+        })
+      } else {
+        wx.switchTab({
+          url: '../../pages/index/index',
         })
       }
     })
