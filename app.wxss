@@ -118,12 +118,32 @@ form {
 .publish-button-view {
   position: fixed;
   right: 10rpx;
-  bottom: 10rpx;
+  bottom: 100rpx;
 }
 
 .publish-button-image {
   height: 100rpx;
   width: 100rpx;
+}
+
+.kefu-button-view {
+  position: fixed;
+  right: 10rpx;
+  bottom: 10rpx;
+}
+
+.kefu-button-image {  
+  width: 100rpx;  
+  height: 100rpx;  
+  display: inline-block;  
+  margin-top: 10rpx; 
+}
+
+.kefu_button {
+  position: fixed;  
+  right: 25rpx;
+  bottom: 38rpx; 
+  opacity: 0;   
 }
 
 /*弹出框*/

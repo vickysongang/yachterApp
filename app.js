@@ -78,6 +78,14 @@ App({
       }
     })
   },
+  handleIsRegistered: function(){
+    var userDetailInfo = this.globalData.userDetailInfo
+    if (!userDetailInfo.open_id) {
+      wx.redirectTo({
+        url: '../home/home',
+      })
+    }
+  },
   globalData: {
     userInfo: {},
     userDetailInfo: {},

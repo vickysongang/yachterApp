@@ -11,7 +11,7 @@
       </view>
       <text class="userinfo-school" style='margin-top:36rpx;'>{{schoolName + collegeName}}
       </text>
-      <text class="userinfo-school">{{majorName}}
+      <text class="userinfo-school">{{majorName+year+className}}
       </text>
     </view>
     <view>

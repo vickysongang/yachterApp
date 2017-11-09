@@ -14,6 +14,7 @@ Page({
     categories: []
   },
   onLoad: function () {
+    app.handleIsRegistered()
     var that = this;
     commonApis.fetchCategories('notice', (err, res) => {
       that.setData({

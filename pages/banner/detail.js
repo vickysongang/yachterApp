@@ -20,6 +20,7 @@ Page({
     }
   },
   onLoad: function (options) {
+    app.handleIsRegistered()
     var id = options.id
     var that = this
     this.setData({

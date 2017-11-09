@@ -12,8 +12,8 @@
 }
 
 .notice-image-view {
-  width:62rpx;
-  height:134rpx;
+  width:52rpx;
+  height:104rpx;
   position: absolute;
   top: 0;
   text-align: center;
@@ -22,7 +22,7 @@
 .notice-type-info-view {
   display: flex;
   direction: row;
-  width: 60rpx;
+  width: 42rpx;
   flex-wrap: wrap;
   position: absolute;
   top:  22rpx;
@@ -31,8 +31,10 @@
 .notice-type-text {
   text-align: center;
   color: #fff;
+  font-size:28rpx;
   height: 72rpx;
-  line-height: 36rpx;
+  line-height: 28rpx;
+  padding-left:10rpx;
 }
 
 .notice-detail-info-view {

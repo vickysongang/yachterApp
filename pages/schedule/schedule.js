@@ -9,6 +9,7 @@ Page({
     schedules: []
   },
   onLoad: function () {
+    app.handleIsRegistered()
     this.loadBanners()
     this.loadSchedules()
   },
@@ -39,6 +40,9 @@ Page({
     scheduleApis.querySchedules({
       schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
+      majorId: app.globalData.userDetailInfo.major_id,
+      classId: app.globalData.userDetailInfo.class_id,
+      year: app.globalData.userDetailInfo.year,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -52,6 +56,9 @@ Page({
     scheduleApis.querySchedules({
       schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
+      majorId: app.globalData.userDetailInfo.major_id,
+      classId: app.globalData.userDetailInfo.class_id,
+      year: app.globalData.userDetailInfo.year,
       page: 0,
       count: 10
     }, (err, result) => {
@@ -66,6 +73,9 @@ Page({
     scheduleApis.querySchedules({
       schoolId: app.globalData.userDetailInfo.school_id,
       collegeId: app.globalData.userDetailInfo.college_id,
+      majorId: app.globalData.userDetailInfo.major_id,
+      classId: app.globalData.userDetailInfo.class_id,
+      year: app.globalData.userDetailInfo.year,
       page: this.data.currPage + 1,
       count: 10
     }, (err, result) => {

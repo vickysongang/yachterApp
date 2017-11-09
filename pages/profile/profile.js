@@ -7,9 +7,12 @@ Page({
     userInfo: {},
     schoolName: '',
     collegeName: '',
-    majorName: ''
+    majorName: '',
+    year: '',
+    className:''
   },
   onLoad: function () {
+    app.handleIsRegistered()
     var that = this
     that.setData({
       userInfo: app.globalData.userInfo
@@ -17,10 +20,16 @@ Page({
     userApis.queryUserInfoById(app.globalData.openId, (err, res) => {
       if (res.data.length > 0) {
         var data = res.data[0]
+        var className = data.class_name
+        if (!className || className === '不分班') {
+          className = ''
+        }
         that.setData({
           schoolName: data.school_name,
           collegeName: data.college_name,
-          majorName: data.major_name
+          majorName: data.major_name,
+          year: data.year,
+          className: className
         })
       }
     })

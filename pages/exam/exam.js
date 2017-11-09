@@ -15,6 +15,7 @@ Page({
     categories: []
   },
   onLoad: function () {
+    app.handleIsRegistered()
     var that = this;
     commonApis.fetchCategories('exam', (err, res) => {
       that.setData({

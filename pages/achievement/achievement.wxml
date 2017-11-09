@@ -1,5 +1,5 @@
 <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
-<view class="main-container" wx:if='{{canQueryScore}}'>
+<view class="main-container" wx:if='{{canQueryScore === true}}'>
   <text class='header-text'>中国人民大学</text>
   <text class='header-text'>同等学力学员考试成绩查询</text>
   <input class='input-style' placeholder='资格卡号(或姓名)' value='{{bh}}' bindinput='bindBhInput' style='margin-top:20rpx;'></input>
@@ -10,6 +10,6 @@
   <button type="primary" size="{{default}}" loading="{{loading}}" plain="{{false}}" disabled="{{false}}" bindtap="primary" class='query_button' bindtap='bindQueryAction'> 查询 </button>
   <button type="default" size="{{default}}" loading="{{false}}" plain="{{false}}" disabled="{{false}}" bindtap="default" class='reset_button' bindtap='bindResetAction'> 重置 </button>
 </view>
-<view class="main-container-nodata" wx:if='{{!canQueryScore}}'>
+<view class="main-container-nodata" wx:if='{{canQueryScore === false}}'>
   <text class='tip-text'>对不起，你所在学校的成绩查询功能暂未上线。如有你校成绩查询信息，可通过客服联系。</text>
 </view>
