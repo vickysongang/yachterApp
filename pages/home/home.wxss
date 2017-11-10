@@ -13,8 +13,8 @@
 }
 
 .image_btn {
-  position: fixed;
-  top: 75%;
+  position: absolute;
+  top: 80%;
   z-index: 3;
   left:50%;
   margin-left:-236rpx;

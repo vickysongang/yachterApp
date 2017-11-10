@@ -367,9 +367,10 @@ Page({
       wx.showToast({
         title: '加入成功',
       })
-      app.getUserDetailInfo()
-      wx.switchTab({
-        url: '../index/index',
+      app.getUserDetailInfo(() =>{
+        wx.switchTab({
+          url: '../index/index',
+        })
       })
     })
   }

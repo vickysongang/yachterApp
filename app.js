@@ -46,7 +46,7 @@ App({
       }
     })
   },
-  getUserDetailInfo: function(){
+  getUserDetailInfo: function(callback){
     userApis.queryUserInfoById(this.globalData.openId, (err, info) => {
       if (info.data && info.data.length > 0) {
         var detailInfo = info.data[0]
@@ -55,7 +55,8 @@ App({
           wx.redirectTo({
             url: '../../pages/common/forbidden',
           })
-          return
+        } else {
+          callback && callback()
         }
       }
     })
