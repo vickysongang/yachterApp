@@ -16,6 +16,7 @@
     "pages/achievement/detail",
     "pages/profile/profile",
     "pages/profile/help",
+    "pages/profile/about",
     "pages/profile/feedback",
     "pages/banner/detail",
     "pages/common/forbidden"

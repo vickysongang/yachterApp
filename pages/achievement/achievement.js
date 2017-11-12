@@ -10,17 +10,26 @@ Page({
     canQueryScore: undefined
   },
   onLoad: function () {
-    app.handleIsRegistered()
-    wx.showNavigationBarLoading()
-    var userDetailInfo = app.globalData.userDetailInfo
-    commonApis.getSchoolDetail(userDetailInfo.school_id, (err,res)=>{
-      wx.hideNavigationBarLoading()
-      if(res.data && res.data.length > 0){
-        this.setData({
-          canQueryScore: res.data[0].can_query_score === 'Y'
-        })
-      }
-    })
+    var config = app.globalData.config
+    var canAllQueryScore = config.can_all_query_score
+    if (canAllQueryScore === 'N') {
+      app.handleIsRegistered()
+      wx.showNavigationBarLoading()
+      var userDetailInfo = app.globalData.userDetailInfo
+      commonApis.getSchoolDetail(userDetailInfo.school_id, (err, res) => {
+        wx.hideNavigationBarLoading()
+        if (res.data && res.data.length > 0) {
+          this.setData({
+            canQueryScore: res.data[0].can_query_score === 'Y'
+          })
+        }
+      })
+    } else {
+      this.setData({
+        canQueryScore: true
+      })
+    }
+
     var queryInfo = wx.getStorageSync('queryInfo')
     if (queryInfo) {
       this.setData({
